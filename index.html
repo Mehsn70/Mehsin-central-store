@@ -6,101 +6,186 @@
 <title>Mehsin Central Store</title>
 
 <style>
+    :root {
+        --gold: #d4af37;
+        --dark: #050505;
+        --card-radius: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         margin: 0;
-        font-family: 'Tahoma', sans-serif;
-        background-color: #000;
+        font-family: "Tahoma", sans-serif;
+        background: #000;
         color: #fff;
     }
 
-    /* الألوان العامة */
-    :root {
-        --gold: #d4af37;
-        --dark: #0a0a0a;
-        --card-bg: #111;
-        --card-border: #333;
-    }
-
-    /* الهيدر */
     header {
-        background: linear-gradient(180deg, #000, #111);
-        padding: 35px;
+        background: linear-gradient(90deg, #000, #1a1a1a);
+        padding: 22px;
         text-align: center;
         color: var(--gold);
-        font-size: 32px;
+        font-size: 26px;
         font-weight: bold;
-        border-bottom: 2px solid var(--gold);
+        border-bottom: 1px solid var(--gold);
     }
 
-    /* زر واتساب */
+    .hero {
+        padding: 18px 16px 8px;
+        text-align: center;
+        background: radial-gradient(circle at top, #333 0, #000 60%);
+    }
+
+    .hero-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+
+    .hero-sub {
+        font-size: 14px;
+        opacity: 0.8;
+        margin-bottom: 16px;
+    }
+
     .whatsapp-btn {
-        display: block;
-        width: 80%;
-        margin: 20px auto;
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 999px;
         background: #25d366;
         color: #000;
-        padding: 18px;
-        border-radius: 12px;
-        font-size: 22px;
-        text-align: center;
         font-weight: bold;
+        font-size: 15px;
         text-decoration: none;
     }
 
-    /* عنوان الأقسام */
+    .section {
+        padding: 20px 12px 8px;
+    }
+
     .section-title {
-        color: var(--gold);
-        text-align: center;
-        margin-top: 40px;
-        font-size: 27px;
+        font-size: 20px;
         font-weight: bold;
-    }
-
-    /* الجداول */
-    table {
-        width: 90%;
-        margin: 20px auto;
-        border-collapse: collapse;
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-    }
-
-    th, td {
-        padding: 14px;
-        border: 1px solid #222;
+        margin-bottom: 10px;
         text-align: center;
-        font-size: 18px;
     }
 
-    th {
-        background: #222;
-        color: var(--gold);
-    }
-
-    /* كاردات */
-    .card {
-        width: 90%;
-        margin: 18px auto;
-        padding: 18px;
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: 12px;
-    }
-
-    .card h3 {
-        color: var(--gold);
+    .section-sub {
+        font-size: 13px;
+        text-align: center;
+        opacity: 0.75;
         margin-bottom: 12px;
     }
 
-    /* الفوتر */
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 12px;
+    }
+
+    .card {
+        border-radius: var(--card-radius);
+        padding: 12px 14px;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-tag {
+        font-size: 11px;
+        opacity: 0.9;
+        margin-bottom: 4px;
+    }
+
+    .card-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+
+    .card-note {
+        font-size: 12px;
+        opacity: 0.85;
+        margin-bottom: 8px;
+    }
+
+    .price-row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 4px;
+    }
+
+    .old-price {
+        font-size: 13px;
+        text-decoration: line-through;
+        opacity: 0.7;
+    }
+
+    .new-price {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .card-footer {
+        font-size: 11px;
+        opacity: 0.8;
+    }
+
+    /* ألوان الكروت حسب القسم */
+    .alfa-section { background: #050505; }
+    .alfa-card {
+        background: linear-gradient(135deg, #7b0000, #ff0033);
+    }
+
+    .touch-section { background: #020712; }
+    .touch-card {
+        background: linear-gradient(135deg, #0056ff, #00b7ff);
+    }
+
+    .plans-section { background: #05030a; }
+    .plan-card-alfa {
+        background: linear-gradient(135deg, #aa0000, #ff4b4b);
+    }
+    .plan-card-touch {
+        background: linear-gradient(135deg, #0056ff, #00c3ff);
+    }
+
+    .internet-section { background: #040808; }
+    .internet-card {
+        background: linear-gradient(135deg, #009245, #00d084);
+    }
+
+    .stream-section { background: #050505; }
+    .netflix-card {
+        background: linear-gradient(135deg, #8b0000, #ff0000);
+    }
+    .shahid-card {
+        background: linear-gradient(135deg, #007f3f, #00b86b);
+    }
+
+    .ai-section { background: #070314; }
+    .ai-card {
+        background: linear-gradient(135deg, #3b0d91, #9b2fff);
+    }
+
+    .gifts-section { background: #050505; }
+    .gift-card {
+        background: linear-gradient(135deg, #4d3200, #d4af37);
+        color: #fff;
+    }
+
     footer {
-        margin-top: 50px;
-        padding: 20px;
         text-align: center;
-        background: #000;
-        border-top: 2px solid var(--gold);
+        padding: 16px 8px 20px;
+        font-size: 12px;
         color: #777;
-        font-size: 15px;
+        border-top: 1px solid #111;
+        background: #000;
     }
 </style>
 </head>
@@ -109,85 +194,428 @@
 
 <header>Mehsin Central Store</header>
 
-<a class="whatsapp-btn" href="https://wa.me/96170363783">تواصل عبر واتساب</a>
+<section class="hero">
+    <div class="hero-title">خدمات رقمية وتشريجات موبايل بسعر جملة</div>
+    <div class="hero-sub">
+        Alfa · Touch · Internet · Mobile Plans · Netflix · Shahid · ChatGPT · Games · Gift Cards
+    </div>
+    <a class="whatsapp-btn" href="https://wa.me/96170363783">
+        تواصل مباشرة عبر واتساب
+    </a>
+</section>
 
-<!-- قسم 1 -->
-<h2 class="section-title">Alfa & Touch – Days / Months / Year</h2>
+<!-- Alfa -->
+<section class="section alfa-section">
+    <div class="section-title">Alfa Offers</div>
+    <div class="section-sub">تشريجات Alfa شهريّة وسنويّة وبطاقات بالدولار</div>
 
-<table>
-<tr>
-    <th>Product</th>
-    <th>Buy</th>
-    <th>Sell</th>
-    <th>Profit</th>
-</tr>
+    <div class="cards-grid">
 
-<tr><td>Alfa 1 Month</td><td>120,000</td><td>150,000</td><td>30,000</td></tr>
-<tr><td>Alfa 3 Months</td><td>350,000</td><td>430,000</td><td>80,000</td></tr>
-<tr><td>Alfa 6 Months</td><td>750,000</td><td>900,000</td><td>150,000</td></tr>
-<tr><td>Alfa 1 Year</td><td>700,000</td><td>900,000</td><td>200,000</td></tr>
+        <div class="card alfa-card">
+            <div class="card-tag">📱 Alfa</div>
+            <div class="card-title">Alfa 1 Month</div>
+            <div class="card-note">تجديد 30 يوم</div>
+            <div class="price-row">
+                <span class="old-price">200,000</span>
+                <span class="new-price">150,000 ل.ل</span>
+            </div>
+            <div class="card-footer">عروض مناسبة للخطوط العادية.</div>
+        </div>
 
-<tr><td>Touch 1 Year</td><td>1,300,000</td><td>1,500,000</td><td>200,000</td></tr>
+        <div class="card alfa-card">
+            <div class="card-tag">📱 Alfa</div>
+            <div class="card-title">Alfa 3 Months</div>
+            <div class="card-note">تجديد 90 يوم</div>
+            <div class="price-row">
+                <span class="old-price">480,000</span>
+                <span class="new-price">430,000 ل.ل</span>
+            </div>
+            <div class="card-footer">حل اقتصادي للخطوط الطويلة.</div>
+        </div>
 
-<tr><td>Alfa 4.5$</td><td>462,000</td><td>550,000</td><td>88,000</td></tr>
-<tr><td>Alfa 7.5$</td><td>763,000</td><td>890,000</td><td>127,000</td></tr>
+        <div class="card alfa-card">
+            <div class="card-tag">📱 Alfa</div>
+            <div class="card-title">Alfa 6 Months</div>
+            <div class="card-note">6 أشهر متواصلة</div>
+            <div class="price-row">
+                <span class="old-price">950,000</span>
+                <span class="new-price">900,000 ل.ل</span>
+            </div>
+            <div class="card-footer">راحة نص سنة بدون تجديد.</div>
+        </div>
 
-<tr><td>Touch 4.5$</td><td>462,000</td><td>550,000</td><td>88,000</td></tr>
-<tr><td>Touch 7.5$</td><td>762,000</td><td>880,000</td><td>118,000</td></tr>
-</table>
+        <div class="card alfa-card">
+            <div class="card-tag">📱 Alfa</div>
+            <div class="card-title">Alfa 1 Year</div>
+            <div class="card-note">سنة أيام استقبال</div>
+            <div class="price-row">
+                <span class="old-price">950,000</span>
+                <span class="new-price">900,000 ل.ل</span>
+            </div>
+            <div class="card-footer">أفضل حل سنوي للخطوط.</div>
+        </div>
 
-<!-- قسم 2 -->
-<h2 class="section-title">Premium Internet – Ushare</h2>
+        <div class="card alfa-card">
+            <div class="card-tag">💳 Alfa Dollar</div>
+            <div class="card-title">Alfa 4.5$ Card</div>
+            <div class="card-note">30 يوم – استقبال</div>
+            <div class="price-row">
+                <span class="old-price">600,000</span>
+                <span class="new-price">550,000 ل.ل</span>
+            </div>
+            <div class="card-footer">بطاقة مناسبة لتجديد سريع.</div>
+        </div>
 
-<table>
-<tr><th>Plan</th><th>Buy</th></tr>
-<tr><td>5.5 GB</td><td>500,000</td></tr>
-<tr><td>11 GB</td><td>700,000</td></tr>
-<tr><td>22 GB</td><td>990,000</td></tr>
-<tr><td>33 GB</td><td>1,250,000</td></tr>
-<tr><td>44 GB</td><td>1,650,000</td></tr>
-<tr><td>55 GB</td><td>1,950,000</td></tr>
-</table>
+        <div class="card alfa-card">
+            <div class="card-tag">💳 Alfa Dollar</div>
+            <div class="card-title">Alfa 7.5$ Card</div>
+            <div class="card-note">30 يوم – استقبال</div>
+            <div class="price-row">
+                <span class="old-price">940,000</span>
+                <span class="new-price">890,000 ل.ل</span>
+            </div>
+            <div class="card-footer">رصيد أعلى مع عرض أوفر.</div>
+        </div>
 
-<!-- قسم 3 -->
-<h2 class="section-title">ChatGPT & AI Services</h2>
+        <div class="card alfa-card">
+            <div class="card-tag">📅 Alfa Year Days</div>
+            <div class="card-title">Alfa Year Days</div>
+            <div class="card-note">سنة أيام مع 0.5$</div>
+            <div class="price-row">
+                <span class="old-price">1,750,000</span>
+                <span class="new-price">1,700,000 ل.ل</span>
+            </div>
+            <div class="card-footer">سنة كاملة استقبال مع هدية رصيد.</div>
+        </div>
 
-<table>
-<tr><th>Plan</th><th>Price ($)</th></tr>
-<tr><td>1 Month</td><td>7$</td></tr>
-<tr><td>3 Months</td><td>19$</td></tr>
-<tr><td>1 Year</td><td>55$</td></tr>
-</table>
+    </div>
+</section>
 
-<!-- قسم 4 -->
-<h2 class="section-title">Netflix / Shahid</h2>
+<!-- Touch -->
+<section class="section touch-section">
+    <div class="section-title">Touch Offers</div>
+    <div class="section-sub">عروض Touch السنويّة وبطاقات الدولار</div>
 
-<table>
-<tr><th>Service</th><th>Price</th></tr>
-<tr><td>Netflix 1 Month</td><td>120,000</td></tr>
-<tr><td>Netflix 3 Months</td><td>320,000</td></tr>
-<tr><td>Netflix 6 Months</td><td>720,000</td></tr>
-<tr><td>Netflix 1 Year</td><td>920,000</td></tr>
+    <div class="cards-grid">
 
-<tr><td>Shahid 1 Month</td><td>100,000</td></tr>
-<tr><td>Shahid 3 Months</td><td>200,000</td></tr>
-<tr><td>Shahid 1 Year</td><td>600,000</td></tr>
-</table>
+        <div class="card touch-card">
+            <div class="card-tag">📱 Touch</div>
+            <div class="card-title">Touch 1 Year</div>
+            <div class="card-note">سنة كاملة أيام استقبال</div>
+            <div class="price-row">
+                <span class="old-price">1,550,000</span>
+                <span class="new-price">1,500,000 ل.ل</span>
+            </div>
+            <div class="card-footer">حل سنوي للخطوط الدائمة.</div>
+        </div>
 
-<!-- قسم 5 -->
-<h2 class="section-title">Games</h2>
+        <div class="card touch-card">
+            <div class="card-tag">💳 Touch Dollar</div>
+            <div class="card-title">Touch 4.5$ Card</div>
+            <div class="card-note">30 يوم – استقبال</div>
+            <div class="price-row">
+                <span class="old-price">600,000</span>
+                <span class="new-price">550,000 ل.ل</span>
+            </div>
+            <div class="card-footer">بطاقة سريعة للتجديد الشهري.</div>
+        </div>
 
-<div class="card"><h3>PUBG – FreeFire – COD – ML</h3>أسعار حسب الطلب – تواصل عبر واتساب.</div>
+        <div class="card touch-card">
+            <div class="card-tag">💳 Touch Dollar</div>
+            <div class="card-title">Touch 7.5$ Card</div>
+            <div class="card-note">30 يوم – استقبال</div>
+            <div class="price-row">
+                <span class="old-price">930,000</span>
+                <span class="new-price">880,000 ل.ل</span>
+            </div>
+            <div class="card-footer">رصيد أكبر مع سعر منافس.</div>
+        </div>
 
-<!-- قسم 6 -->
-<h2 class="section-title">Gift Cards</h2>
+        <div class="card touch-card">
+            <div class="card-tag">📅 Touch Year Days</div>
+            <div class="card-title">Touch Year Days</div>
+            <div class="card-note">سنة أيام مع 0.5$</div>
+            <div class="price-row">
+                <span class="old-price">1,950,000</span>
+                <span class="new-price">1,900,000 ل.ل</span>
+            </div>
+            <div class="card-footer">سنة استقبال مع رصيد إضافي.</div>
+        </div>
 
-<div class="card"><h3>SHEIN · iTunes · PlayStation · Xbox · Razer · Nintendo · Google Play</h3>الأسعار تختلف حسب الدولة – تواصل عبر واتساب.</div>
+    </div>
+</section>
+
+<!-- Mobile Plans (GO / Web & Talk ...) -->
+<section class="section plans-section">
+    <div class="section-title">Mobile Plans – عروض إنترنت ودقايق</div>
+    <div class="section-sub">باكجات جاهزة من Alfa و Touch (إنترنت + دقائق + SMS)</div>
+
+    <div class="cards-grid">
+
+        <div class="card plan-card-alfa">
+            <div class="card-tag">Alfa GO – 3GB</div>
+            <div class="card-title">3GB + 60 min + 60 SMS</div>
+            <div class="price-row">
+                <span class="old-price">850,000</span>
+                <span class="new-price">800,000 ل.ل</span>
+            </div>
+            <div class="card-footer">مناسبة للاستخدام اليومي الخفيف.</div>
+        </div>
+
+        <div class="card plan-card-touch">
+            <div class="card-tag">Touch Web & Talk Mini</div>
+            <div class="card-title">1GB + 30 min + 30 SMS</div>
+            <div class="price-row">
+                <span class="old-price">650,000</span>
+                <span class="new-price">600,000 ل.ل</span>
+            </div>
+            <div class="card-footer">خيار اقتصادي للخط الثاني.</div>
+        </div>
+
+        <div class="card plan-card-touch">
+            <div class="card-tag">Touch Web & Talk</div>
+            <div class="card-title">3GB + 60 min + 60 SMS</div>
+            <div class="price-row">
+                <span class="old-price">850,000</span>
+                <span class="new-price">800,000 ل.ل</span>
+            </div>
+            <div class="card-footer">باقة متوازنة إنترنت + مكالمات.</div>
+        </div>
+
+        <div class="card plan-card-alfa">
+            <div class="card-tag">Alfa GO Plus</div>
+            <div class="card-title">15GB + 120 min + 120 SMS</div>
+            <div class="price-row">
+                <span class="old-price">1,350,000</span>
+                <span class="new-price">1,300,000 ل.ل</span>
+            </div>
+            <div class="card-footer">ممتازة للمستخدم النشط على الإنترنت.</div>
+        </div>
+
+        <div class="card plan-card-touch">
+            <div class="card-tag">Touch Web & Talk MAXI 2</div>
+            <div class="card-title">25GB + 120 min + 120 SMS</div>
+            <div class="price-row">
+                <span class="old-price">1,650,000</span>
+                <span class="new-price">1,600,000 ل.ل</span>
+            </div>
+            <div class="card-footer">باقة قوية للإنترنت الكثيف.</div>
+        </div>
+
+        <div class="card plan-card-alfa">
+            <div class="card-tag">Alfa GO Max</div>
+            <div class="card-title">33GB + 240 min + 240 SMS</div>
+            <div class="price-row">
+                <span class="old-price">1,850,000</span>
+                <span class="new-price">1,800,000 ل.ل</span>
+            </div>
+            <div class="card-footer">أفضل خيار لمستخدم الـHeavy.</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Internet Ushare -->
+<section class="section internet-section">
+    <div class="section-title">Alfa Ushare Internet</div>
+    <div class="section-sub">باكجات إنترنت فقط – مشاركة مريحة على الخطوط</div>
+
+    <div class="cards-grid">
+        <div class="card internet-card">
+            <div class="card-tag">Ushare</div>
+            <div class="card-title">5.5 GB</div>
+            <div class="price-row">
+                <span class="old-price">550,000</span>
+                <span class="new-price">500,000 ل.ل</span>
+            </div>
+        </div>
+        <div class="card internet-card">
+            <div class="card-tag">Ushare</div>
+            <div class="card-title">11 GB</div>
+            <div class="price-row">
+                <span class="old-price">750,000</span>
+                <span class="new-price">700,000 ل.ل</span>
+            </div>
+        </div>
+        <div class="card internet-card">
+            <div class="card-tag">Ushare</div>
+            <div class="card-title">22 GB</div>
+            <div class="price-row">
+                <span class="old-price">1,040,000</span>
+                <span class="new-price">990,000 ل.ل</span>
+            </div>
+        </div>
+        <div class="card internet-card">
+            <div class="card-tag">Ushare</div>
+            <div class="card-title">33 GB</div>
+            <div class="price-row">
+                <span class="old-price">1,300,000</span>
+                <span class="new-price">1,250,000 ل.ل</span>
+            </div>
+        </div>
+        <div class="card internet-card">
+            <div class="card-tag">Ushare</div>
+            <div class="card-title">44 GB</div>
+            <div class="price-row">
+                <span class="old-price">1,700,000</span>
+                <span class="new-price">1,650,000 ل.ل</span>
+            </div>
+        </div>
+        <div class="card internet-card">
+            <div class="card-tag">Ushare</div>
+            <div class="card-title">55 GB</div>
+            <div class="price-row">
+                <span class="old-price">2,000,000</span>
+                <span class="new-price">1,950,000 ل.ل</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Streaming -->
+<section class="section stream-section">
+    <div class="section-title">Streaming – Netflix & Shahid</div>
+    <div class="section-sub">اشتراكات منصّات المشاهدة للأفلام والمسلسلات</div>
+
+    <div class="cards-grid">
+        <div class="card netflix-card">
+            <div class="card-tag">Netflix</div>
+            <div class="card-title">1 Month</div>
+            <div class="price-row">
+                <span class="old-price">170,000</span>
+                <span class="new-price">120,000 ل.ل</span>
+            </div>
+        </div>
+
+        <div class="card netflix-card">
+            <div class="card-tag">Netflix</div>
+            <div class="card-title">3 Months</div>
+            <div class="price-row">
+                <span class="old-price">370,000</span>
+                <span class="new-price">320,000 ل.ل</span>
+            </div>
+        </div>
+
+        <div class="card netflix-card">
+            <div class="card-tag">Netflix</div>
+            <div class="card-title">6 Months</div>
+            <div class="price-row">
+                <span class="old-price">770,000</span>
+                <span class="new-price">720,000 ل.ل</span>
+            </div>
+        </div>
+
+        <div class="card netflix-card">
+            <div class="card-tag">Netflix</div>
+            <div class="card-title">1 Year</div>
+            <div class="price-row">
+                <span class="old-price">970,000</span>
+                <span class="new-price">920,000 ل.ل</span>
+            </div>
+        </div>
+
+        <div class="card shahid-card">
+            <div class="card-tag">Shahid VIP</div>
+            <div class="card-title">1 Month</div>
+            <div class="price-row">
+                <span class="old-price">150,000</span>
+                <span class="new-price">100,000 ل.ل</span>
+            </div>
+        </div>
+
+        <div class="card shahid-card">
+            <div class="card-tag">Shahid VIP</div>
+            <div class="card-title">3 Months</div>
+            <div class="price-row">
+                <span class="old-price">250,000</span>
+                <span class="new-price">200,000 ل.ل</span>
+            </div>
+        </div>
+
+        <div class="card shahid-card">
+            <div class="card-tag">Shahid VIP</div>
+            <div class="card-title">1 Year</div>
+            <div class="price-row">
+                <span class="old-price">650,000</span>
+                <span class="new-price">600,000 ل.ل</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI / ChatGPT -->
+<section class="section ai-section">
+    <div class="section-title">ChatGPT Plus & AI Services</div>
+    <div class="section-sub">حسابات ذكاء اصطناعي للألعاب، الدراسة، العمل</div>
+
+    <div class="cards-grid">
+        <div class="card ai-card">
+            <div class="card-tag">ChatGPT Plus</div>
+            <div class="card-title">1 Month</div>
+            <div class="card-note">حوالي 7$</div>
+            <div class="price-row">
+                <span class="old-price">680,000</span>
+                <span class="new-price">630,000 ل.ل</span>
+            </div>
+        </div>
+
+        <div class="card ai-card">
+            <div class="card-tag">ChatGPT Plus</div>
+            <div class="card-title">3 Months</div>
+            <div class="card-note">حوالي 19$</div>
+            <div class="price-row">
+                <span class="old-price">1,760,000</span>
+                <span class="new-price">1,710,000 ل.ل</span>
+            </div>
+        </div>
+
+        <div class="card ai-card">
+            <div class="card-tag">ChatGPT Plus</div>
+            <div class="card-title">1 Year</div>
+            <div class="card-note">حوالي 55$</div>
+            <div class="price-row">
+                <span class="old-price">5,000,000</span>
+                <span class="new-price">4,950,000 ل.ل</span>
+            </div>
+        </div>
+
+        <div class="card ai-card">
+            <div class="card-tag">Other AI</div>
+            <div class="card-title">Canva · Adobe · VPN · Antivirus</div>
+            <div class="card-footer">
+                الأسعار حسب نوع الخدمة والمدة – تواصل عبر واتساب للتفاصيل.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gift Cards & Games -->
+<section class="section gifts-section">
+    <div class="section-title">Gift Cards & Games</div>
+    <div class="section-sub">شحن ألعاب وبطاقات عالمية – تسليم فوري</div>
+
+    <div class="cards-grid">
+        <div class="card gift-card">
+            <div class="card-tag">Gift Cards</div>
+            <div class="card-title">SHEIN · iTunes · PlayStation · Xbox · Nintendo · Razer</div>
+            <div class="card-footer">
+                القيم بالدولار (10$ – 25$ – 50$ وغيرها) بأسعار مخفّضة. السعر يحدد حسب الدولة والعملـة.
+            </div>
+        </div>
+
+        <div class="card gift-card">
+            <div class="card-tag">Games</div>
+            <div class="card-title">PUBG · FreeFire · COD · MLBB · Clash Royale · Brawl Stars...</div>
+            <div class="card-footer">
+                شحن UC / جواهر / كوينز – حسب الباكج المطلوب. تواصل عبر واتساب لائحة أسعار كاملة.
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer>
-    © 2025 – Mehsin Central Store  
+    © 2025 – Mehsin Central Store – جميع الحقوق محفوظة  
 </footer>
 
 </body>
 </html>
-
