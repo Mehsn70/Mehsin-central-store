@@ -10,6 +10,13 @@
         --gold: #d4af37;
         --dark: #050505;
         --card-radius: 16px;
+
+        /* ألوان جديدة */
+        --beige: #f7e7c1;
+        --beige2: #e8d4a3;
+
+        --shahid-light: #c8ffe3;
+        --shahid-light2: #9affd3;
     }
 
     * {
@@ -92,10 +99,12 @@
         color: #fff;
         position: relative;
         overflow: hidden;
+        direction: ltr;       /* النص جوّا الكرت من اليسار */
+        text-align: left;
     }
 
     .card-tag {
-        font-size: 11px;
+        font-size: 14px;      /* تكبير الأيقونة/التاغ */
         opacity: 0.9;
         margin-bottom: 4px;
     }
@@ -157,7 +166,8 @@
 
     .internet-section { background: #040808; }
     .internet-card {
-        background: linear-gradient(135deg, #009245, #00d084);
+        background: linear-gradient(135deg, var(--beige2), var(--beige));
+        color: #000;
     }
 
     .stream-section { background: #050505; }
@@ -165,7 +175,8 @@
         background: linear-gradient(135deg, #8b0000, #ff0000);
     }
     .shahid-card {
-        background: linear-gradient(135deg, #007f3f, #00b86b);
+        background: linear-gradient(135deg, var(--shahid-light2), var(--shahid-light));
+        color: #000;
     }
 
     .ai-section { background: #070314; }
@@ -207,7 +218,7 @@
 <!-- Alfa -->
 <section class="section alfa-section">
     <div class="section-title">Alfa Offers</div>
-    <div class="section-sub">تشريجات Alfa شهريّة وسنويّة وبطاقات بالدولار</div>
+    <div class="section-sub">تشريجات Alfa شهرية وسنوية وبطاقات بالدولار</div>
 
     <div class="cards-grid">
 
@@ -294,7 +305,7 @@
 <!-- Touch -->
 <section class="section touch-section">
     <div class="section-title">Touch Offers</div>
-    <div class="section-sub">عروض Touch السنويّة وبطاقات الدولار</div>
+    <div class="section-sub">عروض Touch السنوية وبطاقات الدولار</div>
 
     <div class="cards-grid">
 
@@ -612,6 +623,13 @@
         </div>
     </div>
 </section>
+
+<!-- زر واتساب في آخر الصفحة -->
+<div style="text-align:center; margin: 20px 0;">
+    <a class="whatsapp-btn" href="https://wa.me/96170363783">
+        تواصل مباشرة عبر واتساب
+    </a>
+</div>
 
 <footer>
     © 2025 – Mehsin Central Store – جميع الحقوق محفوظة  
