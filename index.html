@@ -97,23 +97,29 @@
         }
     }
 
+    /* ====== HERO مع صورة خفيفة ====== */
     .hero {
-        padding: 18px 16px 8px;
+        padding: 24px 16px 18px;
         text-align: center;
-        background: radial-gradient(circle at top, #333 0, #000 60%);
+        background-image:
+            linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.88)),
+            url("https://images.pexels.com/photos/5838421/pexels-photo-5838421.jpeg?auto=compress&cs=tinysrgb&w=1200");
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
     }
 
     .hero-title {
         font-size: 22px;
         font-weight: bold;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
         color: var(--gold);
     }
 
     .hero-sub {
         font-size: 14px;
-        opacity: 0.8;
-        margin-bottom: 16px;
+        opacity: 0.9;
+        margin-bottom: 18px;
     }
 
     .whatsapp-btn {
@@ -125,6 +131,7 @@
         font-weight: bold;
         font-size: 15px;
         text-decoration: none;
+        box-shadow: 0 0 12px rgba(37,211,102,0.4);
     }
 
     /* ====== SECTIONS ====== */
@@ -160,11 +167,12 @@
         overflow: hidden;
         direction: ltr;       /* النص جوّا الكرت من اليسار */
         text-align: left;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.45);
     }
 
     .card-tag {
-        font-size: 14px;
-        opacity: 0.9;
+        font-size: 15px;      /* تكبير الأيقونة/التاغ */
+        opacity: 0.95;
         margin-bottom: 4px;
     }
 
@@ -304,7 +312,7 @@
 <section class="hero">
     <div class="hero-title">خدمات رقمية وتشريجات موبايل بسعر جملة</div>
     <div class="hero-sub">
-        Alfa · Touch · Internet · Mobile Plans · Netflix · Shahid · ChatGPT · Games · Gift Cards
+        خطوط · إنترنت · اشتراكات مشاهدة · ذكاء اصطناعي · ألعاب · بطاقات هدايا
     </div>
     <a class="whatsapp-btn" href="https://wa.me/96170363783">
         تواصل مباشرة عبر واتساب
@@ -313,7 +321,7 @@
 
 <!-- Alfa -->
 <section class="section alfa-section" id="alfa">
-    <div class="section-title">Alfa Offers</div>
+    <div class="section-title">📱 Alfa Offers</div>
     <div class="section-sub">تشريجات Alfa شهرية وسنوية وبطاقات بالدولار</div>
 
     <div class="cards-grid">
@@ -400,13 +408,13 @@
 
 <!-- Touch -->
 <section class="section touch-section" id="touch">
-    <div class="section-title">Touch Offers</div>
+    <div class="section-title">📶 Touch Offers</div>
     <div class="section-sub">عروض Touch السنوية وبطاقات الدولار</div>
 
     <div class="cards-grid">
 
         <div class="card touch-card">
-            <div class="card-tag">📱 Touch</div>
+            <div class="card-tag">📶 Touch</div>
             <div class="card-title">Touch 1 Year</div>
             <div class="card-note">سنة كاملة أيام استقبال</div>
             <div class="price-row">
@@ -454,7 +462,7 @@
 
 <!-- Mobile Plans (GO / Web & Talk ...) -->
 <section class="section plans-section" id="plans">
-    <div class="section-title">Mobile Plans – عروض إنترنت ودقايق</div>
+    <div class="section-title">📊 Mobile Plans – عروض إنترنت ودقايق</div>
     <div class="section-sub">باكجات جاهزة من Alfa و Touch (إنترنت + دقائق + SMS)</div>
 
     <div class="cards-grid">
@@ -524,7 +532,7 @@
 
 <!-- Internet Ushare -->
 <section class="section internet-section" id="internet">
-    <div class="section-title">Alfa Ushare Internet</div>
+    <div class="section-title">🌐 Alfa Ushare Internet</div>
     <div class="section-sub">باكجات إنترنت فقط – مشاركة مريحة على الخطوط</div>
 
     <div class="cards-grid">
@@ -581,7 +589,7 @@
 
 <!-- Streaming -->
 <section class="section stream-section" id="stream">
-    <div class="section-title">Streaming – Netflix & Shahid</div>
+    <div class="section-title">🎬 Streaming – Netflix & Shahid</div>
     <div class="section-sub">اشتراكات منصّات المشاهدة للأفلام والمسلسلات</div>
 
     <div class="cards-grid">
@@ -652,7 +660,7 @@
 
 <!-- AI / ChatGPT -->
 <section class="section ai-section" id="ai">
-    <div class="section-title">ChatGPT Plus & AI Services</div>
+    <div class="section-title">🤖 ChatGPT Plus & AI Services</div>
     <div class="section-sub">حسابات ذكاء اصطناعي للألعاب، الدراسة، العمل</div>
 
     <div class="cards-grid">
@@ -698,7 +706,7 @@
 
 <!-- Gift Cards & Games -->
 <section class="section gifts-section" id="gifts">
-    <div class="section-title">Gift Cards & Games</div>
+    <div class="section-title">🎮 Gift Cards & Games</div>
     <div class="section-sub">شحن ألعاب وبطاقات عالمية – تسليم فوري</div>
 
     <div class="cards-grid">
@@ -722,7 +730,7 @@
 
 <!-- About -->
 <section class="section about-section" id="about">
-    <div class="section-title">About – عن Mehsin Central Store</div>
+    <div class="section-title">ℹ️ About – عن Mehsin Central Store</div>
     <p class="about-text">
         Mehsin Central Store هو مركز رقمي لبيع التشريجات، باكجات الإنترنت، اشتراكات المنصّات،
         وحسابات الذكاء الاصطناعي بأسعار جملة مدروسة. الهدف هو تقديم خدمة سريعة، واضحة،
@@ -735,7 +743,7 @@
 
 <!-- Contact -->
 <section class="section contact-section" id="contact">
-    <div class="section-title">Contact – للتواصل والطلب</div>
+    <div class="section-title">📞 Contact – للتواصل والطلب</div>
     <p class="contact-text">
         للتواصل المباشر والطلب، أو للاستفسار عن أي باكج خاص للمحلات أو الجملة:
         <br><br>
