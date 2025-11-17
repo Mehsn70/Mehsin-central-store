@@ -30,14 +30,71 @@
         color: #fff;
     }
 
+    /* ====== HEADER + NAV ====== */
     header {
-        background: linear-gradient(90deg, #000, #1a1a1a);
-        padding: 22px;
-        text-align: center;
-        color: var(--gold);
-        font-size: 26px;
+        background: #000;
+        border-bottom: 1px solid #111;
+    }
+
+    .top-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        background: linear-gradient(90deg, #000, #111);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .logo-wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .logo-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
         font-weight: bold;
-        border-bottom: 1px solid var(--gold);
+        color: var(--gold);
+    }
+
+    .logo-text {
+        font-size: 15px;
+        font-weight: bold;
+        color: var(--gold);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    .nav-links a {
+        color: #ccc;
+        text-decoration: none;
+        padding: 4px 8px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+    }
+
+    @media (max-width: 640px) {
+        .nav-links {
+            display: none;
+        }
     }
 
     .hero {
@@ -50,6 +107,7 @@
         font-size: 22px;
         font-weight: bold;
         margin-bottom: 6px;
+        color: var(--gold);
     }
 
     .hero-sub {
@@ -69,6 +127,7 @@
         text-decoration: none;
     }
 
+    /* ====== SECTIONS ====== */
     .section {
         padding: 20px 12px 8px;
     }
@@ -104,7 +163,7 @@
     }
 
     .card-tag {
-        font-size: 14px;      /* تكبير الأيقونة/التاغ */
+        font-size: 14px;
         opacity: 0.9;
         margin-bottom: 4px;
     }
@@ -190,6 +249,25 @@
         color: #fff;
     }
 
+    .about-section {
+        background: #050505;
+        padding-bottom: 20px;
+    }
+
+    .about-text, .contact-text {
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 13px;
+        line-height: 1.6;
+        text-align: center;
+        opacity: 0.9;
+    }
+
+    .contact-section {
+        background: #020202;
+        padding-bottom: 20px;
+    }
+
     footer {
         text-align: center;
         padding: 16px 8px 20px;
@@ -203,7 +281,25 @@
 
 <body>
 
-<header>Mehsin Central Store</header>
+<header>
+    <div class="top-nav">
+        <div class="logo-wrap">
+            <div class="logo-mark">MC</div>
+            <div class="logo-text">Mehsin Central Store</div>
+        </div>
+        <div class="nav-links">
+            <a href="#alfa">Alfa</a>
+            <a href="#touch">Touch</a>
+            <a href="#plans">Plans</a>
+            <a href="#internet">Internet</a>
+            <a href="#stream">Streaming</a>
+            <a href="#ai">AI</a>
+            <a href="#gifts">Gifts</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</header>
 
 <section class="hero">
     <div class="hero-title">خدمات رقمية وتشريجات موبايل بسعر جملة</div>
@@ -216,7 +312,7 @@
 </section>
 
 <!-- Alfa -->
-<section class="section alfa-section">
+<section class="section alfa-section" id="alfa">
     <div class="section-title">Alfa Offers</div>
     <div class="section-sub">تشريجات Alfa شهرية وسنوية وبطاقات بالدولار</div>
 
@@ -303,7 +399,7 @@
 </section>
 
 <!-- Touch -->
-<section class="section touch-section">
+<section class="section touch-section" id="touch">
     <div class="section-title">Touch Offers</div>
     <div class="section-sub">عروض Touch السنوية وبطاقات الدولار</div>
 
@@ -357,7 +453,7 @@
 </section>
 
 <!-- Mobile Plans (GO / Web & Talk ...) -->
-<section class="section plans-section">
+<section class="section plans-section" id="plans">
     <div class="section-title">Mobile Plans – عروض إنترنت ودقايق</div>
     <div class="section-sub">باكجات جاهزة من Alfa و Touch (إنترنت + دقائق + SMS)</div>
 
@@ -427,7 +523,7 @@
 </section>
 
 <!-- Internet Ushare -->
-<section class="section internet-section">
+<section class="section internet-section" id="internet">
     <div class="section-title">Alfa Ushare Internet</div>
     <div class="section-sub">باكجات إنترنت فقط – مشاركة مريحة على الخطوط</div>
 
@@ -484,7 +580,7 @@
 </section>
 
 <!-- Streaming -->
-<section class="section stream-section">
+<section class="section stream-section" id="stream">
     <div class="section-title">Streaming – Netflix & Shahid</div>
     <div class="section-sub">اشتراكات منصّات المشاهدة للأفلام والمسلسلات</div>
 
@@ -555,7 +651,7 @@
 </section>
 
 <!-- AI / ChatGPT -->
-<section class="section ai-section">
+<section class="section ai-section" id="ai">
     <div class="section-title">ChatGPT Plus & AI Services</div>
     <div class="section-sub">حسابات ذكاء اصطناعي للألعاب، الدراسة، العمل</div>
 
@@ -601,7 +697,7 @@
 </section>
 
 <!-- Gift Cards & Games -->
-<section class="section gifts-section">
+<section class="section gifts-section" id="gifts">
     <div class="section-title">Gift Cards & Games</div>
     <div class="section-sub">شحن ألعاب وبطاقات عالمية – تسليم فوري</div>
 
@@ -624,8 +720,39 @@
     </div>
 </section>
 
+<!-- About -->
+<section class="section about-section" id="about">
+    <div class="section-title">About – عن Mehsin Central Store</div>
+    <p class="about-text">
+        Mehsin Central Store هو مركز رقمي لبيع التشريجات، باكجات الإنترنت، اشتراكات المنصّات،
+        وحسابات الذكاء الاصطناعي بأسعار جملة مدروسة. الهدف هو تقديم خدمة سريعة، واضحة،
+        مع متابعة شخصية عبر واتساب لكل زبون، سواء كان صاحب محل أو مستخدم فردي.
+        <br><br>
+        الأسعار المعروضة تقريبية ويمكن أن تتغيّر حسب سعر السوق والوقت، لذلك دائماً
+        يفضّل التواصل معنا على واتساب للتأكيد النهائي على السعر قبل الطلب.
+    </p>
+</section>
+
+<!-- Contact -->
+<section class="section contact-section" id="contact">
+    <div class="section-title">Contact – للتواصل والطلب</div>
+    <p class="contact-text">
+        للتواصل المباشر والطلب، أو للاستفسار عن أي باكج خاص للمحلات أو الجملة:
+        <br><br>
+        واتساب / موبايل: <b>70363783</b><br>
+        يمكن الشحن على خطوط Alfa وTouch، بالإضافة إلى شحن الألعاب والمنصّات العالمية.
+        <br><br>
+        طرق الدفع والتسليم يتم تنسيقها عبر الواتساب حسب المنطقة وطريقة التحويل المناسبة لك.
+    </p>
+    <div style="text-align:center; margin: 14px 0 4px;">
+        <a class="whatsapp-btn" href="https://wa.me/96170363783">
+            تواصل مباشرة عبر واتساب
+        </a>
+    </div>
+</section>
+
 <!-- زر واتساب في آخر الصفحة -->
-<div style="text-align:center; margin: 20px 0;">
+<div style="text-align:center; margin: 10px 0 20px;">
     <a class="whatsapp-btn" href="https://wa.me/96170363783">
         تواصل مباشرة عبر واتساب
     </a>
