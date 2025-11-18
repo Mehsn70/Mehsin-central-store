@@ -7,269 +7,743 @@
 
 <style>
 :root {
- --gold:#d4af37; --dark:#050505; --card-radius:16px;
- --beige:#f7e7c1; --beige2:#e8d4a3;
- --shahid-light:#c8ffe3; --shahid-light2:#9affd3;
+  --gold:#d4af37;
+  --dark:#050505;
+  --card-radius:16px;
+  --beige:#f7e7c1;
+  --beige2:#e8d4a3;
+  --shahid-light:#c8ffe3;
+  --shahid-light2:#9affd3;
 }
 
 *{box-sizing:border-box;}
+
 body{
- margin:0; font-family:"Tahoma",sans-serif;
- background:linear-gradient(180deg,#000,#0a0a0a 60%,#000);
- color:#fff;
+  margin:0;
+  font-family:"Tahoma",sans-serif;
+  background:linear-gradient(180deg,#000,#050505 60%,#000);
+  color:#fff;
 }
 
-/* ===== HEADER ===== */
-header{background:#000;border-bottom:1px solid #111;}
+/* ===== HEADER + NAV ===== */
+header{
+  background:#000;
+  border-bottom:1px solid #111;
+}
 
 .top-nav{
- display:flex;align-items:center;justify-content:center;
- padding:14px;background:linear-gradient(90deg,#000,#111);
- position:sticky;top:0;z-index:100;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:10px 14px;
+  background:linear-gradient(90deg,#000,#111);
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .logo-wrap{
- display:flex;align-items:center;gap:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
 
 .logo-mark{
- width:46px;height:46px;border-radius:50%;
- border:3px solid var(--gold);
- display:flex;align-items:center;justify-content:center;
- font-size:20px;font-weight:bold;color:var(--gold);
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:3px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  font-weight:bold;
+  color:var(--gold);
 }
 
 .logo-text{
- font-size:22px;font-weight:bold;color:var(--gold);
+  font-size:22px;
+  font-weight:bold;
+  color:var(--gold);
+}
+
+.nav-links{
+  display:flex;
+  gap:10px;
+  font-size:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.nav-links a{
+  color:#ccc;
+  text-decoration:none;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid transparent;
+}
+.nav-links a:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+@media(max-width:640px){
+  .nav-links{display:none;}
 }
 
 /* ===== HERO ===== */
 .hero{
- padding:24px 16px 18px;text-align:center;
- background-image:
-   linear-gradient(rgba(0,0,0,0.70),rgba(0,0,0,0.86)),
-   url("https://images.pexels.com/photos/6078120/pexels-photo-6078120.jpeg?auto=compress&cs=tinysrgb&w=1200");
- background-size:cover;background-position:center;
+  padding:24px 16px 18px;
+  text-align:center;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.88)),
+    url("https://images.pexels.com/photos/6078120/pexels-photo-6078120.jpeg?auto=compress&cs=tinysrgb&w=1200");
+  background-size:cover;
+  background-position:center;
 }
 
-.hero-title{font-size:25px;color:var(--gold);font-weight:bold;margin-bottom:8px;}
-.hero-sub{font-size:15px;opacity:.9;margin-bottom:18px;}
+.hero-title{
+  font-size:24px;
+  font-weight:bold;
+  margin-bottom:8px;
+  color:var(--gold);
+}
+.hero-sub{
+  font-size:14px;
+  opacity:.9;
+  margin-bottom:18px;
+}
 
 .whatsapp-btn{
- display:inline-block;padding:12px 24px;border-radius:999px;
- background:#25D366;color:#000;font-weight:bold;font-size:15px;
- text-decoration:none;box-shadow:0 0 12px rgba(37,211,102,.4);
+  display:inline-block;
+  padding:12px 24px;
+  border-radius:999px;
+  background:#25d366;
+  color:#000;
+  font-weight:bold;
+  font-size:15px;
+  text-decoration:none;
+  box-shadow:0 0 12px rgba(37,211,102,0.4);
 }
 
 /* ===== SECTIONS ===== */
 .section{padding:20px 12px 8px;}
+
 .section-title{
- font-size:20px;font-weight:bold;margin-bottom:10px;
- text-align:center;color:var(--gold);
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:10px;
+  text-align:center;
+  color:var(--gold);
 }
+
 .section-sub{
- font-size:13px;text-align:center;opacity:.75;margin-bottom:12px;
+  font-size:13px;
+  text-align:center;
+  opacity:.75;
+  margin-bottom:12px;
 }
 
 .cards-grid{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
- gap:12px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:12px;
 }
 
 .card{
- border-radius:var(--card-radius);
- padding:12px 14px;color:#fff;direction:ltr;text-align:left;
- box-shadow:0 8px 16px rgba(0,0,0,.45);
- cursor:pointer;transition:.25s;
+  border-radius:var(--card-radius);
+  padding:12px 14px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  direction:ltr;
+  text-align:left;
+  box-shadow:0 8px 16px rgba(0,0,0,0.45);
+  cursor:pointer;
+  transition:.25s;
 }
 .card:hover{transform:scale(1.03);}
 
-.card-tag{font-size:15px;margin-bottom:4px;}
-.card-title{font-size:16px;font-weight:bold;margin-bottom:4px;}
-.card-note{font-size:12px;opacity:.85;margin-bottom:8px;}
-
-.price-row{
- display:flex;justify-content:flex-start;gap:8px;margin-bottom:4px;
+.card-tag{
+  font-size:14px;
+  opacity:.95;
+  margin-bottom:4px;
 }
-.old-price{text-decoration:line-through;opacity:.7;font-size:13px;}
-.new-price{font-size:16px;font-weight:bold;}
+.card-title{
+  font-size:16px;
+  font-weight:bold;
+  margin-bottom:4px;
+}
+.card-note{
+  font-size:12px;
+  opacity:.85;
+  margin-bottom:8px;
+}
+.price-row{
+  display:flex;
+  justify-content:flex-start;
+  align-items:baseline;
+  gap:8px;
+  margin-bottom:4px;
+}
+.old-price{
+  font-size:13px;
+  text-decoration:line-through;
+  opacity:.7;
+}
+.new-price{
+  font-size:16px;
+  font-weight:bold;
+}
+.card-footer{
+  font-size:11px;
+  opacity:.8;
+}
 
-/* COLORS */
+/* COLORS BY TYPE */
 .alfa-card{background:linear-gradient(135deg,#7b0000,#ff0033);}
 .touch-card{background:linear-gradient(135deg,#0056ff,#00b7ff);}
-.internet-card{background:linear-gradient(135deg,var(--beige2),var(--beige));color:#000;}
+.plan-card-alfa{background:linear-gradient(135deg,#aa0000,#ff4b4b);}
+.plan-card-touch{background:linear-gradient(135deg,#0056ff,#00c3ff);}
+.internet-card{
+  background:linear-gradient(135deg,var(--beige2),var(--beige));
+  color:#000;
+}
 .netflix-card{background:linear-gradient(135deg,#8b0000,#ff0000);}
-.shahid-card{background:linear-gradient(135deg,var(--shahid-light2),var(--shahid-light));color:#000;}
+.shahid-card{
+  background:linear-gradient(135deg,var(--shahid-light2),var(--shahid-light));
+  color:#000;
+}
 .ai-card{background:linear-gradient(135deg,#3b0d91,#9b2fff);}
 .gift-card{background:linear-gradient(135deg,#4d3200,#d4af37);}
+.game-card{background:linear-gradient(135deg,#171b3a,#3b65ff);}
+.stream-extra-card{background:linear-gradient(135deg,#00334d,#0099cc);}
 
-/* FOOTER */
-footer{
- text-align:center;padding:20px 10px;font-size:13px;
- color:#ccc;border-top:1px solid #222;background:#000;
+/* ABOUT / CONTACT / FOOTER */
+.about-text,.contact-text{
+  max-width:600px;
+  margin:0 auto;
+  font-size:13px;
+  line-height:1.6;
+  text-align:center;
+  opacity:.9;
 }
-.contact-text{color:var(--gold);margin-top:10px;font-size:14px;line-height:1.7;}
 
+footer{
+  text-align:center;
+  padding:16px 8px 20px;
+  font-size:12px;
+  color:#777;
+  border-top:1px solid #111;
+  background:#000;
+}
+.footer-contact{
+  color:var(--gold);
+  font-size:13px;
+  line-height:1.7;
+  margin-bottom:8px;
+}
 </style>
 
 <script>
-function sendWhatsApp(name){
- let msg="مرحبا، أريد خدمة: "+name;
- let url="https://wa.me/96170363783?text="+encodeURIComponent(msg);
- window.location.href=url;
+function sendWhatsApp(serviceName){
+  var msg = "مرحبا، أريد خدمة: " + serviceName;
+  var url = "https://wa.me/96170363783?text=" + encodeURIComponent(msg);
+  window.location.href = url;
 }
 </script>
-
 </head>
 <body>
 
 <header>
- <div class="top-nav">
-   <div class="logo-wrap">
-     <div class="logo-mark">MC</div>
-     <div class="logo-text">Mehsin Central Store</div>
-   </div>
- </div>
+  <div class="top-nav">
+    <div class="logo-wrap">
+      <div class="logo-mark">MC</div>
+      <div class="logo-text">Mehsin Central Store</div>
+    </div>
+    <div class="nav-links">
+      <a href="#alfa">Alfa</a>
+      <a href="#touch">Touch</a>
+      <a href="#plans">Plans</a>
+      <a href="#internet">Internet</a>
+      <a href="#stream">Streaming</a>
+      <a href="#ai">AI</a>
+      <a href="#gifts">Gifts & Games</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
 </header>
 
 <section class="hero">
- <div class="hero-title">خدمات رقمية وتشريجات موبايل بسعر جملة</div>
- <div class="hero-sub">خطوط · إنترنت · اشتراكات · AI · ألعاب · Gift Cards</div>
- <a class="whatsapp-btn" href="https://wa.me/96170363783">تواصل مباشر عبر واتساب</a>
+  <div class="hero-title">خدمات رقمية وتشريجات موبايل بسعر جملة</div>
+  <div class="hero-sub">
+    خطوط · إنترنت · اشتراكات مشاهدة · ذكاء اصطناعي · ألعاب · بطاقات هدايا
+  </div>
+  <a class="whatsapp-btn" href="https://wa.me/96170363783">
+    تواصل مباشرة عبر واتساب
+  </a>
 </section>
 
 <!-- ========== ALFA ========== -->
-<section class="section">
- <div class="section-title">📱 Alfa Offers</div>
- <div class="section-sub">تشريجات Alfa الشهرية والسنوية</div>
+<section class="section alfa-section" id="alfa">
+  <div class="section-title">📱 Alfa Offers</div>
+  <div class="section-sub">تشريجات Alfa شهرية وسنوية وبطاقات بالدولار</div>
 
- <div class="cards-grid">
+  <div class="cards-grid">
 
- <div class="card alfa-card" onclick="sendWhatsApp('Alfa 1 Month')">
-   <div class="card-tag">📱 Alfa</div>
-   <div class="card-title">Alfa 1 Month</div>
-   <div class="card-note">تجديد 30 يوم</div>
-   <div class="price-row"><span class="old-price">200,000</span><span class="new-price">150,000</span></div>
- </div>
+    <div class="card alfa-card" onclick="sendWhatsApp('Alfa 1 Month')">
+      <div class="card-tag">📱 Alfa</div>
+      <div class="card-title">Alfa 1 Month</div>
+      <div class="card-note">تجديد 30 يوم</div>
+      <div class="price-row">
+        <span class="old-price">200,000</span>
+        <span class="new-price">150,000 ل.ل</span>
+      </div>
+      <div class="card-footer">عروض مناسبة للخطوط العادية.</div>
+    </div>
 
- <div class="card alfa-card" onclick="sendWhatsApp('Alfa 3 Months')">
-   <div class="card-tag">📱 Alfa</div>
-   <div class="card-title">Alfa 3 Months</div>
-   <div class="card-note">90 يوم</div>
-   <div class="price-row"><span class="old-price">480,000</span><span class="new-price">430,000</span></div>
- </div>
+    <div class="card alfa-card" onclick="sendWhatsApp('Alfa 3 Months')">
+      <div class="card-tag">📱 Alfa</div>
+      <div class="card-title">Alfa 3 Months</div>
+      <div class="card-note">تجديد 90 يوم</div>
+      <div class="price-row">
+        <span class="old-price">480,000</span>
+        <span class="new-price">430,000 ل.ل</span>
+      </div>
+      <div class="card-footer">حل اقتصادي للخطوط الطويلة.</div>
+    </div>
 
- <div class="card alfa-card" onclick="sendWhatsApp('Alfa 6 Months')">
-   <div class="card-tag">📱 Alfa</div>
-   <div class="card-title">Alfa 6 Months</div>
-   <div class="card-note">6 أشهر</div>
-   <div class="price-row"><span class="old-price">950,000</span><span class="new-price">900,000</span></div>
- </div>
+    <div class="card alfa-card" onclick="sendWhatsApp('Alfa 6 Months')">
+      <div class="card-tag">📱 Alfa</div>
+      <div class="card-title">Alfa 6 Months</div>
+      <div class="card-note">6 أشهر متواصلة</div>
+      <div class="price-row">
+        <span class="old-price">950,000</span>
+        <span class="new-price">900,000 ل.ل</span>
+      </div>
+      <div class="card-footer">راحة نص سنة بدون تجديد.</div>
+    </div>
 
- <div class="card alfa-card" onclick="sendWhatsApp('Alfa 1 Year')">
-   <div class="card-tag">📱 Alfa</div>
-   <div class="card-title">Alfa 1 Year</div>
-   <div class="card-note">سنة استقبال</div>
-   <div class="price-row"><span class="old-price">950,000</span><span class="new-price">900,000</span></div>
- </div>
+    <div class="card alfa-card" onclick="sendWhatsApp('Alfa 1 Year')">
+      <div class="card-tag">📱 Alfa</div>
+      <div class="card-title">Alfa 1 Year</div>
+      <div class="card-note">سنة أيام استقبال</div>
+      <div class="price-row">
+        <span class="old-price">950,000</span>
+        <span class="new-price">900,000 ل.ل</span>
+      </div>
+      <div class="card-footer">أفضل حل سنوي للخطوط.</div>
+    </div>
 
- <div class="card alfa-card" onclick="sendWhatsApp('Alfa 4.5$ Card')">
-   <div class="card-tag">💳 Alfa</div>
-   <div class="card-title">Alfa 4.5$ Card</div>
-   <div class="card-note">30 يوم</div>
-   <div class="price-row"><span class="old-price">600,000</span><span class="new-price">550,000</span></div>
- </div>
+    <div class="card alfa-card" onclick="sendWhatsApp('Alfa 4.5$ Card')">
+      <div class="card-tag">💳 Alfa Dollar</div>
+      <div class="card-title">Alfa 4.5$ Card</div>
+      <div class="card-note">30 يوم – استقبال</div>
+      <div class="price-row">
+        <span class="old-price">600,000</span>
+        <span class="new-price">550,000 ل.ل</span>
+      </div>
+      <div class="card-footer">بطاقة مناسبة لتجديد سريع.</div>
+    </div>
 
- <div class="card alfa-card" onclick="sendWhatsApp('Alfa 7.5$ Card')">
-   <div class="card-tag">💳 Alfa</div>
-   <div class="card-title">Alfa 7.5$ Card</div>
-   <div class="card-note">30 يوم</div>
-   <div class="price-row"><span class="old-price">940,000</span><span class="new-price">890,000</span></div>
- </div>
+    <div class="card alfa-card" onclick="sendWhatsApp('Alfa 7.5$ Card')">
+      <div class="card-tag">💳 Alfa Dollar</div>
+      <div class="card-title">Alfa 7.5$ Card</div>
+      <div class="card-note">30 يوم – استقبال</div>
+      <div class="price-row">
+        <span class="old-price">940,000</span>
+        <span class="new-price">890,000 ل.ل</span>
+      </div>
+      <div class="card-footer">رصيد أعلى مع عرض أوفر.</div>
+    </div>
 
- </div>
+    <div class="card alfa-card" onclick="sendWhatsApp('Alfa Year Days')">
+      <div class="card-tag">📅 Alfa Year Days</div>
+      <div class="card-title">Alfa Year Days</div>
+      <div class="card-note">سنة أيام مع 0.5$</div>
+      <div class="price-row">
+        <span class="old-price">1,750,000</span>
+        <span class="new-price">1,700,000 ل.ل</span>
+      </div>
+      <div class="card-footer">سنة كاملة استقبال مع هدية رصيد.</div>
+    </div>
+
+  </div>
 </section>
 
 <!-- ========== TOUCH ========== -->
-<section class="section">
- <div class="section-title">📶 Touch Offers</div>
- <div class="section-sub">تشريجات Touch الشهرية والسنوية</div>
+<section class="section touch-section" id="touch">
+  <div class="section-title">📶 Touch Offers</div>
+  <div class="section-sub">عروض Touch السنوية وبطاقات الدولار</div>
 
- <div class="cards-grid">
+  <div class="cards-grid">
 
- <div class="card touch-card" onclick="sendWhatsApp('Touch 1 Year')">
-   <div class="card-tag">📶 Touch</div>
-   <div class="card-title">Touch 1 Year</div>
-   <div class="card-note">سنة استقبال</div>
-   <div class="price-row"><span class="old-price">1,550,000</span><span class="new-price">1,500,000</span></div>
- </div>
+    <div class="card touch-card" onclick="sendWhatsApp('Touch 1 Year')">
+      <div class="card-tag">📶 Touch</div>
+      <div class="card-title">Touch 1 Year</div>
+      <div class="card-note">سنة كاملة أيام استقبال</div>
+      <div class="price-row">
+        <span class="old-price">1,550,000</span>
+        <span class="new-price">1,500,000 ل.ل</span>
+      </div>
+      <div class="card-footer">حل سنوي للخطوط الدائمة.</div>
+    </div>
 
- <div class="card touch-card" onclick="sendWhatsApp('Touch 4.5$ Card')">
-   <div class="card-tag">💳 Touch</div>
-   <div class="card-title">Touch 4.5$ Card</div>
-   <div class="card-note">30 يوم</div>
-   <div class="price-row"><span class="old-price">600,000</span><span class="new-price">550,000</span></div>
- </div>
+    <div class="card touch-card" onclick="sendWhatsApp('Touch 4.5$ Card')">
+      <div class="card-tag">💳 Touch Dollar</div>
+      <div class="card-title">Touch 4.5$ Card</div>
+      <div class="card-note">30 يوم – استقبال</div>
+      <div class="price-row">
+        <span class="old-price">600,000</span>
+        <span class="new-price">550,000 ل.ل</span>
+      </div>
+      <div class="card-footer">بطاقة سريعة للتجديد الشهري.</div>
+    </div>
 
- <div class="card touch-card" onclick="sendWhatsApp('Touch 7.5$ Card')">
-   <div class="card-tag">💳 Touch</div>
-   <div class="card-title">Touch 7.5$ Card</div>
-   <div class="card-note">30 يوم</div>
-   <div class="price-row"><span class="old-price">930,000</span><span class="new-price">880,000</span></div>
- </div>
+    <div class="card touch-card" onclick="sendWhatsApp('Touch 7.5$ Card')">
+      <div class="card-tag">💳 Touch Dollar</div>
+      <div class="card-title">Touch 7.5$ Card</div>
+      <div class="card-note">30 يوم – استقبال</div>
+      <div class="price-row">
+        <span class="old-price">930,000</span>
+        <span class="new-price">880,000 ل.ل</span>
+      </div>
+      <div class="card-footer">رصيد أكبر مع سعر منافس.</div>
+    </div>
 
- </div>
+    <div class="card touch-card" onclick="sendWhatsApp('Touch Year Days')">
+      <div class="card-tag">📅 Touch Year Days</div>
+      <div class="card-title">Touch Year Days</div>
+      <div class="card-note">سنة أيام مع 0.5$</div>
+      <div class="price-row">
+        <span class="old-price">1,950,000</span>
+        <span class="new-price">1,900,000 ل.ل</span>
+      </div>
+      <div class="card-footer">سنة استقبال مع رصيد إضافي.</div>
+    </div>
+
+  </div>
 </section>
 
-<!-- ========== INTERNET ========== -->
-<section class="section">
- <div class="section-title">🌐 Ushare Internet</div>
+<!-- ========== MOBILE PLANS ========== -->
+<section class="section plans-section" id="plans">
+  <div class="section-title">📊 Mobile Plans – إنترنت ودقايق</div>
+  <div class="section-sub">باكجات جاهزة من Alfa و Touch (إنترنت + دقائق + SMS)</div>
 
- <div class="cards-grid">
- <div class="card internet-card" onclick="sendWhatsApp('Ushare 5.5GB')">
-   <div class="card-tag">Ushare</div><div class="card-title">5.5 GB</div>
-   <div class="price-row"><span class="old-price">550,000</span><span class="new-price">500,000</span></div>
- </div>
+  <div class="cards-grid">
 
- <div class="card internet-card" onclick="sendWhatsApp('Ushare 11GB')">
-   <div class="card-tag">Ushare</div><div class="card-title">11 GB</div>
-   <div class="price-row"><span class="old-price">750,000</span><span class="new-price">700,000</span></div>
- </div>
+    <div class="card plan-card-alfa" onclick="sendWhatsApp('Alfa GO 3GB')">
+      <div class="card-tag">Alfa GO – 3GB</div>
+      <div class="card-title">3GB + 60 min + 60 SMS</div>
+      <div class="price-row">
+        <span class="old-price">850,000</span>
+        <span class="new-price">800,000 ل.ل</span>
+      </div>
+      <div class="card-footer">مناسبة للاستخدام اليومي الخفيف.</div>
+    </div>
 
- <div class="card internet-card" onclick="sendWhatsApp('Ushare 22GB')">
-   <div class="card-tag">Ushare</div><div class="card-title">22 GB</div>
-   <div class="price-row"><span class="old-price">1,040,000</span><span class="new-price">990,000</span></div>
- </div>
+    <div class="card plan-card-touch" onclick="sendWhatsApp('Touch Web & Talk Mini')">
+      <div class="card-tag">Touch Web & Talk Mini</div>
+      <div class="card-title">1GB + 30 min + 30 SMS</div>
+      <div class="price-row">
+        <span class="old-price">650,000</span>
+        <span class="new-price">600,000 ل.ل</span>
+      </div>
+      <div class="card-footer">خيار اقتصادي للخط الثاني.</div>
+    </div>
 
- </div>
+    <div class="card plan-card-touch" onclick="sendWhatsApp('Touch Web & Talk')">
+      <div class="card-tag">Touch Web & Talk</div>
+      <div class="card-title">3GB + 60 min + 60 SMS</div>
+      <div class="price-row">
+        <span class="old-price">850,000</span>
+        <span class="new-price">800,000 ل.ل</span>
+      </div>
+      <div class="card-footer">باقة متوازنة إنترنت + مكالمات.</div>
+    </div>
+
+    <div class="card plan-card-alfa" onclick="sendWhatsApp('Alfa GO Plus')">
+      <div class="card-tag">Alfa GO Plus</div>
+      <div class="card-title">15GB + 120 min + 120 SMS</div>
+      <div class="price-row">
+        <span class="old-price">1,350,000</span>
+        <span class="new-price">1,300,000 ل.ل</span>
+      </div>
+      <div class="card-footer">ممتازة للمستخدم النشط على الإنترنت.</div>
+    </div>
+
+    <div class="card plan-card-touch" onclick="sendWhatsApp('Touch Web & Talk MAXI 2')">
+      <div class="card-tag">Touch Web & Talk MAXI 2</div>
+      <div class="card-title">25GB + 120 min + 120 SMS</div>
+      <div class="price-row">
+        <span class="old-price">1,650,000</span>
+        <span class="new-price">1,600,000 ل.ل</span>
+      </div>
+      <div class="card-footer">باقة قوية للإنترنت الكثيف.</div>
+    </div>
+
+    <div class="card plan-card-alfa" onclick="sendWhatsApp('Alfa GO Max')">
+      <div class="card-tag">Alfa GO Max</div>
+      <div class="card-title">33GB + 240 min + 240 SMS</div>
+      <div class="price-row">
+        <span class="old-price">1,850,000</span>
+        <span class="new-price">1,800,000 ل.ل</span>
+      </div>
+      <div class="card-footer">أفضل خيار لمستخدم الـHeavy.</div>
+    </div>
+
+  </div>
 </section>
 
-<!-- ========== STREAMING ========== -->
-<section class="section">
- <div class="section-title">🎬 Netflix & Shahid</div>
+<!-- ========== ALFA INTERNET (USHARE) ========== -->
+<section class="section internet-section" id="internet">
+  <div class="section-title">🌐 Alfa Internet</div>
+  <div class="section-sub">باكجات إنترنت Ushare على خطوط Alfa</div>
 
- <div class="cards-grid">
- <div class="card netflix-card" onclick="sendWhatsApp('Netflix 1 Month')">
-   <div class="card-tag">Netflix</div><div class="card-title">1 Month</div>
-   <div class="price-row"><span class="old-price">170,000</span><span class="new-price">120,000</span></div>
- </div>
-
- <div class="card shahid-card" onclick="sendWhatsApp('Shahid VIP 1 Month')">
-   <div class="card-tag">Shahid VIP</div><div class="card-title">1 Month</div>
-   <div class="price-row"><span class="old-price">150,000</span><span class="new-price">100,000</span></div>
- </div>
-
- </div>
+  <div class="cards-grid">
+    <div class="card internet-card" onclick="sendWhatsApp('Alfa Internet 5.5GB')">
+      <div class="card-tag">Ushare</div>
+      <div class="card-title">5.5 GB</div>
+      <div class="price-row">
+        <span class="old-price">550,000</span>
+        <span class="new-price">500,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card internet-card" onclick="sendWhatsApp('Alfa Internet 11GB')">
+      <div class="card-tag">Ushare</div>
+      <div class="card-title">11 GB</div>
+      <div class="price-row">
+        <span class="old-price">750,000</span>
+        <span class="new-price">700,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card internet-card" onclick="sendWhatsApp('Alfa Internet 22GB')">
+      <div class="card-tag">Ushare</div>
+      <div class="card-title">22 GB</div>
+      <div class="price-row">
+        <span class="old-price">1,040,000</span>
+        <span class="new-price">990,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card internet-card" onclick="sendWhatsApp('Alfa Internet 33GB')">
+      <div class="card-tag">Ushare</div>
+      <div class="card-title">33 GB</div>
+      <div class="price-row">
+        <span class="old-price">1,300,000</span>
+        <span class="new-price">1,250,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card internet-card" onclick="sendWhatsApp('Alfa Internet 44GB')">
+      <div class="card-tag">Ushare</div>
+      <div class="card-title">44 GB</div>
+      <div class="price-row">
+        <span class="old-price">1,700,000</span>
+        <span class="new-price">1,650,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card internet-card" onclick="sendWhatsApp('Alfa Internet 55GB')">
+      <div class="card-tag">Ushare</div>
+      <div class="card-title">55 GB</div>
+      <div class="price-row">
+        <span class="old-price">2,000,000</span>
+        <span class="new-price">1,950,000 ل.ل</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ========== STREAMING (Netflix & Shahid & Others) ========== -->
+<section class="section stream-section" id="stream">
+  <div class="section-title">🎬 Streaming – Netflix & Shahid</div>
+  <div class="section-sub">اشتراكات منصّات المشاهدة للأفلام والمسلسلات</div>
+
+  <div class="cards-grid">
+    <!-- Netflix -->
+    <div class="card netflix-card" onclick="sendWhatsApp('Netflix Premium 1 Month')">
+      <div class="card-tag">Netflix Premium 4K</div>
+      <div class="card-title">1 Month</div>
+      <div class="price-row">
+        <span class="old-price">150,000</span>
+        <span class="new-price">120,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card netflix-card" onclick="sendWhatsApp('Netflix Premium 3 Months')">
+      <div class="card-tag">Netflix Premium 4K</div>
+      <div class="card-title">3 Months</div>
+      <div class="price-row">
+        <span class="old-price">360,000</span>
+        <span class="new-price">320,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card netflix-card" onclick="sendWhatsApp('Netflix Premium 6 Months')">
+      <div class="card-tag">Netflix Premium 4K</div>
+      <div class="card-title">6 Months</div>
+      <div class="price-row">
+        <span class="old-price">760,000</span>
+        <span class="new-price">720,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card netflix-card" onclick="sendWhatsApp('Netflix Premium 1 Year')">
+      <div class="card-tag">Netflix Premium 4K</div>
+      <div class="card-title">1 Year</div>
+      <div class="price-row">
+        <span class="old-price">960,000</span>
+        <span class="new-price">920,000 ل.ل</span>
+      </div>
+    </div>
+
+    <!-- Shahid -->
+    <div class="card shahid-card" onclick="sendWhatsApp('Shahid VIP 1 Month')">
+      <div class="card-tag">Shahid VIP</div>
+      <div class="card-title">1 Month</div>
+      <div class="price-row">
+        <span class="old-price">130,000</span>
+        <span class="new-price">100,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card shahid-card" onclick="sendWhatsApp('Shahid VIP 3 Months')">
+      <div class="card-tag">Shahid VIP</div>
+      <div class="card-title">3 Months</div>
+      <div class="price-row">
+        <span class="old-price">250,000</span>
+        <span class="new-price">200,000 ل.ل</span>
+      </div>
+    </div>
+    <div class="card shahid-card" onclick="sendWhatsApp('Shahid VIP 1 Year')">
+      <div class="card-tag">Shahid VIP</div>
+      <div class="card-title">1 Year</div>
+      <div class="price-row">
+        <span class="old-price">650,000</span>
+        <span class="new-price">600,000 ل.ل</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-sub" style="margin-top:18px;">
+    منصّات إضافية: OSN+، Disney+، Crunchyroll، Amazon Prime، IPTV 4K، Anghami Plus، Spotify، TOD، WATCH IT، Peacock TV، Apple TV، Apple Music، Yango Play – الأسعار تُحدد حسب الباقة، تواصل عبر واتساب للتفاصيل.
+  </div>
+</section>
+
+<!-- ========== AI SERVICES ========== -->
+<section class="section ai-section" id="ai">
+  <div class="section-title">🤖 ChatGPT Plus & AI Services</div>
+  <div class="section-sub">خدمات ذكاء اصطناعي وتصميم وVPN وحماية</div>
+
+  <div class="cards-grid">
+    <div class="card ai-card" onclick="sendWhatsApp('ChatGPT Plus 1 Month')">
+      <div class="card-tag">ChatGPT Plus</div>
+      <div class="card-title">1 Month</div>
+      <div class="card-note">حوالي 7$</div>
+      <div class="price-row">
+        <span class="old-price">680,000</span>
+        <span class="new-price">630,000 ل.ل</span>
+      </div>
+    </div>
+
+    <div class="card ai-card" onclick="sendWhatsApp('ChatGPT Plus 3 Months')">
+      <div class="card-tag">ChatGPT Plus</div>
+      <div class="card-title">3 Months</div>
+      <div class="card-note">حوالي 19$</div>
+      <div class="price-row">
+        <span class="old-price">1,760,000</span>
+        <span class="new-price">1,710,000 ل.ل</span>
+      </div>
+    </div>
+
+    <div class="card ai-card" onclick="sendWhatsApp('ChatGPT Plus 1 Year')">
+      <div class="card-tag">ChatGPT Plus</div>
+      <div class="card-title">1 Year</div>
+      <div class="card-note">حوالي 55$</div>
+      <div class="price-row">
+        <span class="old-price">5,000,000</span>
+        <span class="new-price">4,950,000 ل.ل</span>
+      </div>
+    </div>
+
+    <div class="card ai-card" onclick="sendWhatsApp('Canva Pro / Adobe / Editing / VPN / Antivirus')">
+      <div class="card-tag">Digital & AI Services</div>
+      <div class="card-title">Canva Pro – Adobe – VPN – Antivirus – Editing</div>
+      <div class="card-footer">
+        الأسعار حسب نوع الخدمة والمدة – تواصل عبر واتساب لتحديد الباقة المناسبة لك.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GIFTS & GAMES ========== -->
+<section class="section gifts-section" id="gifts">
+  <div class="section-title">🎁 Gift Cards & 🎮 Games</div>
+  <div class="section-sub">بطاقات شحن عالمية وشحن ألعاب أونلاين</div>
+
+  <div class="cards-grid">
+    <div class="card gift-card" onclick="sendWhatsApp('Gift Cards SHEIN / iTunes / PlayStation / Xbox / Nintendo / Razer')">
+      <div class="card-tag">Gift Cards</div>
+      <div class="card-title">SHEIN · iTunes (USA/EUR) · PlayStation (LBN/USA/UAE) · Razer · Nintendo · Xbox</div>
+      <div class="card-footer">
+        البطاقات متوفّرة بقيم مختلفة (10$ – 25$ – 50$ وأكثر). السعر يتحدد حسب الدولة والعملة المطلوبة.
+      </div>
+    </div>
+
+    <div class="card game-card" onclick="sendWhatsApp('Games Top-Up PUBG / FreeFire / COD / MLBB / Clash / Brawl / 8 Ball / Yalla Ludo')">
+      <div class="card-tag">Games Top-Up</div>
+      <div class="card-title">PUBG · FreeFire · COD · Mobile Legends · Clash of Clans · Clash Royale · Brawl Stars · 8 Ball Pool · Yalla Ludo وغيرها</div>
+      <div class="card-footer">
+        شحن UC / جواهر / كوينز – حسب الباقة التي تريدها، تواصل عبر واتساب لائحة أسعار كاملة.
+      </div>
+    </div>
+
+    <div class="card game-card" onclick="sendWhatsApp('TikTok Recharge & Live Apps')">
+      <div class="card-tag">TikTok & Live Apps</div>
+      <div class="card-title">شحن تيكتوك + سحب أرباح – شحن تطبيقات الدردشة واللايف</div>
+      <div class="card-footer">
+        خدمة خاصّة لأصحاب البثوث والحسابات التجارية على تيكتوك وتطبيقات اللايف الأخرى.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="section about-section" id="about">
+  <div class="section-title">ℹ️ About – عن Mehsin Central Store</div>
+  <p class="about-text">
+    Mehsin Central Store هو مركز رقمي لبيع التشريجات، باكجات الإنترنت، اشتراكات المنصّات،
+    وحسابات الذكاء الاصطناعي وبطاقات الهدايا بأسعار جملة مدروسة.
+    الهدف هو تقديم خدمة سريعة وواضحة مع متابعة شخصية عبر واتساب لكل زبون،
+    سواء كنت صاحب محل أو مستخدم فردي.
+    <br><br>
+    الأسعار المعروضة تقريبية ويمكن أن تتغيّر حسب سعر السوق والوقت،
+    لذلك دائماً يُفضّل التواصل معنا على واتساب للتأكيد النهائي على السعر قبل الطلب.
+  </p>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="section contact-section" id="contact">
+  <div class="section-title">📞 Contact – للتواصل والطلب</div>
+  <p class="contact-text">
+    للتواصل والطلب أو للاستفسار عن أي باقة خاصة:
+    <br><br>
+    واتساب / موبايل: <b>70363783</b><br>
+    Facebook: <b>Coach Mehsin Husseiny</b><br>
+    Email: <b>mehsinhusseini@gmail.com</b><br><br>
+    يمكن الشحن على خطوط Alfa وTouch، بالإضافة إلى شحن الألعاب والمنصّات العالمية.
+    طرق الدفع والتسليم يتم تنسيقها عبر الواتساب بما يناسبك.
+  </p>
+  <div style="text-align:center;margin:14px 0 4px;">
+    <a class="whatsapp-btn" href="https://wa.me/96170363783">
+      تواصل مباشرة عبر واتساب
+    </a>
+  </div>
+</section>
+
 <footer>
- <div class="contact-text">
-   Facebook: <b>Coach Mehsin Husseiny</b><br>
-   Email: <b>mehsinhusseini@gmail.com</b>
- </div>
- <br>
- © 2025 – Mehsin Central Store
+  <div class="footer-contact">
+    Facebook: <b>Coach Mehsin Husseiny</b> ·
+    Email: <b>mehsinhusseini@gmail.com</b>
+  </div>
+  © 2025 – Mehsin Central Store – جميع الحقوق محفوظة
 </footer>
 
 </body>
