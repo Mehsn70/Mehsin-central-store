@@ -1,773 +1,538 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mehsin Services App</title>
-
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mehsin Services – App</title>
+  <style>
     :root {
-        --primary: #1b6dff;      /* أزرق تقني */
-        --primary-soft: #244d80;
-        --gold: #f6c453;         /* ذهبي ناعم */
-        --bg-dark: #050712;
-        --card-radius: 18px;
+      --bg: #02040a;
+      --card: #070d1a;
+      --accent: #2563eb;
+      --accent2: #22c55e;
+      --accent3: #f97316;
+      --accent4: #e11d48;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --gold: #facc6b;
     }
 
-    * {
-        box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
-        margin: 0;
-        font-family: "Tahoma", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: radial-gradient(circle at top, #131b30 0, #050712 45%, #02020a 100%);
-        color: #fff;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Tahoma", sans-serif;
+      background: radial-gradient(circle at top, #020819, #000);
+      color: #f9fafb;
+      min-height: 100vh;
     }
 
-    /* APP SHELL */
-    .app {
-        max-width: 480px;
-        margin: 0 auto;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(180deg, #050712 0, #02030a 60%, #000 100%);
+    .app-shell {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* TOP BAR */
-    .top-bar {
-        padding: 14px 16px 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: linear-gradient(90deg, #050712, #08152b);
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        backdrop-filter: blur(10px);
+    header {
+      padding: 14px 16px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .top-left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .logo-circle {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        background: radial-gradient(circle at 30% 30%, #ffe9a8, #c79a36 55%, #7a5a18 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 900;
-        color: #050712;
-        font-size: 16px;
-        box-shadow: 0 0 12px rgba(246,196,83,0.7);
+    .app-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .app-title {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
+      font-size: 18px;
+      font-weight: 700;
     }
 
-    .app-title-main {
-        font-size: 16px;
-        font-weight: 700;
+    .app-sub {
+      font-size: 11px;
+      opacity: 0.7;
     }
 
-    .app-title-sub {
-        font-size: 11px;
-        color: #9fb3ff;
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0%, #facc6b, #78350f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: 0 0 18px rgba(250, 204, 21, 0.4);
     }
 
-    .top-right {
-        font-size: 11px;
-        color: #b2b8c8;
-        text-align: left;
+    main {
+      padding: 0 14px 16px;
+      flex: 1;
+      overflow-y: auto;
     }
 
-    /* CONTENT SCROLL */
-    .content {
-        padding: 10px 12px 16px;
-        flex: 1;
-        overflow-y: auto;
-    }
-
-    /* HERO CARD */
     .hero-card {
-        border-radius: 20px;
-        padding: 14px 14px 12px;
-        background: radial-gradient(circle at top left, #2855ff 0, #0b1220 45%, #050712 100%);
-        box-shadow: 0 16px 30px rgba(0,0,0,0.6);
-        margin-bottom: 14px;
-        position: relative;
-        overflow: hidden;
+      margin-top: 6px;
+      padding: 18px 16px 14px;
+      border-radius: 24px;
+      background: radial-gradient(circle at top left, #1d4ed8, #020617 60%);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-badge {
-        font-size: 11px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 9px;
-        border-radius: 999px;
-        background: rgba(0,0,0,0.45);
-        border: 1px solid rgba(255,255,255,0.12);
-        margin-bottom: 8px;
+    .hero-status {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
     }
 
-    .hero-badge span.dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #00ff99;
-        box-shadow: 0 0 6px #00ff99;
+    .dot-online {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
     }
 
     .hero-title {
-        font-size: 18px;
-        font-weight: 800;
-        margin-bottom: 4px;
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 4px;
     }
 
-    .hero-sub {
-        font-size: 12px;
-        color: #d9e2ff;
-        margin-bottom: 10px;
+    .hero-subtext {
+      font-size: 12px;
+      opacity: 0.82;
+      line-height: 1.5;
+      max-width: 21rem;
     }
 
-    .hero-actions {
-        display: flex;
-        gap: 8px;
-        align-items: center;
+    .hero-badge {
+      position: absolute;
+      bottom: -14px;
+      left: -22px;
+      width: 130px;
+      height: 130px;
+      background: radial-gradient(circle at 30% 0%, #facc6b, #854d0e);
+      opacity: 0.16;
+      filter: blur(2px);
     }
 
-    .btn-primary {
-        padding: 9px 14px;
-        border-radius: 999px;
-        border: none;
-        background: linear-gradient(135deg, var(--primary), #25d366);
-        color: #000;
-        font-size: 13px;
-        font-weight: 700;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
+    .cta-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
     }
 
-    .btn-outline {
-        padding: 8px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,0.22);
-        background: transparent;
-        color: #c5c9d8;
-        font-size: 11px;
-        cursor: pointer;
+    .cta-wh {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: #e5e7eb;
     }
 
-    .hero-phone {
-        position: absolute;
-        inset-inline-end: -12px;
-        bottom: -10px;
-        width: 120px;
-        opacity: 0.3;
-        filter: drop-shadow(0 0 20px rgba(0,0,0,0.9));
+    .cta-wh span {
+      font-size: 16px;
     }
 
-    /* SECTION TITLES */
-    .section-title-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin: 14px 2px 6px;
+    h2.section-title {
+      font-size: 15px;
+      margin: 20px 4px 6px;
     }
 
-    .section-title {
-        font-size: 14px;
-        font-weight: 600;
+    .section-note {
+      font-size: 11px;
+      opacity: 0.75;
+      margin: 0 4px 10px;
     }
 
-    .section-link {
-        font-size: 11px;
-        color: #8ca2ff;
+    .pill-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 4px 0 10px;
     }
 
-    /* QUICK GRID */
-    .quick-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
-        margin-bottom: 10px;
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+      opacity: 0.9;
     }
 
-    .quick-card {
-        border-radius: 16px;
-        padding: 10px 8px 8px;
-        font-size: 11px;
-        color: #fff;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        min-height: 70px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+    .grid-quick {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
     }
 
-    .quick-card span.icon {
-        font-size: 14px;
-        display: inline-block;
-        margin-bottom: 3px;
+    .quick-link {
+      border-radius: 18px;
+      padding: 10px 8px;
+      border: none;
+      text-align: center;
+      font-size: 11px;
+      color: #f9fafb;
+      background: linear-gradient(135deg, #0f172a, #020617);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.9);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
     }
 
-    .quick-label {
-        font-weight: 600;
-        margin-bottom: 2px;
+    .quick-link span.icon {
+      font-size: 17px;
     }
 
-    .quick-sub {
-        font-size: 10px;
-        opacity: 0.8;
+    .quick-link.internet {
+      background: linear-gradient(135deg, #ea580c, #9a3412);
     }
 
-    .qc-alfa {
-        background: radial-gradient(circle at top left, #ff4a4a 0, #7b0000 50%, #250000 100%);
+    .quick-link.touch {
+      background: linear-gradient(135deg, #2563eb, #0ea5e9);
     }
 
-    .qc-touch {
-        background: radial-gradient(circle at top left, #00b3ff 0, #0048ff 50%, #001133 100%);
+    .quick-link.alfa {
+      background: linear-gradient(135deg, #dc2626, #fb923c);
     }
 
-    .qc-net {
-        background: radial-gradient(circle at top left, #ff9a3c 0, #b84c00 50%, #2b1300 100%);
+    .quick-link-title {
+      font-weight: 600;
     }
 
-    /* HORIZONTAL SCROLL (Weekly + Top selling) */
-    .h-scroll {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        margin-bottom: 2px;
+    .offers-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 6px;
     }
 
-    .deal-card {
-        min-width: 180px;
-        border-radius: 16px;
-        padding: 10px 10px 9px;
-        background: linear-gradient(135deg, #252046, #8747ff);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.6);
-        font-size: 11px;
-        position: relative;
-        overflow: hidden;
+    .offer-card {
+      border-radius: 18px;
+      padding: 12px 10px 11px;
+      background: radial-gradient(circle at top, #4f46e5, #1e1b4b);
+      color: #f9fafb;
+      font-size: 12px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.9);
     }
 
-    .deal-tag {
-        font-size: 10px;
-        opacity: 0.85;
-        margin-bottom: 3px;
+    .offer-card.touch {
+      background: radial-gradient(circle at top, #7c3aed, #312e81);
     }
 
-    .deal-title {
-        font-size: 13px;
-        font-weight: 700;
-        margin-bottom: 4px;
+    .offer-tag {
+      font-size: 11px;
+      opacity: 0.8;
+      margin-bottom: 4px;
     }
 
-    .deal-price-row {
-        display: flex;
-        gap: 6px;
-        align-items: baseline;
-        margin-bottom: 5px;
+    .offer-title {
+      font-weight: 700;
+      margin-bottom: 6px;
     }
 
-    .deal-old {
-        font-size: 11px;
-        text-decoration: line-through;
-        opacity: 0.6;
+    .offer-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 8px;
     }
 
-    .deal-new {
-        font-size: 14px;
-        font-weight: 700;
-        color: #fffb9a;
+    .old-price {
+      font-size: 11px;
+      text-decoration: line-through;
+      opacity: 0.75;
     }
 
-    .deal-btn {
-        font-size: 11px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: none;
-        cursor: pointer;
-        background: #00ff99;
-        color: #000;
-        font-weight: 700;
+    .new-price {
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    /* SERVICES LIST */
-    .service-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 12px;
+    .btn-small {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      border: none;
+      background: #22c55e;
+      color: #022c22;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
     }
 
-    .service-item {
-        border-radius: 16px;
-        padding: 10px 12px 9px;
-        background: radial-gradient(circle at left, #1b2540 0, #050712 55%, #010104 100%);
-        box-shadow: 0 10px 18px rgba(0,0,0,0.7);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        cursor: pointer;
-    }
-
-    .service-main {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .service-icon {
-        width: 30px;
-        height: 30px;
-        border-radius: 12px;
-        background: radial-gradient(circle at top, #ffffff, #9fb3ff);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        color: #050712;
-        flex-shrink: 0;
-    }
-
-    .si-netflix {
-        background: radial-gradient(circle at top, #ffb3b3, #ff1b1b);
-    }
-
-    .si-shahid {
-        background: radial-gradient(circle at top, #c5ffe3, #10c46a);
-    }
-
-    .si-ai {
-        background: radial-gradient(circle at top, #f3caff, #b450ff);
-    }
-
-    .si-gift {
-        background: radial-gradient(circle at top, #ffe7b3, #f6c453);
-    }
-
-    .service-texts {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    .service-name {
-        font-size: 13px;
-        font-weight: 600;
-    }
-
-    .service-sub {
-        font-size: 10px;
-        color: #a8b1c7;
-    }
-
-    .service-arrow {
-        font-size: 16px;
-        color: #7b8cff;
-    }
-
-    /* EXPRESS RECHARGE */
     .express-card {
-        border-radius: 18px;
-        padding: 12px 12px 10px;
-        background: linear-gradient(135deg, #0f172a, #1e293b);
-        border: 1px solid rgba(148,163,184,0.5);
-        margin-bottom: 10px;
+      margin-top: 18px;
+      border-radius: 20px;
+      padding: 14px 12px 12px;
+      background: radial-gradient(circle at top left, #111827, #020617);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.9);
+      font-size: 12px;
     }
 
     .express-title {
-        font-size: 13px;
-        font-weight: 600;
-        margin-bottom: 4px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .express-sub {
-        font-size: 11px;
-        color: #cbd5f5;
-        margin-bottom: 8px;
+    .express-body {
+      opacity: 0.85;
+      line-height: 1.6;
+      margin-bottom: 10px;
     }
 
     .express-actions {
-        display: flex;
-        gap: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    .btn-chip {
-        border-radius: 999px;
-        border: 1px solid rgba(148,163,184,0.8);
-        padding: 6px 10px;
-        font-size: 11px;
-        background: rgba(15,23,42,0.9);
-        color: #e5e7eb;
-        cursor: pointer;
+    .express-btn {
+      flex: 1;
+      min-width: 130px;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 11px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: transparent;
+      color: #e5e7eb;
+      text-decoration: none;
+      text-align: center;
     }
 
-    /* FOOTER */
+    .express-btn.primary {
+      border-color: #22c55e;
+      background: rgba(34, 197, 94, 0.08);
+      color: #bbf7d0;
+    }
+
+    .divider-label {
+      margin: 20px 4px 8px;
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .qr-section {
+      margin-top: 10px;
+      padding: 14px 10px 18px;
+      border-radius: 22px;
+      background: radial-gradient(circle at top, #020617, #000);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      text-align: center;
+    }
+
+    .qr-section h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+    }
+
+    .qr-section p {
+      margin: 0 0 10px;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .qr-img-wrap {
+      background: radial-gradient(circle at top, #020617, #000);
+      border-radius: 24px;
+      padding: 10px;
+      display: inline-block;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .qr-img-wrap img {
+      width: 180px;
+      max-width: 60vw;
+      display: block;
+      border-radius: 18px;
+    }
+
     footer {
-        padding: 10px 12px 14px;
-        border-top: 1px solid rgba(148,163,184,0.2);
-        font-size: 11px;
-        color: #9ca3af;
-        text-align: center;
+      text-align: center;
+      padding: 10px 10px 18px;
+      font-size: 11px;
+      color: #9ca3af;
     }
 
-    .footer-links {
-        margin-bottom: 6px;
+    footer a {
+      color: #e5e7eb;
+      text-decoration: none;
     }
 
-    .footer-links span {
-        display: block;
+    footer a:hover {
+      text-decoration: underline;
     }
-
-    .footer-links a {
-        color: #93c5fd;
-        text-decoration: none;
-    }
-
-    /* SIMPLE MODAL (لتأكيد الطلب) */
-    .modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.75);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 50;
-    }
-
-    .modal {
-        width: 90%;
-        max-width: 360px;
-        background: #020617;
-        border-radius: 18px;
-        padding: 14px 14px 12px;
-        border: 1px solid rgba(148,163,184,0.6);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.8);
-        font-size: 12px;
-    }
-
-    .modal-title {
-        font-size: 14px;
-        font-weight: 700;
-        margin-bottom: 4px;
-    }
-
-    .modal-body {
-        font-size: 12px;
-        color: #e5e7eb;
-        margin-bottom: 10px;
-    }
-
-    .modal-body small {
-        color: #9ca3af;
-        display: block;
-        margin-top: 4px;
-    }
-
-    .modal-actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 8px;
-        margin-top: 4px;
-    }
-
-    .btn-cancel {
-        font-size: 11px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(148,163,184,0.7);
-        background: transparent;
-        color: #e5e7eb;
-        cursor: pointer;
-    }
-
-    .btn-confirm {
-        font-size: 11px;
-        padding: 6px 12px;
-        border-radius: 999px;
-        border: none;
-        background: #22c55e;
-        color: #000;
-        font-weight: 700;
-        cursor: pointer;
-    }
-
-    @media (max-width: 360px) {
-        .hero-title {
-            font-size: 16px;
-        }
-        .hero-sub {
-            font-size: 11px;
-        }
-        .quick-card {
-            font-size: 10px;
-        }
-        .service-name {
-            font-size: 12px;
-        }
-    }
-</style>
+  </style>
 </head>
-
 <body>
+<div class="app-shell">
+  <header>
+    <div class="app-title-wrap">
+      <div class="app-title">Mehsin Services</div>
+      <div class="app-sub">Digital Services &amp; Recharge</div>
+    </div>
+    <div class="avatar">MS</div>
+  </header>
 
-<div class="app">
+  <main>
+    <!-- HERO -->
+    <section class="hero-card">
+      <div class="hero-status">
+        <span class="dot-online"></span>
+        جاهز يستقبل طلبات • Online
+      </div>
+      <div class="hero-title">كل خدماتك بمكان واحد.</div>
+      <div class="hero-subtext">
+        شحن Alfa و Touch، إنترنت، Netflix &amp; Shahid، بطاقات، AI… كلّو من خلال
+        تطبيق <strong>Mehsin Services</strong>.
+      </div>
+      <div class="cta-row">
+        <a class="cta-wh" href="https://wa.me/96170363783">
+          <span>💬</span> تواصل مباشر عبر واتساب
+        </a>
+      </div>
+      <div class="hero-badge"></div>
+    </section>
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
-        <div class="top-left">
-            <div class="logo-circle">MS</div>
-            <div class="app-title">
-                <div class="app-title-main">Mehsin Services</div>
-                <div class="app-title-sub">Digital Services & Recharge</div>
-            </div>
-        </div>
-        <div class="top-right">
-            خدمات رقمية · تشريجات · اشتراكات
-        </div>
+    <!-- QUICK SERVICES -->
+    <h2 class="section-title">الخدمات السريعة</h2>
+    <p class="section-note">إلمس أي خدمة لفتح صفحة التفاصيل والأسعار.</p>
+
+    <div class="grid-quick">
+      <a href="internet.html" class="quick-link internet">
+        <span class="icon">🌐</span>
+        <div class="quick-link-title">Internet</div>
+        <div>باقات Ushare</div>
+      </a>
+      <a href="touch.html" class="quick-link touch">
+        <span class="icon">📶</span>
+        <div class="quick-link-title">Touch</div>
+        <div>سنة – كروت $ – Plans</div>
+      </a>
+      <a href="alfa.html" class="quick-link alfa">
+        <span class="icon">📱</span>
+        <div class="quick-link-title">Alfa</div>
+        <div>تشريجات – GO – Days</div>
+      </a>
     </div>
 
-    <!-- CONTENT -->
-    <div class="content">
+    <!-- OFFERS -->
+    <h2 class="section-title">🔥 عروض الأسبوع</h2>
 
-        <!-- HERO -->
-        <section class="hero-card">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                <span>Online • جاهز يستقبل طلبات</span>
-            </div>
-            <div class="hero-title">
-                كل خدماتك بمكان واحد.
-            </div>
-            <div class="hero-sub">
-                شحن Alfa &amp; Touch، إنترنت، Netflix &amp; Shahid، بطاقات، AI… 
-                كلّو من عند Mehsin Services.
-            </div>
-            <div class="hero-actions">
-                <button class="btn-primary" onclick="openWhatsapp('اهلا، بدي استفسر عن خدمات Mehsin Services.')">
-                    اطلب عبر واتساب
-                </button>
-                <button class="btn-outline" onclick="scrollToSection('weekly')">
-                    عروض الأسبوع
-                </button>
-            </div>
-            <!-- صورة هاتف خفيفة (اختيارية – استبدل بالرابط يلي بدك) -->
-            <!-- <img class="hero-phone" src="https://link-to-phone-image.png" alt=""> -->
-        </section>
+    <div class="offers-row">
+      <div class="offer-card">
+        <div class="offer-tag">Streaming • Netflix</div>
+        <div class="offer-title">Netflix – 1 Month</div>
+        <div class="offer-price-row">
+          <span class="old-price">170,000</span>
+          <span class="new-price">120,000 ل.ل</span>
+        </div>
+        <a class="btn-small"
+           href="https://wa.me/96170363783?text=Order%20Netflix%201%20Month">
+          اطلب الآن
+        </a>
+      </div>
 
-        <!-- QUICK GRID -->
-        <section>
-            <div class="section-title-row">
-                <div class="section-title">الخدمات السريعة</div>
-                <div class="section-link">لمس الخدمة لطلبها</div>
-            </div>
-            <div class="quick-grid">
-                <div class="quick-card qc-alfa" onclick="openServiceModal('تشريج Alfa','تشريجات Alfa (شهرية وسنوية وبطاقات دولار).')">
-                    <span class="icon">🟥</span>
-                    <div class="quick-label">Alfa Recharge</div>
-                    <div class="quick-sub">أيام – أشهر – سنين</div>
-                </div>
-                <div class="quick-card qc-touch" onclick="openServiceModal('تشريج Touch','تشريجات Touch مع أفضل الأسعار.')">
-                    <span class="icon">🟦</span>
-                    <div class="quick-label">Touch Recharge</div>
-                    <div class="quick-sub">سنة أيام + كروت $</div>
-                </div>
-                <div class="quick-card qc-net" onclick="openServiceModal('إنترنت Ushare','باكجات إنترنت Alfa Ushare للخطوط.')">
-                    <span class="icon">🌐</span>
-                    <div class="quick-label">Internet</div>
-                    <div class="quick-sub">Ushare · باقات داتا</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- WEEKLY DEALS -->
-        <section id="weekly">
-            <div class="section-title-row">
-                <div class="section-title">🔥 عروض الأسبوع</div>
-                <div class="section-link">محدودة لوقت معيّن</div>
-            </div>
-            <div class="h-scroll">
-                <div class="deal-card" onclick="openServiceModal('Alfa – 1 Month Offer','تشريج خط Alfa لمدّة 30 يوم بسعر عرض.')">
-                    <div class="deal-tag">Alfa</div>
-                    <div class="deal-title">Alfa 1 Month – عرض خاص</div>
-                    <div class="deal-price-row">
-                        <span class="deal-old">200,000</span>
-                        <span class="deal-new">150,000 ل.ل</span>
-                    </div>
-                    <button class="deal-btn">اطلب الآن</button>
-                </div>
-                <div class="deal-card" onclick="openServiceModal('Touch – سنة أيام','Touch 1 Year Days بسعر عرض.')">
-                    <div class="deal-tag">Touch</div>
-                    <div class="deal-title">Touch Year Days – خصم</div>
-                    <div class="deal-price-row">
-                        <span class="deal-old">1,550,000</span>
-                        <span class="deal-new">1,500,000 ل.ل</span>
-                    </div>
-                    <button class="deal-btn">اطلب الآن</button>
-                </div>
-                <div class="deal-card" onclick="openServiceModal('Netflix 1 Month','اشتراك Netflix Premium لشهر واحد.')">
-                    <div class="deal-tag">Streaming</div>
-                    <div class="deal-title">Netflix – 1 Month</div>
-                    <div class="deal-price-row">
-                        <span class="deal-old">170,000</span>
-                        <span class="deal-new">120,000 ل.ل</span>
-                    </div>
-                    <button class="deal-btn">اطلب الآن</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- EXPRESS RECHARGE -->
-        <section>
-            <div class="section-title-row">
-                <div class="section-title">⚡ رصيد سريع – Express</div>
-                <div class="section-link">طلب مباشر عبر واتساب</div>
-            </div>
-            <div class="express-card">
-                <div class="express-title">شحن مباشر بدون تعقيد</div>
-                <div class="express-sub">
-                    اكتب رقم الخط + نوع الخط (Alfa/Touch) + الباقة يلي بدّك ياها، وبكبسة وحدة بتوصلني الرسالة.
-                </div>
-                <div class="express-actions">
-                    <button class="btn-chip" onclick="openWhatsapp('مرحبا، بدي شحن رصيد.\n- رقم الخط:\n- Alfa / Touch:\n- الباقة المطلوبة:')">
-                        طلب تشريج الآن
-                    </button>
-                    <button class="btn-chip" onclick="openWhatsapp('مرحبا، بدي أعرف أفضل العروض للخط تبعي.')">
-                        اسأل عن أفضل عرض
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SERVICES LIST -->
-        <section>
-            <div class="section-title-row">
-                <div class="section-title">الخدمات الكاملة</div>
-                <div class="section-link">اضغط لأي خدمة للتفاصيل</div>
-            </div>
-            <div class="service-list">
-
-                <div class="service-item" onclick="openServiceModal('Netflix & Shahid','اشتراكات Netflix Premium و Shahid VIP لفترات مختلفة (شهر – 3 أشهر – 6 أشهر – سنة).')">
-                    <div class="service-main">
-                        <div class="service-icon si-netflix">N</div>
-                        <div class="service-texts">
-                            <div class="service-name">Netflix &amp; Shahid</div>
-                            <div class="service-sub">أفلام · مسلسلات · برامج · رياضة</div>
-                        </div>
-                    </div>
-                    <div class="service-arrow">›</div>
-                </div>
-
-                <div class="service-item" onclick="openServiceModal('AI & Tools','خدمات AI مثل ChatGPT Plus, Canva Pro, VPN, Editing, وغيرها.')">
-                    <div class="service-main">
-                        <div class="service-icon si-ai">AI</div>
-                        <div class="service-texts">
-                            <div class="service-name">خدمات الذكاء الاصطناعي</div>
-                            <div class="service-sub">ChatGPT · Canva · VPN · أدوات رقمية</div>
-                        </div>
-                    </div>
-                    <div class="service-arrow">›</div>
-                </div>
-
-                <div class="service-item" onclick="openServiceModal('Gift Cards','بطاقات هدايا (PlayStation, Xbox, iTunes, SHEIN, Razer, Nintendo…).')">
-                    <div class="service-main">
-                        <div class="service-icon si-gift">🎁</div>
-                        <div class="service-texts">
-                            <div class="service-name">Gift Cards</div>
-                            <div class="service-sub">بطاقات رقمية لمختلف المنصّات</div>
-                        </div>
-                    </div>
-                    <div class="service-arrow">›</div>
-                </div>
-
-            </div>
-        </section>
-
+      <div class="offer-card touch">
+        <div class="offer-tag">Touch • Special</div>
+        <div class="offer-title">خصم – Touch Year Days</div>
+        <div class="offer-price-row">
+          <span class="old-price">1,550,000</span>
+          <span class="new-price">1,500,000 ل.ل</span>
+        </div>
+        <a class="btn-small"
+           href="https://wa.me/96170363783?text=Order%20Touch%20Year%20Days">
+          اطلب الآن
+        </a>
+      </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-links">
-            <span>WhatsApp: <a href="https://wa.me/96170363783" target="_blank">70363783</a></span>
-            <span>Facebook: <a href="https://facebook.com" target="_blank">Coach Mehsin Husseiny</a></span>
-            <span>Email: <a href="mailto:mehsinhusseini@gmail.com">mehsinhusseini@gmail.com</a></span>
-        </div>
-        <div>© Mehsin Services – Powered by Mehsin Husseini</div>
-    </footer>
+    <!-- EXPRESS -->
+    <section class="express-card">
+      <div class="express-title">
+        ⚡ Express – رصيد سريع
+      </div>
+      <div class="express-body">
+        شحن مباشر بدون تعقيد: اكتب رقم الخط + نوع الخط (Alfa/Touch) +
+        الباقة يلي بدك إيّاها، وبكبسِة وحدة بتوصلني الرسالة على الواتساب.
+      </div>
+      <div class="express-actions">
+        <a class="express-btn primary"
+           href="https://wa.me/96170363783?text=تشريج%20سريع%20Express">
+          طلب تشريج الآن
+        </a>
+        <a class="express-btn"
+           href="https://wa.me/96170363783?text=سؤال%20عن%20أفضل%20عرض">
+          اسأل عن أفضل عرض
+        </a>
+      </div>
+    </section>
 
+    <!-- QR & ABOUT -->
+    <div class="divider-label">عن التطبيق وفتح الموقع</div>
+
+    <section class="qr-section">
+      <h3>Mehsin Central Store – Website</h3>
+      <p>
+        فيك تفتح الموقع الكامل وتشوف كل التفاصيل والأسعار عن طريق الكيو آر
+        أو اللينك المباشر.
+      </p>
+      <div class="qr-img-wrap">
+        <img src="file_00000000086071f5bc64d2c0002ac7e6.png"
+             alt="Mehsin Central Store QR" />
+      </div>
+      <p style="margin-top:10px;">
+        أو افتح الرابط مباشرة:<br>
+        <a href="https://mehsn70.github.io/Mehsin-central-store/">
+          mehsn70.github.io/Mehsin-central-store
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Mehsin Services – تطوير وتصميم: Mehsin Husseini<br>
+    Facebook:
+    <a href="https://www.facebook.com/profile.php?id=100012214290652">
+      Coach Mehsin Husseiny
+    </a> ·
+    Email:
+    <a href="mailto:mehsinhusseini@gmail.com">
+      mehsinhusseini@gmail.com
+    </a><br>
+    جميع الحقوق محفوظة – 2025 ©
+  </footer>
 </div>
-
-<!-- MODAL -->
-<div class="modal-backdrop" id="modalBackdrop">
-    <div class="modal">
-        <div class="modal-title" id="modalTitle">تأكيد الطلب</div>
-        <div class="modal-body">
-            <span id="modalText"></span>
-            <small>بعد التأكيد، يتم فتح واتساب مع رسالة جاهزة تحتوي على اسم الخدمة.</small>
-        </div>
-        <div class="modal-actions">
-            <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
-            <button class="btn-confirm" onclick="confirmWhatsapp()">تأكيد وإرسال</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    const WHATSAPP_NUMBER = "96170363783";
-    let selectedServiceName = "";
-
-    function openWhatsapp(message) {
-        const encoded = encodeURIComponent(message);
-        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encoded;
-        window.open(url, "_blank");
-    }
-
-    function scrollToSection(id) {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-    }
-
-    function openServiceModal(serviceName, description) {
-        selectedServiceName = serviceName;
-        document.getElementById("modalTitle").textContent = "طلب خدمة: " + serviceName;
-        document.getElementById("modalText").textContent = description || "";
-        document.getElementById("modalBackdrop").style.display = "flex";
-    }
-
-    function closeModal() {
-        document.getElementById("modalBackdrop").style.display = "none";
-    }
-
-    function confirmWhatsapp() {
-        if (!selectedServiceName) {
-            closeModal();
-            return;
-        }
-        const msg = "مرحبا، أريد طلب الخدمة التالية:\n- الخدمة: " + selectedServiceName + "\n- رقم الخط (إذا مطلوب):\n- أي ملاحظات إضافية:";
-        openWhatsapp(msg);
-        closeModal();
-    }
-</script>
-
 </body>
 </html>
