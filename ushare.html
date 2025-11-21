@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Alfa Ushare Internet – Mehsin Services</title>
+
+<style>
+:root{
+    --b1:#d9c9a3;
+    --b2:#8ab8ff;
+    --dark:#050712;
+}
+
+body{
+    margin:0;
+    background:#000;
+    font-family:"Tahoma",sans-serif;
+    color:white;
+}
+
+/* HEADER */
+.header{
+    position:relative;
+    height:180px;
+    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:flex-end;
+    padding:14px;
+}
+
+.header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.45),rgba(0,0,0,0.88));
+}
+
+.header-title{
+    position:relative;
+    z-index:2;
+    font-size:24px;
+    font-weight:900;
+    color:var(--b2);
+}
+
+/* SECTION TITLE */
+.section-title{
+    font-size:18px;
+    font-weight:700;
+    margin:18px 12px 6px;
+}
+
+/* SERVICE CARDS */
+.card{
+    background:linear-gradient(135deg,#121722,#050712);
+    border-radius:14px;
+    padding:12px;
+    margin:12px;
+    display:flex;
+    gap:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.45);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.card img{
+    width:60px;
+    height:60px;
+    border-radius:12px;
+    object-fit:cover;
+    border:2px solid rgba(255,255,255,0.2);
+}
+
+.card-body{
+    flex:1;
+}
+
+.card-title{
+    font-size:16px;
+    font-weight:700;
+}
+
+.card-desc{
+    font-size:12px;
+    opacity:0.8;
+    margin:4px 0;
+}
+
+.price-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-top:4px;
+}
+
+.old-price{
+    text-decoration:line-through;
+    opacity:0.6;
+    font-size:13px;
+}
+
+.new-price{
+    font-size:15px;
+    font-weight:700;
+    color:#bcdcff;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:8px;
+    padding:8px 14px;
+    background:var(--b2);
+    color:black;
+    font-weight:700;
+    border-radius:40px;
+    font-size:13px;
+    cursor:pointer;
+    border:none;
+}
+
+/* INFO SECTION */
+.info-section{
+    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/2309.jpg') center/cover no-repeat;
+    padding:20px 14px;
+    margin-top:20px;
+    position:relative;
+}
+
+.info-section::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+
+.info-text{
+    position:relative;
+    z-index:2;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* QR + FOOTER */
+.qr{
+    width:120px;
+    height:120px;
+    margin:20px auto 10px;
+    display:block;
+}
+
+footer{
+    text-align:center;
+    color:#ccc;
+    font-size:12px;
+    margin:20px 0;
+}
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-title">Alfa Ushare Internet</div>
+</div>
+
+<!-- SERVICES -->
+<div class="section-title">باقات إنترنت Ushare</div>
+
+<!-- 5.5GB -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Ushare – 5.5GB</div>
+        <div class="card-desc">باقـة مناسبة للاستخدام اليومي الخفيف.</div>
+        <div class="price-row">
+            <span class="old-price">550,000</span>
+            <span class="new-price">500,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Ushare – 5.5GB')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- 11GB -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Ushare – 11GB</div>
+        <div class="card-desc">مناسبة لتصفح يومي + مواقع تواصل.</div>
+        <div class="price-row">
+            <span class="old-price">750,000</span>
+            <span class="new-price">700,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Ushare – 11GB')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- 22GB -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Ushare – 22GB</div>
+        <div class="card-desc">باقـة ممتازة للمشاهدة والستريمنغ الخفيف.</div>
+        <div class="price-row">
+            <span class="old-price">1,040,000</span>
+            <span class="new-price">990,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Ushare – 22GB')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- 33GB -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Ushare – 33GB</div>
+        <div class="card-desc">استخدام كثيف – دوام – مشاهدات.</div>
+        <div class="price-row">
+            <span class="old-price">1,300,000</span>
+            <span class="new-price">1,250,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Ushare – 33GB')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- 44GB -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Ushare – 44GB</div>
+        <div class="card-desc">مثالية للعمل + دروس أونلاين + فيديو.</div>
+        <div class="price-row">
+            <span class="old-price">1,700,000</span>
+            <span class="new-price">1,650,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Ushare – 44GB')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- 55GB -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Ushare – 55GB</div>
+        <div class="card-desc">أفضل خيار لمستخدم Heavy – كل شي Open.</div>
+        <div class="price-row">
+            <span class="old-price">2,000,000</span>
+            <span class="new-price">1,950,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Ushare – 55GB')">اطلب الآن</button>
+    </div>
+</div>
+
+
+<!-- INFO SECTION -->
+<div class="info-section">
+    <div class="info-text">
+        <b>Mehsin Services</b><br>
+        باقات إنترنت سريعة – أسعار مميزة – تنفيذ فوري عبر واتساب.<br><br>
+        الخدمة متوفّرة 24/7.
+    </div>
+</div>
+
+<!-- QR -->
+<img class="qr" src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png">
+
+<footer>
+    © 2025 – Mehsin Services  
+    <br>Powered by Mehsin Husseini
+</footer>
+
+<script>
+function order(service){
+    const msg = encodeURIComponent("مرحبا، أريد طلب خدمة:\n" + service + "\nرقم الخط:\nملاحظات:");
+    window.location.href="https://wa.me/96170363783?text=" + msg;
+}
+</script>
+
+</body>
+</html>
