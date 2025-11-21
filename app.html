@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mehsin Services App</title>
+
+<style>
+    :root {
+        --primary: #1b6dff;      /* أزرق تقني */
+        --primary-soft: #244d80;
+        --gold: #f6c453;         /* ذهبي ناعم */
+        --bg-dark: #050712;
+        --card-radius: 18px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Tahoma", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #131b30 0, #050712 45%, #02020a 100%);
+        color: #fff;
+    }
+
+    /* APP SHELL */
+    .app {
+        max-width: 480px;
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(180deg, #050712 0, #02030a 60%, #000 100%);
+    }
+
+    /* TOP BAR */
+    .top-bar {
+        padding: 14px 16px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(90deg, #050712, #08152b);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+    }
+
+    .top-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo-circle {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #ffe9a8, #c79a36 55%, #7a5a18 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        color: #050712;
+        font-size: 16px;
+        box-shadow: 0 0 12px rgba(246,196,83,0.7);
+    }
+
+    .app-title {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .app-title-main {
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .app-title-sub {
+        font-size: 11px;
+        color: #9fb3ff;
+    }
+
+    .top-right {
+        font-size: 11px;
+        color: #b2b8c8;
+        text-align: left;
+    }
+
+    /* CONTENT SCROLL */
+    .content {
+        padding: 10px 12px 16px;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    /* HERO CARD */
+    .hero-card {
+        border-radius: 20px;
+        padding: 14px 14px 12px;
+        background: radial-gradient(circle at top left, #2855ff 0, #0b1220 45%, #050712 100%);
+        box-shadow: 0 16px 30px rgba(0,0,0,0.6);
+        margin-bottom: 14px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-badge {
+        font-size: 11px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: rgba(0,0,0,0.45);
+        border: 1px solid rgba(255,255,255,0.12);
+        margin-bottom: 8px;
+    }
+
+    .hero-badge span.dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #00ff99;
+        box-shadow: 0 0 6px #00ff99;
+    }
+
+    .hero-title {
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 4px;
+    }
+
+    .hero-sub {
+        font-size: 12px;
+        color: #d9e2ff;
+        margin-bottom: 10px;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .btn-primary {
+        padding: 9px 14px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, var(--primary), #25d366);
+        color: #000;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .btn-outline {
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.22);
+        background: transparent;
+        color: #c5c9d8;
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    .hero-phone {
+        position: absolute;
+        inset-inline-end: -12px;
+        bottom: -10px;
+        width: 120px;
+        opacity: 0.3;
+        filter: drop-shadow(0 0 20px rgba(0,0,0,0.9));
+    }
+
+    /* SECTION TITLES */
+    .section-title-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin: 14px 2px 6px;
+    }
+
+    .section-title {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .section-link {
+        font-size: 11px;
+        color: #8ca2ff;
+    }
+
+    /* QUICK GRID */
+    .quick-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .quick-card {
+        border-radius: 16px;
+        padding: 10px 8px 8px;
+        font-size: 11px;
+        color: #fff;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        min-height: 70px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+    }
+
+    .quick-card span.icon {
+        font-size: 14px;
+        display: inline-block;
+        margin-bottom: 3px;
+    }
+
+    .quick-label {
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+
+    .quick-sub {
+        font-size: 10px;
+        opacity: 0.8;
+    }
+
+    .qc-alfa {
+        background: radial-gradient(circle at top left, #ff4a4a 0, #7b0000 50%, #250000 100%);
+    }
+
+    .qc-touch {
+        background: radial-gradient(circle at top left, #00b3ff 0, #0048ff 50%, #001133 100%);
+    }
+
+    .qc-net {
+        background: radial-gradient(circle at top left, #ff9a3c 0, #b84c00 50%, #2b1300 100%);
+    }
+
+    /* HORIZONTAL SCROLL (Weekly + Top selling) */
+    .h-scroll {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        margin-bottom: 2px;
+    }
+
+    .deal-card {
+        min-width: 180px;
+        border-radius: 16px;
+        padding: 10px 10px 9px;
+        background: linear-gradient(135deg, #252046, #8747ff);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+        font-size: 11px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .deal-tag {
+        font-size: 10px;
+        opacity: 0.85;
+        margin-bottom: 3px;
+    }
+
+    .deal-title {
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .deal-price-row {
+        display: flex;
+        gap: 6px;
+        align-items: baseline;
+        margin-bottom: 5px;
+    }
+
+    .deal-old {
+        font-size: 11px;
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+    .deal-new {
+        font-size: 14px;
+        font-weight: 700;
+        color: #fffb9a;
+    }
+
+    .deal-btn {
+        font-size: 11px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        background: #00ff99;
+        color: #000;
+        font-weight: 700;
+    }
+
+    /* SERVICES LIST */
+    .service-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .service-item {
+        border-radius: 16px;
+        padding: 10px 12px 9px;
+        background: radial-gradient(circle at left, #1b2540 0, #050712 55%, #010104 100%);
+        box-shadow: 0 10px 18px rgba(0,0,0,0.7);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    .service-main {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .service-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 12px;
+        background: radial-gradient(circle at top, #ffffff, #9fb3ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: #050712;
+        flex-shrink: 0;
+    }
+
+    .si-netflix {
+        background: radial-gradient(circle at top, #ffb3b3, #ff1b1b);
+    }
+
+    .si-shahid {
+        background: radial-gradient(circle at top, #c5ffe3, #10c46a);
+    }
+
+    .si-ai {
+        background: radial-gradient(circle at top, #f3caff, #b450ff);
+    }
+
+    .si-gift {
+        background: radial-gradient(circle at top, #ffe7b3, #f6c453);
+    }
+
+    .service-texts {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .service-name {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .service-sub {
+        font-size: 10px;
+        color: #a8b1c7;
+    }
+
+    .service-arrow {
+        font-size: 16px;
+        color: #7b8cff;
+    }
+
+    /* EXPRESS RECHARGE */
+    .express-card {
+        border-radius: 18px;
+        padding: 12px 12px 10px;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        border: 1px solid rgba(148,163,184,0.5);
+        margin-bottom: 10px;
+    }
+
+    .express-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .express-sub {
+        font-size: 11px;
+        color: #cbd5f5;
+        margin-bottom: 8px;
+    }
+
+    .express-actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    .btn-chip {
+        border-radius: 999px;
+        border: 1px solid rgba(148,163,184,0.8);
+        padding: 6px 10px;
+        font-size: 11px;
+        background: rgba(15,23,42,0.9);
+        color: #e5e7eb;
+        cursor: pointer;
+    }
+
+    /* FOOTER */
+    footer {
+        padding: 10px 12px 14px;
+        border-top: 1px solid rgba(148,163,184,0.2);
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+    }
+
+    .footer-links {
+        margin-bottom: 6px;
+    }
+
+    .footer-links span {
+        display: block;
+    }
+
+    .footer-links a {
+        color: #93c5fd;
+        text-decoration: none;
+    }
+
+    /* SIMPLE MODAL (لتأكيد الطلب) */
+    .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.75);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+    }
+
+    .modal {
+        width: 90%;
+        max-width: 360px;
+        background: #020617;
+        border-radius: 18px;
+        padding: 14px 14px 12px;
+        border: 1px solid rgba(148,163,184,0.6);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+        font-size: 12px;
+    }
+
+    .modal-title {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .modal-body {
+        font-size: 12px;
+        color: #e5e7eb;
+        margin-bottom: 10px;
+    }
+
+    .modal-body small {
+        color: #9ca3af;
+        display: block;
+        margin-top: 4px;
+    }
+
+    .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 4px;
+    }
+
+    .btn-cancel {
+        font-size: 11px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(148,163,184,0.7);
+        background: transparent;
+        color: #e5e7eb;
+        cursor: pointer;
+    }
+
+    .btn-confirm {
+        font-size: 11px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: none;
+        background: #22c55e;
+        color: #000;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    @media (max-width: 360px) {
+        .hero-title {
+            font-size: 16px;
+        }
+        .hero-sub {
+            font-size: 11px;
+        }
+        .quick-card {
+            font-size: 10px;
+        }
+        .service-name {
+            font-size: 12px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-left">
+            <div class="logo-circle">MS</div>
+            <div class="app-title">
+                <div class="app-title-main">Mehsin Services</div>
+                <div class="app-title-sub">Digital Services & Recharge</div>
+            </div>
+        </div>
+        <div class="top-right">
+            خدمات رقمية · تشريجات · اشتراكات
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- HERO -->
+        <section class="hero-card">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                <span>Online • جاهز يستقبل طلبات</span>
+            </div>
+            <div class="hero-title">
+                كل خدماتك بمكان واحد.
+            </div>
+            <div class="hero-sub">
+                شحن Alfa &amp; Touch، إنترنت، Netflix &amp; Shahid، بطاقات، AI… 
+                كلّو من عند Mehsin Services.
+            </div>
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="openWhatsapp('اهلا، بدي استفسر عن خدمات Mehsin Services.')">
+                    اطلب عبر واتساب
+                </button>
+                <button class="btn-outline" onclick="scrollToSection('weekly')">
+                    عروض الأسبوع
+                </button>
+            </div>
+            <!-- صورة هاتف خفيفة (اختيارية – استبدل بالرابط يلي بدك) -->
+            <!-- <img class="hero-phone" src="https://link-to-phone-image.png" alt=""> -->
+        </section>
+
+        <!-- QUICK GRID -->
+        <section>
+            <div class="section-title-row">
+                <div class="section-title">الخدمات السريعة</div>
+                <div class="section-link">لمس الخدمة لطلبها</div>
+            </div>
+            <div class="quick-grid">
+                <div class="quick-card qc-alfa" onclick="openServiceModal('تشريج Alfa','تشريجات Alfa (شهرية وسنوية وبطاقات دولار).')">
+                    <span class="icon">🟥</span>
+                    <div class="quick-label">Alfa Recharge</div>
+                    <div class="quick-sub">أيام – أشهر – سنين</div>
+                </div>
+                <div class="quick-card qc-touch" onclick="openServiceModal('تشريج Touch','تشريجات Touch مع أفضل الأسعار.')">
+                    <span class="icon">🟦</span>
+                    <div class="quick-label">Touch Recharge</div>
+                    <div class="quick-sub">سنة أيام + كروت $</div>
+                </div>
+                <div class="quick-card qc-net" onclick="openServiceModal('إنترنت Ushare','باكجات إنترنت Alfa Ushare للخطوط.')">
+                    <span class="icon">🌐</span>
+                    <div class="quick-label">Internet</div>
+                    <div class="quick-sub">Ushare · باقات داتا</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WEEKLY DEALS -->
+        <section id="weekly">
+            <div class="section-title-row">
+                <div class="section-title">🔥 عروض الأسبوع</div>
+                <div class="section-link">محدودة لوقت معيّن</div>
+            </div>
+            <div class="h-scroll">
+                <div class="deal-card" onclick="openServiceModal('Alfa – 1 Month Offer','تشريج خط Alfa لمدّة 30 يوم بسعر عرض.')">
+                    <div class="deal-tag">Alfa</div>
+                    <div class="deal-title">Alfa 1 Month – عرض خاص</div>
+                    <div class="deal-price-row">
+                        <span class="deal-old">200,000</span>
+                        <span class="deal-new">150,000 ل.ل</span>
+                    </div>
+                    <button class="deal-btn">اطلب الآن</button>
+                </div>
+                <div class="deal-card" onclick="openServiceModal('Touch – سنة أيام','Touch 1 Year Days بسعر عرض.')">
+                    <div class="deal-tag">Touch</div>
+                    <div class="deal-title">Touch Year Days – خصم</div>
+                    <div class="deal-price-row">
+                        <span class="deal-old">1,550,000</span>
+                        <span class="deal-new">1,500,000 ل.ل</span>
+                    </div>
+                    <button class="deal-btn">اطلب الآن</button>
+                </div>
+                <div class="deal-card" onclick="openServiceModal('Netflix 1 Month','اشتراك Netflix Premium لشهر واحد.')">
+                    <div class="deal-tag">Streaming</div>
+                    <div class="deal-title">Netflix – 1 Month</div>
+                    <div class="deal-price-row">
+                        <span class="deal-old">170,000</span>
+                        <span class="deal-new">120,000 ل.ل</span>
+                    </div>
+                    <button class="deal-btn">اطلب الآن</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPRESS RECHARGE -->
+        <section>
+            <div class="section-title-row">
+                <div class="section-title">⚡ رصيد سريع – Express</div>
+                <div class="section-link">طلب مباشر عبر واتساب</div>
+            </div>
+            <div class="express-card">
+                <div class="express-title">شحن مباشر بدون تعقيد</div>
+                <div class="express-sub">
+                    اكتب رقم الخط + نوع الخط (Alfa/Touch) + الباقة يلي بدّك ياها، وبكبسة وحدة بتوصلني الرسالة.
+                </div>
+                <div class="express-actions">
+                    <button class="btn-chip" onclick="openWhatsapp('مرحبا، بدي شحن رصيد.\n- رقم الخط:\n- Alfa / Touch:\n- الباقة المطلوبة:')">
+                        طلب تشريج الآن
+                    </button>
+                    <button class="btn-chip" onclick="openWhatsapp('مرحبا، بدي أعرف أفضل العروض للخط تبعي.')">
+                        اسأل عن أفضل عرض
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES LIST -->
+        <section>
+            <div class="section-title-row">
+                <div class="section-title">الخدمات الكاملة</div>
+                <div class="section-link">اضغط لأي خدمة للتفاصيل</div>
+            </div>
+            <div class="service-list">
+
+                <div class="service-item" onclick="openServiceModal('Netflix & Shahid','اشتراكات Netflix Premium و Shahid VIP لفترات مختلفة (شهر – 3 أشهر – 6 أشهر – سنة).')">
+                    <div class="service-main">
+                        <div class="service-icon si-netflix">N</div>
+                        <div class="service-texts">
+                            <div class="service-name">Netflix &amp; Shahid</div>
+                            <div class="service-sub">أفلام · مسلسلات · برامج · رياضة</div>
+                        </div>
+                    </div>
+                    <div class="service-arrow">›</div>
+                </div>
+
+                <div class="service-item" onclick="openServiceModal('AI & Tools','خدمات AI مثل ChatGPT Plus, Canva Pro, VPN, Editing, وغيرها.')">
+                    <div class="service-main">
+                        <div class="service-icon si-ai">AI</div>
+                        <div class="service-texts">
+                            <div class="service-name">خدمات الذكاء الاصطناعي</div>
+                            <div class="service-sub">ChatGPT · Canva · VPN · أدوات رقمية</div>
+                        </div>
+                    </div>
+                    <div class="service-arrow">›</div>
+                </div>
+
+                <div class="service-item" onclick="openServiceModal('Gift Cards','بطاقات هدايا (PlayStation, Xbox, iTunes, SHEIN, Razer, Nintendo…).')">
+                    <div class="service-main">
+                        <div class="service-icon si-gift">🎁</div>
+                        <div class="service-texts">
+                            <div class="service-name">Gift Cards</div>
+                            <div class="service-sub">بطاقات رقمية لمختلف المنصّات</div>
+                        </div>
+                    </div>
+                    <div class="service-arrow">›</div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-links">
+            <span>WhatsApp: <a href="https://wa.me/96170363783" target="_blank">70363783</a></span>
+            <span>Facebook: <a href="https://facebook.com" target="_blank">Coach Mehsin Husseiny</a></span>
+            <span>Email: <a href="mailto:mehsinhusseini@gmail.com">mehsinhusseini@gmail.com</a></span>
+        </div>
+        <div>© Mehsin Services – Powered by Mehsin Husseini</div>
+    </footer>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+        <div class="modal-title" id="modalTitle">تأكيد الطلب</div>
+        <div class="modal-body">
+            <span id="modalText"></span>
+            <small>بعد التأكيد، يتم فتح واتساب مع رسالة جاهزة تحتوي على اسم الخدمة.</small>
+        </div>
+        <div class="modal-actions">
+            <button class="btn-cancel" onclick="closeModal()">إلغاء</button>
+            <button class="btn-confirm" onclick="confirmWhatsapp()">تأكيد وإرسال</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const WHATSAPP_NUMBER = "96170363783";
+    let selectedServiceName = "";
+
+    function openWhatsapp(message) {
+        const encoded = encodeURIComponent(message);
+        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encoded;
+        window.open(url, "_blank");
+    }
+
+    function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }
+
+    function openServiceModal(serviceName, description) {
+        selectedServiceName = serviceName;
+        document.getElementById("modalTitle").textContent = "طلب خدمة: " + serviceName;
+        document.getElementById("modalText").textContent = description || "";
+        document.getElementById("modalBackdrop").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("modalBackdrop").style.display = "none";
+    }
+
+    function confirmWhatsapp() {
+        if (!selectedServiceName) {
+            closeModal();
+            return;
+        }
+        const msg = "مرحبا، أريد طلب الخدمة التالية:\n- الخدمة: " + selectedServiceName + "\n- رقم الخط (إذا مطلوب):\n- أي ملاحظات إضافية:";
+        openWhatsapp(msg);
+        closeModal();
+    }
+</script>
+
+</body>
+</html>
