@@ -1,453 +1,232 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mehsin Services – App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mehsin Services</title>
 
-  <style>
-    :root {
-      --bg: #02040a;
-      --card: #050814;
-      --accent: #3b82f6;
-      --accent2: #8b5cf6;
-      --gold: #facc15;
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --radius-xl: 22px;
-      --shadow-strong: 0 18px 40px rgba(0,0,0,0.65);
-    }
+<style>
+/* COLORS */
+:root{
+    --gold:#d4af37;
+    --blue:#1a76ff;
+    --dark:#050505;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+/* GLOBAL */
+body{
+    margin:0;
+    background:#000;
+    color:white;
+    font-family:"Tahoma",sans-serif;
+}
 
-    body {
-      margin: 0;
-      font-family: "Tahoma", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #0b1020, #02040a 55%);
-      color: var(--text-main);
-    }
+/* HERO */
+.hero{
+    height:230px;
+    background:url('https://images.pexels.com/photos/6078123/pexels-photo-6078123.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    padding:20px;
+}
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.85));
+}
+.hero-title{
+    position:relative;
+    z-index:2;
+    font-size:26px;
+    font-weight:900;
+    color:var(--gold);
+    text-shadow:0 2px 8px rgba(0,0,0,0.6);
+}
+.hero-sub{
+    position:relative;
+    z-index:2;
+    font-size:14px;
+    opacity:0.9;
+    margin-top:6px;
+}
 
-    .app-shell {
-      max-width: 520px;
-      margin: 0 auto;
-      min-height: 100vh;
-      padding: 14px 10px 26px;
-    }
+/* QUICK CARDS */
+.grid-quick{
+    padding:12px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:12px;
+}
+.quick-link{
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,0.1);
+    padding:18px 12px;
+    border-radius:14px;
+    text-decoration:none;
+    color:white;
+    text-align:center;
+    font-size:14px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 6px 16px rgba(0,0,0,0.45);
+}
+.quick-link .icon{
+    font-size:28px;
+    display:block;
+    margin-bottom:6px;
+}
+.quick-link:hover{
+    border-color:var(--gold);
+    transform:scale(1.02);
+}
 
-    /* ===== HEADER ===== */
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 4px 10px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .brand-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #fef3c7, #b45309);
-      border: 2px solid rgba(250, 204, 21, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 18px;
-      color: #111827;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.55);
-    }
-    .brand-text-title {
-      font-size: 15px;
-      font-weight: 700;
-    }
-    .brand-text-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-    .status-pill {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(16, 185, 129, 0.1);
-      color: #6ee7b7;
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34,197,94,0.25);
-    }
+/* SECTION */
+.section{
+    margin-top:26px;
+}
+.section-title{
+    font-size:20px;
+    font-weight:900;
+    padding:0 14px;
+}
+.section-sub{
+    font-size:13px;
+    opacity:0.75;
+    padding:0 14px;
+    margin-bottom:10px;
+}
 
-    /* ===== HERO CARD ===== */
-    .hero-card {
-      margin-top: 4px;
-      padding: 18px 16px 16px;
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left, #1d4ed8, #020617 55%, #4c1d95 100%);
-      box-shadow: var(--shadow-strong);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -40px;
-      opacity: 0.22;
-      background:
-        radial-gradient(circle at 15% 0, rgba(96,165,250,0.5), transparent 55%),
-        radial-gradient(circle at 80% 110%, rgba(192,132,252,0.7), transparent 60%);
-      pointer-events: none;
-    }
-    .hero-content {
-      position: relative;
-    }
-    .hero-kicker {
-      font-size: 11px;
-      color: #bfdbfe;
-      margin-bottom: 4px;
-    }
-    .hero-title {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-    .hero-sub {
-      font-size: 12px;
-      color: #e5e7eb;
-      margin-bottom: 14px;
-      line-height: 1.5;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      flex: 1;
-      min-width: 140px;
-      border-radius: 999px;
-      border: none;
-      outline: none;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 10px 14px;
-      background: #22c55e;
-      color: #052e16;
-      text-decoration: none;
-      text-align: center;
-      box-shadow: 0 12px 25px rgba(34,197,94,0.45);
-    }
-    .btn-ghost {
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-size: 12px;
-      background: rgba(15,23,42,0.7);
-      border: 1px solid rgba(148,163,184,0.5);
-      color: #e5e7eb;
-      text-decoration: none;
-    }
+/* SECTION IMAGE BLOCK */
+.sec-img{
+    height:160px;
+    border-radius:14px;
+    margin:12px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
+.sec-img::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:14px;
+    background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.8));
+}
+.sec-img-title{
+    position:absolute;
+    bottom:12px;
+    right:12px;
+    font-size:17px;
+    font-weight:700;
+}
 
-    /* ===== SECTIONS TITLE ===== */
-    .section-header {
-      margin: 18px 2px 10px;
-    }
-    .section-title {
-      font-size: 16px;
-      font-weight: 700;
-    }
-    .section-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    /* ===== IMAGE CARDS ===== */
-    .image-card {
-      display: block;
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      margin-bottom: 14px;
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow-strong);
-      text-decoration: none;
-      color: var(--text-main);
-      min-height: 150px;
-    }
-    .image-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.85),
-        rgba(0,0,0,0.35)
-      );
-    }
-    .image-card-inner {
-      position: relative;
-      padding: 14px 16px 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      height: 100%;
-    }
-    .image-kicker {
-      font-size: 11px;
-      color: #e5e7eb;
-      opacity: 0.9;
-      margin-bottom: 3px;
-    }
-    .image-title-row {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-    .image-main-title {
-      font-size: 17px;
-      font-weight: 700;
-    }
-    .image-badge {
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.8);
-      color: #e5e7eb;
-    }
-    .image-desc {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .card-alfa {
-      background-image:
-        linear-gradient(to top, rgba(15,23,42,0.85), rgba(15,23,42,0.3)),
-        url("https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg");
-    }
-
-    .card-touch {
-      background-image:
-        linear-gradient(to top, rgba(15,23,42,0.85), rgba(15,23,42,0.3)),
-        url("https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg");
-      filter: saturate(1.2);
-    }
-
-    .card-ushare {
-      background-image:
-        linear-gradient(to top, rgba(15,23,42,0.88), rgba(15,23,42,0.3)),
-        url("https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg");
-    }
-
-    .card-stream {
-      background-image:
-        linear-gradient(to top, rgba(15,23,42,0.9), rgba(15,23,42,0.35)),
-        url("https://images.pexels.com/photos/7991370/pexels-photo-7991370.jpeg?auto=compress&cs=tinysrgb&w=1200");
-    }
-
-    /* ===== CONTACT & QR ===== */
-    .contact-section {
-      margin-top: 22px;
-      padding: 18px 14px 16px;
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left, #111827, #020617 65%);
-      border: 1px solid rgba(31,41,55,0.85);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.7);
-    }
-    .contact-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .contact-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }
-    .contact-line {
-      font-size: 12px;
-      margin-bottom: 4px;
-    }
-    .contact-strong {
-      font-weight: 700;
-      color: #e5e7eb;
-    }
-    .contact-whatsapp {
-      margin-top: 12px;
-      text-align: center;
-    }
-    .qr-wrap {
-      margin-top: 14px;
-      text-align: center;
-    }
-    .qr-wrap img {
-      width: 190px;
-      max-width: 70%;
-      border-radius: 18px;
-      background: #020617;
-      padding: 10px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.8);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 16px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-  </style>
+/* FOOTER */
+footer{
+    text-align:center;
+    margin:40px 0 20px;
+    font-size:12px;
+    color:#aaa;
+}
+.qr{
+    width:130px;
+    height:130px;
+    margin:20px auto 10px;
+    display:block;
+}
+</style>
 </head>
-
 <body>
-  <div class="app-shell">
 
-    <!-- TOP BAR -->
-    <header class="top-bar">
-      <div class="brand">
-        <div class="brand-avatar">M</div>
-        <div>
-          <div class="brand-text-title">Mehsin Services</div>
-          <div class="brand-text-sub">خدمات رقمية · شحن خطوط · اشتراكات</div>
-        </div>
-      </div>
-      <div class="status-pill">
-        <span class="status-dot"></span>
-        جاهز يستقبل طلبات
-      </div>
-    </header>
-
-    <!-- HERO CARD -->
-    <section class="hero-card">
-      <div class="hero-content">
-        <div class="hero-kicker">كل خدماتك بمكان واحد.</div>
-        <div class="hero-title">شحن، اشتراكات، وباقات… كلو من واتساب واحد.</div>
-        <div class="hero-sub">
-          شحن خطوط Alfa &amp; Touch، باقات إنترنت، Netflix &amp; Shahid، بطاقات رقمية وخدمات AI – بتنطلب كلّها من نفس المكان.
-        </div>
-        <div class="hero-actions">
-          <a class="btn-primary" href="https://wa.me/96170363783?text=مرحباً،%20حابب%20استفسر%20عن%20خدمات%20Mehsin%20Services">
-            اطلب عبر واتساب
-          </a>
-          <a class="btn-ghost" href="#telecom">شوف العروض المتاحة</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TELECOM SECTION -->
-    <div id="telecom" class="section-header">
-      <div class="section-title">خدمات الاتصالات</div>
-      <div class="section-sub">أسعار عروض قوية – تشريجات Alfa &amp; Touch</div>
+<!-- HERO -->
+<div class="hero">
+    <div>
+        <div class="hero-title">Mehsin Services</div>
+        <div class="hero-sub">خدمات رقمية – تشريجات – إنترنت – اشتراكات – AI</div>
     </div>
+</div>
 
-    <a href="alfa.html" class="image-card card-alfa">
-      <div class="image-card-inner">
-        <div class="image-kicker">خدمة موبايل</div>
-        <div class="image-title-row">
-          <div class="image-main-title">عروض Alfa</div>
-          <div class="image-badge">تشريج شهري · سنوي · كروت $</div>
-        </div>
-        <div class="image-desc">كل باقات Alfa مع أسعارها · تشريج رصيد، أيام وسنة استقبال.</div>
-      </div>
+<!-- QUICK LINKS -->
+<div class="grid-quick">
+
+    <a href="alfa.html" class="quick-link">
+        <span class="icon">📱</span>
+        <div class="quick-link-title">Alfa</div>
+        <div>تشريجات وخدمات Alfa</div>
     </a>
 
-    <a href="touch.html" class="image-card card-touch">
-      <div class="image-card-inner">
-        <div class="image-kicker">خدمة موبايل</div>
-        <div class="image-title-row">
-          <div class="image-main-title">عروض Touch</div>
-          <div class="image-badge">سنة استقبال · كروت دولار</div>
-        </div>
-        <div class="image-desc">تشريجات Touch السنوية وكروت 4.5$ و 7.5$ مع أفضل أسعار.</div>
-      </div>
+    <a href="touch.html" class="quick-link">
+        <span class="icon">📶</span>
+        <div class="quick-link-title">Touch</div>
+        <div>تشريجات وخدمات Touch</div>
     </a>
 
-    <!-- USHARE INTERNET -->
-    <div class="section-header">
-      <div class="section-title">إنترنت Ushare</div>
-      <div class="section-sub">سرعات عالية – باقات مشاركة مريحة على الخطوط</div>
-    </div>
-
-    <a href="internet.html" class="image-card card-ushare">
-      <div class="image-card-inner">
-        <div class="image-kicker">باقات إنترنت</div>
-        <div class="image-title-row">
-          <div class="image-main-title">Ushare Internet</div>
-          <div class="image-badge">5.5GB إلى 55GB</div>
-        </div>
-        <div class="image-desc">كل باقات Ushare مع الأسعار – بتختار الباقة وبنبعتلك الطلب واتساب فوراً.</div>
-      </div>
+    <a href="ushare.html" class="quick-link">
+        <span class="icon">🌐</span>
+        <div class="quick-link-title">Internet</div>
+        <div>باقات Ushare</div>
     </a>
 
-    <!-- STREAMING -->
-    <div class="section-header">
-      <div class="section-title">اشتراكات المشاهدة</div>
-      <div class="section-sub">Netflix · Shahid · منصّات ترفيه أخرى</div>
-    </div>
-
-    <a href="streaming.html" class="image-card card-stream">
-      <div class="image-card-inner">
-        <div class="image-kicker">Streaming</div>
-        <div class="image-title-row">
-          <div class="image-main-title">Netflix &amp; Shahid</div>
-          <div class="image-badge">1 شهر · 3 أشهر · 6 أشهر · سنة</div>
-        </div>
-        <div class="image-desc">اشتراك جاهز، تسليم سريع، وأسعار تنافسية للاشتراكات الشهرية والسنوية.</div>
-      </div>
+    <a href="streaming.html" class="quick-link">
+        <span class="icon">🎬</span>
+        <div class="quick-link-title">Streaming</div>
+        <div>Netflix & Shahid</div>
     </a>
 
-    <!-- CONTACT & QR -->
-    <section class="contact-section" id="contact">
-      <div class="contact-title">Contact – للتواصل والطلب 📞</div>
-      <div class="contact-sub">
-        للتواصل والطلب أو للاستفسار عن أي باقة خاصة، راسلني مباشرة على واتساب أو الإيميل.
-      </div>
+</div>
 
-      <div class="contact-line">
-        <span class="contact-strong">WhatsApp / موبايل:</span> 70363783
-      </div>
-      <div class="contact-line">
-        <span class="contact-strong">Facebook:</span> Coach Mehsin Husseiny
-      </div>
-      <div class="contact-line">
-        <span class="contact-strong">Email:</span> mehsinhusseini@gmail.com
-      </div>
+<!-- SECTION: TELECOM -->
+<div class="section">
+    <div class="section-title">خدمات الاتصالات</div>
+    <div class="section-sub">Alfa & Touch – أسعار عروض قوية</div>
+    <a href="alfa.html">
+        <div class="sec-img"
+             style="background-image:url('https://images.pexels.com/photos/6078124/pexels-photo-6078124.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+            <div class="sec-img-title">عروض Alfa</div>
+        </div>
+    </a>
+    <a href="touch.html">
+        <div class="sec-img"
+             style="background-image:url('https://images.pexels.com/photos/6078124/pexels-photo-6078124.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+            <div class="sec-img-title">عروض Touch</div>
+        </div>
+    </a>
+</div>
 
-      <div class="contact-sub" style="margin-top:8px;">
-        شحن على خطوط Alfa و Touch، بالإضافة إلى شحن الألعاب والمنصّات العالمية. طرق الدفع والتسليم يتم تنسيقها عبر الواتساب بما يناسبك.
-      </div>
+<!-- SECTION: INTERNET -->
+<div class="section">
+    <div class="section-title">إنترنت Ushare</div>
+    <div class="section-sub">سرعات عالية – أسعار مميزة – تنفيذ فوري</div>
 
-      <div class="contact-whatsapp">
-        <a class="btn-primary" href="https://wa.me/96170363783?text=مرحباً%20Mehsin,%20حابب%20اطلب%20باقة%20أو%20استفسر%20عن%20الخدمات.">
-          تواصل مباشرة عبر واتساب
-        </a>
-      </div>
+    <a href="ushare.html">
+        <div class="sec-img"
+             style="background-image:url('https://images.pexels.com/photos/5980862/pexels-photo-5980862.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+            <div class="sec-img-title">Ushare Internet</div>
+        </div>
+    </a>
+</div>
 
-      <div class="qr-wrap">
-        <img
-          src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png"
-          alt="Mehsin Services QR"
-        />
-      </div>
-    </section>
+<!-- SECTION: STREAMING -->
+<div class="section">
+    <div class="section-title">اشتراكات المشاهدة</div>
+    <div class="section-sub">Netflix · Shahid · Disney+ · OSN+</div>
 
-    <footer>
-      Mehsin Services – جميع الحقوق محفوظة © 2025
-    </footer>
+    <a href="streaming.html">
+        <div class="sec-img"
+             style="background-image:url('https://images.pexels.com/photos/7525257/pexels-photo-7525257.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+            <div class="sec-img-title">Streaming Services</div>
+        </div>
+    </a>
+</div>
 
-  </div>
+<!-- QR -->
+<img class="qr" src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png">
+
+<footer>
+    © 2025 – Mehsin Services<br>
+    Powered by Mehsin Husseini
+</footer>
+
 </body>
 </html>
