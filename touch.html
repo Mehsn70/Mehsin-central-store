@@ -1,354 +1,295 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Touch Services – Mehsin</title>
-  <style>
-    :root {
-      --bg: #020617;
-      --card: #020617;
-      --blue1: #2563eb;
-      --blue2: #0ea5e9;
-      --radius-lg: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Touch Offers – Mehsin Services</title>
 
-    * { box-sizing: border-box; }
+<style>
+:root{
+    --blue1:#00b7ff;
+    --blue2:#0048ff;
+    --dark:#050712;
+    --card:#0d0f1a;
+}
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Tahoma", sans-serif;
-      background: radial-gradient(circle at top, #020617, #000);
-      color: #f9fafb;
-    }
+body{
+    margin:0;
+    background:#000;
+    font-family:"Tahoma",sans-serif;
+    color:white;
+}
 
-    .page {
-      max-width: 480px;
-      margin: 0 auto;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+/* HEADER */
+.header{
+    position:relative;
+    height:180px;
+    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:flex-end;
+    padding:14px;
+}
 
-    header {
-      padding: 12px 14px 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+.header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.5),rgba(0,0,0,0.88));
+}
 
-    .back-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: transparent;
-      color: #e5e7eb;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-    }
+.header-title{
+    position:relative;
+    z-index:2;
+    font-size:24px;
+    font-weight:900;
+    color:var(--blue1);
+}
 
-    .head-text { display: flex; flex-direction: column; gap: 2px; }
-    .head-title { font-size: 17px; font-weight: 700; }
-    .head-sub { font-size: 11px; opacity: 0.75; }
+/* SECTION TITLE */
+.section-title{
+    font-size:18px;
+    font-weight:700;
+    margin:18px 12px 4px;
+}
 
-    main {
-      padding: 0 14px 18px;
-      flex: 1;
-      overflow-y: auto;
-    }
+/* SERVICE CARDS */
+.card{
+    background:linear-gradient(135deg,#1a1a1a,#000);
+    border-radius:14px;
+    padding:12px;
+    margin:12px;
+    display:flex;
+    gap:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.4);
+    border:1px solid rgba(255,255,255,0.08);
+}
 
-    .hero {
-      border-radius: 24px;
-      padding: 16px 14px 14px;
-      background: radial-gradient(circle at top left, #2563eb, #020617);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.9);
-      margin-bottom: 18px;
-    }
+.card img{
+    width:60px;
+    height:60px;
+    border-radius:12px;
+    object-fit:cover;
+    border:2px solid rgba(255,255,255,0.2);
+}
 
-    .hero-label { font-size: 11px; opacity: 0.8; margin-bottom: 4px; }
-    .hero-title { font-size: 19px; font-weight: 800; margin-bottom: 4px; }
-    .hero-sub {
-      font-size: 12px; opacity: 0.9; max-width: 18rem; line-height: 1.5;
-    }
+.card-body{
+    flex:1;
+}
 
-    .chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-    .chip {
-      font-size: 10px; padding: 4px 8px; border-radius: 999px;
-      background: rgba(15,23,42,0.4); border: 1px solid rgba(191,219,254,0.6);
-    }
+.card-title{
+    font-size:16px;
+    font-weight:700;
+}
 
-    h2.section-title { font-size: 15px; margin: 12px 2px 6px; }
-    .section-note { font-size: 11px; opacity: 0.75; margin: 0 2px 8px; }
+.card-desc{
+    font-size:12px;
+    opacity:0.8;
+    margin:4px 0;
+}
 
-    .cards { display: flex; flex-direction: column; gap: 10px; }
+.price-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-top:4px;
+}
 
-    .card {
-      border-radius: var(--radius-lg);
-      padding: 10px 11px 10px;
-      background: radial-gradient(circle at top, #1d4ed8, #020617);
-      box-shadow: 0 14px 28px rgba(15,23,42,0.9);
-      font-size: 12px;
-      position: relative;
-      overflow: hidden;
-    }
+.old-price{
+    text-decoration:line-through;
+    opacity:0.6;
+    font-size:13px;
+}
 
-    .card.dollar {
-      background: radial-gradient(circle at top, #0f766e, #0f172a);
-    }
+.new-price{
+    font-size:15px;
+    font-weight:700;
+    color:#a3d8ff;
+}
 
-    .card.plan {
-      background: radial-gradient(circle at top, #4f46e5, #111827);
-    }
+/* BUTTON */
+.btn{
+    margin-top:8px;
+    padding:8px 14px;
+    background:var(--blue1);
+    color:black;
+    font-weight:700;
+    border-radius:40px;
+    font-size:13px;
+    cursor:pointer;
+    border:none;
+}
 
-    .tag { font-size: 11px; opacity: 0.85; margin-bottom: 2px; }
+/* INFO SECTION */
+.info-section{
+    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/2309.jpg') center/cover no-repeat;
+    padding:20px 14px;
+    margin-top:20px;
+    position:relative;
+}
 
-    .title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
+.info-section::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
 
-    .title { font-weight: 700; font-size: 14px; }
+.info-text{
+    position:relative;
+    z-index:2;
+    font-size:13px;
+    line-height:1.7;
+}
 
-    .note { font-size: 11px; opacity: 0.85; margin-bottom: 6px; }
+/* QR + FOOTER */
+.qr{
+    width:120px;
+    height:120px;
+    margin:20px auto 10px;
+    display:block;
+}
 
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
+footer{
+    text-align:center;
+    color:#ccc;
+    font-size:12px;
+    margin:20px 0;
+}
+</style>
 
-    .old-price { font-size: 11px; text-decoration: line-through; opacity: 0.8; }
-    .new-price { font-size: 13px; font-weight: 800; }
-
-    .btn-order {
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 11px;
-      border: none;
-      background: #22c55e;
-      color: #022c22;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .qr-section {
-      margin-top: 16px;
-      padding: 14px 10px 18px;
-      border-radius: 22px;
-      background: radial-gradient(circle at top, #020617, #000);
-      border: 1px solid rgba(55, 65, 81, 0.8);
-      text-align: center;
-    }
-
-    .qr-section h3 {
-      margin: 0 0 6px;
-      font-size: 14px;
-    }
-
-    .qr-section p {
-      margin: 0 0 10px;
-      font-size: 11px;
-      opacity: 0.8;
-    }
-
-    .qr-img-wrap {
-      background: radial-gradient(circle at top, #020617, #000);
-      border-radius: 24px;
-      padding: 10px;
-      display: inline-block;
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
-    }
-
-    .qr-img-wrap img {
-      width: 180px;
-      max-width: 60vw;
-      display: block;
-      border-radius: 18px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 8px 10px 16px;
-      font-size: 11px;
-      color: #9ca3af;
-    }
-
-    footer a { color: #e5e7eb; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-  </style>
 </head>
 <body>
-<div class="page">
-  <header>
-    <a href="app.html" class="back-btn">←</a>
-    <div class="head-text">
-      <div class="head-title">خدمات Touch</div>
-      <div class="head-sub">سنة استقبال، كروت دولار، وباقات Web &amp; Talk</div>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-label">Touch • Recharge & Plans</div>
-      <div class="hero-title">كل عروض Touch جاهزة للطلب.</div>
-      <div class="hero-sub">
-        اختَر الباقة اللي بتناسبك واضغط "اطلب الآن"، وبيوصلك الطلب جاهز
-        على الواتساب مع كل التفاصيل.
-      </div>
-      <div class="chip-row">
-        <span class="chip">تشريج سنة Days</span>
-        <span class="chip">كروت $</span>
-        <span class="chip">Web &amp; Talk Plans</span>
-      </div>
-    </section>
-
-    <!-- تشريجات سنة / Days -->
-    <h2 class="section-title">تشريجات Touch – سنة / Days</h2>
-    <p class="section-note">مناسبة للخط الأساسي والاستقبال الطويل.</p>
-
-    <div class="cards">
-      <div class="card">
-        <div class="tag">📶 Touch</div>
-        <div class="title-row">
-          <div class="title">Touch 1 Year</div>
-        </div>
-        <div class="note">سنة كاملة أيام استقبال.</div>
-        <div class="price-row">
-          <span class="old-price">1,550,000</span>
-          <span class="new-price">1,500,000 ل.ل</span>
-        </div>
-        <a class="btn-order"
-           href="https://wa.me/96170363783?text=Order%20Touch%201%20Year">اطلب الآن</a>
-      </div>
-
-      <div class="card">
-        <div class="tag">📅 Touch Year Days</div>
-        <div class="title-row">
-          <div class="title">Touch Year Days + 0.5$</div>
-        </div>
-        <div class="note">سنة استقبال مع نص دولار رصيد هدية.</div>
-        <div class="price-row">
-          <span class="old-price">1,950,000</span>
-          <span class="new-price">1,900,000 ل.ل</span>
-        </div>
-        <a class="btn-order"
-           href="https://wa.me/96170363783?text=Order%20Touch%20Year%20Days">اطلب الآن</a>
-      </div>
-    </div>
-
-    <!-- كروت دولار -->
-    <h2 class="section-title">بطاقات Touch بالدولار</h2>
-    <p class="section-note">للتشريج الشهري أو زيادة الرصيد.</p>
-
-    <div class="cards">
-      <div class="card dollar">
-        <div class="tag">💳 Touch Dollar</div>
-        <div class="title-row">
-          <div class="title">Touch 4.5$ Card</div>
-        </div>
-        <div class="note">30 يوم – استقبال.</div>
-        <div class="price-row">
-          <span class="old-price">600,000</span>
-          <span class="new-price">550,000 ل.ل</span>
-        </div>
-        <a class="btn-order"
-           href="https://wa.me/96170363783?text=Order%20Touch%204.5$%20Card">اطلب الآن</a>
-      </div>
-
-      <div class="card dollar">
-        <div class="tag">💳 Touch Dollar</div>
-        <div class="title-row">
-          <div class="title">Touch 7.5$ Card</div>
-        </div>
-        <div class="note">30 يوم – استقبال.</div>
-        <div class="price-row">
-          <span class="old-price">930,000</span>
-          <span class="new-price">880,000 ل.ل</span>
-        </div>
-        <a class="btn-order"
-           href="https://wa.me/96170363783?text=Order%20Touch%207.5$%20Card">اطلب الآن</a>
-      </div>
-    </div>
-
-    <!-- Web & Talk Plans -->
-    <h2 class="section-title">Touch Web &amp; Talk – الباقات المدموجة</h2>
-    <p class="section-note">إنترنت + دقائق + SMS بباقات جاهزة.</p>
-
-    <div class="cards">
-      <div class="card plan">
-        <div class="tag">Web &amp; Talk Mini</div>
-        <div class="title-row">
-          <div class="title">Mini – 1GB</div>
-        </div>
-        <div class="note">1GB + 30 min + 30 SMS.</div>
-        <div class="price-row">
-          <span class="old-price">650,000</span>
-          <span class="new-price">600,000 ل.ل</span>
-        </div>
-        <a class="btn-order"
-           href="https://wa.me/96170363783?text=Order%20Touch%20Web%20%26%20Talk%20Mini">اطلب الآن</a>
-      </div>
-
-      <div class="card plan">
-        <div class="tag">Web &amp; Talk</div>
-        <div class="title-row">
-          <div class="title">Standard – 3GB</div>
-        </div>
-        <div class="note">3GB + 60 min + 60 SMS.</div>
-        <div class="price-row">
-          <span class="old-price">850,000</span>
-          <span class="new-price">800,000 ل.ل</span>
-        </div>
-        <a class="btn-order"
-           href="https://wa.me/96170363783?text=Order%20Touch%20Web%20%26%20Talk">اطلب الآن</a>
-      </div>
-
-      <div class="card plan">
-        <div class="tag">Web &amp; Talk MAXI 2</div>
-        <div class="title-row">
-          <div class="title">MAXI 2 – 25GB</div>
-        </div>
-        <div class="note">25GB + 120 min + 120 SMS.</div>
-        <div class="price-row">
-          <span class="old-price">1,650,000</span>
-          <span class="new-price">1,600,000 ل.ل</span>
-        </div>
-        <a class="btn-order"
-           href="https://wa.me/96170363783?text=Order%20Touch%20Web%20%26%20Talk%20MAXI2">اطلب الآن</a>
-      </div>
-    </div>
-
-    <!-- QR -->
-    <section class="qr-section">
-      <h3>فتح الموقع الكامل</h3>
-      <p>اسحب كاميرتك على الكيو آر ليفتح معك موقع Mehsin Central Store.</p>
-      <div class="qr-img-wrap">
-        <img src="file_00000000086071f5bc64d2c0002ac7e6.png"
-             alt="Mehsin Central Store QR" />
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    Mehsin Services – Touch Section<br>
-    للمزيد من الخدمات (Alfa، Netflix، AI…) ارجع للرئيسية من الأعلى.<br>
-    WhatsApp:
-    <a href="https://wa.me/96170363783">70363783</a>
-  </footer>
+<!-- HEADER -->
+<div class="header">
+    <div class="header-title">عروض Touch</div>
 </div>
+
+
+<!-- SERVICES -->
+<div class="section-title">خدمات Touch السنوية والشهرية</div>
+
+<!-- Touch 1 Year -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Touch – 1 Year</div>
+        <div class="card-desc">سنة كاملة استقبال 365 يوم.</div>
+        <div class="price-row">
+            <span class="old-price">1,550,000</span>
+            <span class="new-price">1,500,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Touch – 1 Year')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- Touch 4.5$ -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Touch – 4.5$</div>
+        <div class="card-desc">30 يوم – استقبال.</div>
+        <div class="price-row">
+            <span class="old-price">600,000</span>
+            <span class="new-price">550,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Touch – 4.5$')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- Touch 7.5$ -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Touch – 7.5$</div>
+        <div class="card-desc">30 يوم – استقبال.</div>
+        <div class="price-row">
+            <span class="old-price">930,000</span>
+            <span class="new-price">880,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Touch – 7.5$')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- Touch Year Days -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Touch – Year Days</div>
+        <div class="card-desc">سنة استقبال + رصيد 0.5$.</div>
+        <div class="price-row">
+            <span class="old-price">1,950,000</span>
+            <span class="new-price">1,900,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Touch – Year Days')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- Touch Web & Talk Plans -->
+<div class="section-title">باقات Touch Web & Talk</div>
+
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Touch – Web & Talk Mini</div>
+        <div class="card-desc">1GB + 30 دقيقة + 30 SMS.</div>
+        <div class="price-row">
+            <span class="old-price">650,000</span>
+            <span class="new-price">600,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Touch – Web & Talk Mini')">اطلب الآن</button>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Touch – Web & Talk</div>
+        <div class="card-desc">3GB + 60 دقيقة + 60 SMS.</div>
+        <div class="price-row">
+            <span class="old-price">850,000</span>
+            <span class="new-price">800,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Touch – Web & Talk')">اطلب الآن</button>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Touch – Web & Talk Maxi 2</div>
+        <div class="card-desc">25GB + 120 دقيقة + 120 SMS.</div>
+        <div class="price-row">
+            <span class="old-price">1,650,000</span>
+            <span class="new-price">1,600,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Touch – Web & Talk Maxi 2')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- INFO SECTION -->
+<div class="info-section">
+    <div class="info-text">
+        <b>Mehsin Services</b><br>
+        خدمات رقمية – شحن خطوط – اشتراكات – إنترنت – بطاقات – AI.<br><br>
+        هدفنا تقديم أفضل جودة وبأسرع وقت.
+    </div>
+</div>
+
+<!-- QR CODE -->
+<img class="qr" src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png">
+
+<footer>
+    © 2025 – Mehsin Services  
+    <br>Powered by Mehsin Husseini
+</footer>
+
+<script>
+function order(service){
+    const msg = encodeURIComponent("مرحبا، أريد طلب خدمة:\n" + service + "\nرقم الخط:\nملاحظات:");
+    window.location.href="https://wa.me/96170363783?text=" + msg;
+}
+</script>
+
 </body>
 </html>
