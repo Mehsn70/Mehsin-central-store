@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Streaming Services – Mehsin</title>
+
+<style>
+body{
+    margin:0;
+    background:#000;
+    color:white;
+    font-family:"Tahoma", sans-serif;
+}
+
+/* HERO */
+.hero{
+    height:260px;
+    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/streaming.jpeg') center/cover no-repeat;
+    position:relative;
+}
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%);
+}
+
+/* TITLE INSIDE HERO */
+.hero-text{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    font-size:26px;
+    font-weight:900;
+    color:#fff;
+    text-shadow:0 4px 20px rgba(0,0,0,0.9);
+}
+
+/* SECTION TITLE */
+.section-title{
+    margin:25px 15px 10px;
+    font-size:22px;
+    font-weight:900;
+}
+
+/* MOVIE ROW (NETFLIX STYLE) */
+.row{
+    display:flex;
+    overflow-x:auto;
+    gap:12px;
+    padding:10px 15px;
+}
+.row::-webkit-scrollbar{
+    height:6px;
+}
+.row::-webkit-scrollbar-thumb{
+    background:#444;
+    border-radius:4px;
+}
+
+.movie{
+    min-width:150px;
+    height:220px;
+    border-radius:10px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(0,0,0,0.7);
+}
+.movie::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+}
+.movie-title{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    font-size:14px;
+    font-weight:700;
+}
+
+/* OFFER CARDS */
+.offer{
+    background:#0d0d0d;
+    margin:15px;
+    padding:18px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 4px 18px rgba(0,0,0,0.5);
+}
+.offer-title{
+    font-size:20px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+.offer-sub{
+    font-size:14px;
+    opacity:0.8;
+    margin-bottom:12px;
+}
+.price{
+    font-size:22px;
+    font-weight:900;
+    color:#1aff71;
+    margin:10px 0;
+}
+
+/* Button */
+.btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    padding:12px;
+    background:#1aff71;
+    color:#000;
+    font-size:16px;
+    font-weight:700;
+    border-radius:10px;
+    text-decoration:none;
+    margin-top:5px;
+}
+
+footer{
+    text-align:center;
+    color:#999;
+    padding:30px 0;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-text">اشتراكات المشاهدة</div>
+</div>
+
+<!-- TRENDING -->
+<div class="section-title">🔥 الأكثر مشاهدة</div>
+<div class="row">
+    <div class="movie" style="background-image:url('https://i.imgur.com/0H4V6wZ.jpeg');">
+        <div class="movie-title">Money Heist</div>
+    </div>
+    <div class="movie" style="background-image:url('https://i.imgur.com/9FY1m4B.jpeg');">
+        <div class="movie-title">John Wick</div>
+    </div>
+    <div class="movie" style="background-image:url('https://i.imgur.com/Ukof7gm.jpeg');">
+        <div class="movie-title">Wednesday</div>
+    </div>
+</div>
+
+<!-- Netflix Offers -->
+<div class="section-title">🎬 عروض الاشتراكات</div>
+
+<div class="offer">
+    <div class="offer-title">Netflix – شهر</div>
+    <div class="offer-sub">اشتراك ممتاز – تسليم فوري – ضمان 30 يوم</div>
+    <div class="price">120,000 ل.ل</div>
+    <a href="https://wa.me/70363783?text=مرحبا،+بدي+اشترك+Netflix+شهر" class="btn">اطلب الآن</a>
+</div>
+
+<div class="offer">
+    <div class="offer-title">Shahid VIP – شهر</div>
+    <div class="offer-sub">جودة عالية – حساب رسمي – دعم فني</div>
+    <div class="price">110,000 ل.ل</div>
+    <a href="https://wa.me/70363783?text=مرحبا،+بدي+اشترك+Shahid+VIP" class="btn">اطلب الآن</a>
+</div>
+
+<div class="offer">
+    <div class="offer-title">OSN+ – شهر</div>
+    <div class="offer-sub">أفلام ومسلسلات حصرية</div>
+    <div class="price">150,000 ل.ل</div>
+    <a href="https://wa.me/70363783?text=مرحبا،+بدي+اشترك+OSN+" class="btn">اطلب الآن</a>
+</div>
+
+<footer>
+    © 2025 – Mehsin Services
+</footer>
+
+</body>
+</html>
