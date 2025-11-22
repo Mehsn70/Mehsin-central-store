@@ -2,249 +2,290 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mehsin Services – Home</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mehsin Services</title>
 
 <style>
-
-/* ===== ROOT COLORS ===== */
+/* COLORS */
 :root{
-    --grad1:#4c1d95;
-    --grad2:#1e3a8a;
-    --grad3:#312e81;
-    --text:#e5e7eb;
-    --gold:#facc15;
-    --card:#0b0f1a;
-    --muted:#94a3b8;
-    --radius:20px;
+    --gold:#d4af37;
+    --blue:#1a76ff;
+    --dark:#050505;
 }
 
-/* ===== GLOBAL ===== */
+/* GLOBAL */
 body{
     margin:0;
     background:#000;
-    color:var(--text);
+    color:white;
     font-family:"Tahoma",sans-serif;
 }
 
-/* ===== HERO SECTION ===== */
+/* HERO */
 .hero{
-    background:linear-gradient(160deg,var(--grad1),var(--grad2),var(--grad3));
-    padding:32px 20px 45px;
-    text-align:center;
-    box-shadow:0 15px 30px rgba(0,0,0,0.5);
-}
-.logo{
-    width:70px;
-    height:70px;
-    margin:auto;
-    border-radius:50%;
-    background:rgba(255,255,255,0.07);
-    border:2px solid var(--gold);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:26px;
-    font-weight:900;
-    color:var(--gold);
-    margin-bottom:10px;
-}
-.hero-title{
-    font-size:26px;
-    font-weight:900;
-    margin-bottom:8px;
-    color:white;
-}
-.hero-sub{
-    font-size:13px;
-    color:var(--muted);
-    line-height:1.6;
-    max-width:300px;
-    margin:auto;
-}
-
-/* ===== MAIN SECTION TITLE ===== */
-.section-title{
-    font-size:19px;
-    font-weight:800;
-    margin:22px 14px 6px;
-}
-.section-sub{
-    font-size:12px;
-    opacity:0.7;
-    margin:0 14px 12px;
-}
-
-/* ===== IMAGE CARDS ===== */
-.big-card{
-    display:block;
-    margin:14px;
-    height:170px;
-    background-size:cover;
-    background-position:center;
-    border-radius:var(--radius);
-    overflow:hidden;
-    text-decoration:none;
-    box-shadow:0 10px 25px rgba(0,0,0,0.55);
+    height:240px;
+    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg') center/cover no-repeat;
     position:relative;
+    display:flex;
+    align-items:flex-end;
+    padding:22px;
 }
-.big-card::after{
+.hero::after{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(to top,rgba(0,0,0,0.85),rgba(0,0,0,0.3));
+    background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.9));
 }
-.big-card-inner{
-    position:absolute;
-    bottom:10px;
-    right:14px;
+.hero-title{
+    position:relative;
+    z-index:2;
+    font-size:26px;
+    font-weight:900;
+    color:var(--gold);
+    text-shadow:0 2px 8px rgba(0,0,0,0.7);
 }
-.big-card-title{
-    font-size:18px;
-    font-weight:800;
-}
-.big-card-sub{
-    font-size:12px;
-    opacity:0.7;
-}
-
-/* ===== CONTACT SECTION ===== */
-.contact{
-    background:#0d1220;
-    margin:24px 12px;
-    padding:18px 14px;
-    border-radius:var(--radius);
-    box-shadow:0 12px 28px rgba(0,0,0,0.55);
-}
-.contact h3{
-    margin:0 0 6px;
-    font-size:17px;
-}
-.contact p{
-    font-size:12px;
-    opacity:0.7;
-    line-height:1.6;
+.hero-sub{
+    position:relative;
+    z-index:2;
+    font-size:14px;
+    opacity:0.95;
+    margin-top:6px;
 }
 
-/* ===== CONTACT DETAILS ===== */
-.contact-line{
-    font-size:13px;
-    margin-top:5px;
+/* QUICK CARDS */
+.grid-quick{
+    padding:12px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:12px;
 }
-.contact-strong{
-    font-weight:700;
-}
-
-/* ===== WHATSAPP BTN ===== */
-.whatsapp-btn{
-    display:block;
-    margin:18px auto 10px;
-    padding:12px 20px;
-    background:#25d366;
-    color:black;
-    text-align:center;
+.quick-link{
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,0.1);
+    padding:18px 12px;
+    border-radius:14px;
     text-decoration:none;
-    font-weight:800;
-    border-radius:40px;
-    box-shadow:0 10px 20px rgba(37,211,102,0.4);
+    color:white;
+    text-align:center;
+    font-size:14px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 6px 16px rgba(0,0,0,0.45);
 }
-
-/* ===== QR ===== */
-.qr{
+.quick-link .icon{
+    font-size:28px;
     display:block;
-    margin:20px auto;
-    width:170px;
-    border-radius:16px;
-    background:#000;
-    padding:10px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.7);
+    margin-bottom:6px;
+}
+.quick-link:hover{
+    border-color:var(--gold);
+    transform:scale(1.03);
 }
 
-/* ===== FOOTER ===== */
+/* SECTION */
+.section{
+    margin-top:26px;
+}
+.section-title{
+    font-size:20px;
+    font-weight:900;
+    padding:0 14px;
+}
+.section-sub{
+    font-size:13px;
+    opacity:0.75;
+    padding:0 14px;
+    margin-bottom:10px;
+}
+
+/* SECTION IMAGE BLOCK */
+.sec-img{
+    height:160px;
+    border-radius:14px;
+    margin:12px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+}
+.sec-img::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:14px;
+    background:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.75));
+}
+.sec-img-title{
+    position:absolute;
+    bottom:14px;
+    right:14px;
+    font-size:18px;
+    font-weight:700;
+    text-shadow:0 2px 6px black;
+}
+
+/* OFFER LABEL */
+.offer-badge{
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:var(--gold);
+    color:#000;
+    padding:4px 10px;
+    font-size:12px;
+    font-weight:700;
+    border-radius:12px;
+    z-index:5;
+}
+
+/* FOOTER */
 footer{
     text-align:center;
-    color:#777;
+    margin:40px 0 20px;
     font-size:12px;
-    padding-bottom:40px;
+    color:#aaa;
 }
-
+.qr{
+    width:150px;
+    height:150px;
+    margin:20px auto 10px;
+    display:block;
+}
+.contact-box{
+    margin:30px 12px;
+    background:#0a0a0a;
+    border-radius:16px;
+    padding:18px;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 4px 18px rgba(0,0,0,0.4);
+}
+.contact-title{
+    font-size:18px;
+    font-weight:900;
+    margin-bottom:6px;
+}
+.contact-text{
+    font-size:13px;
+    opacity:0.85;
+    line-height:1.6;
+    margin-bottom:12px;
+}
+.contact-btn{
+    display:inline-block;
+    padding:10px 20px;
+    border-radius:30px;
+    background:#25d366;
+    color:black;
+    font-weight:700;
+    text-decoration:none;
+    font-size:14px;
+    margin-top:10px;
+}
 </style>
 </head>
-
 <body>
 
 <!-- HERO -->
 <div class="hero">
-    <div class="logo">M</div>
-    <div class="hero-title">Mehsin Services</div>
-    <div class="hero-sub">
-        خدمات رقمية · تشريج خطوط · إنترنت Ushare · اشتراكات Netflix & Shahid  
+    <div>
+        <div class="hero-title">Mehsin Services</div>
+        <div class="hero-sub">خدمات رقمية – تشريجات – إنترنت – اشتراكات – AI</div>
     </div>
 </div>
 
-<!-- TELECOM -->
-<div class="section-title">خدمات الاتصالات</div>
-<div class="section-sub">Alfa · Touch – تشريج شهري وسنوي وبطاقات دولار</div>
+<!-- QUICK LINKS -->
+<div class="grid-quick">
 
-<a href="alfa.html" class="big-card" 
-   style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg');">
-    <div class="big-card-inner">
-        <div class="big-card-title">عروض Alfa</div>
-        <div class="big-card-sub">تشريج – عروض – كروت 4.5$ و7.5$</div>
-    </div>
-</a>
-
-<a href="touch.html" class="big-card" 
-   style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg');">
-    <div class="big-card-inner">
-        <div class="big-card-title">عروض Touch</div>
-        <div class="big-card-sub">سنة استقبال – كروت دولار – تنفيذ فوري</div>
-    </div>
-</a>
-
-<!-- USHARE INTERNET -->
-<div class="section-title">إنترنت Ushare</div>
-<div class="section-sub">باقات 5.5GB حتى 55GB – أسعار قوية</div>
-
-<a href="ushare.html" class="big-card"
-   style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg');">
-    <div class="big-card-inner">
-        <div class="big-card-title">Ushare Internet</div>
-        <div class="big-card-sub">سرعات عالية – تنفيد سوبر سريع</div>
-    </div>
-</a>
-
-<!-- STREAMING -->
-<div class="section-title">اشتراكات المشاهدة</div>
-<div class="section-sub">Netflix · Shahid · Disney+ · OSN+</div>
-
-<a href="streaming.html" class="big-card"
-   style="background-image:url('https://images.pexels.com/photos/7991370/pexels-photo-7991370.jpeg?auto=compress&cs=tinysrgb&w=1200');">
-    <div class="big-card-inner">
-        <div class="big-card-title">Netflix & Shahid</div>
-        <div class="big-card-sub">باقات شهرية وسنوية – جودة ممتازة</div>
-    </div>
-</a>
-
-<!-- CONTACT -->
-<div class="contact">
-    <h3>للتواصل والطلب</h3>
-    <p>جاهز لتنفيذ كل خدمات التشريج والإنترنت والاشتراكات فوراً وبشكل محترف.</p>
-
-    <div class="contact-line"><span class="contact-strong">واتساب:</span> 70363783</div>
-    <div class="contact-line"><span class="contact-strong">Facebook:</span> Coach Mehsin Husseiny</div>
-    <div class="contact-line"><span class="contact-strong">Email:</span> mehsinhusseini@gmail.com</div>
-
-    <a class="whatsapp-btn" href="https://wa.me/96170363783?text=مرحبا%20Mehsin%20Services">
-        تواصل مباشرة عبر واتساب
+    <a href="alfa.html" class="quick-link">
+        <span class="icon">📱</span>
+        <div class="quick-link-title">Alfa</div>
+        <div>تشريجات وخدمات Alfa</div>
     </a>
 
-    <img class="qr"
-         src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png">
+    <a href="touch.html" class="quick-link">
+        <span class="icon">📶</span>
+        <div class="quick-link-title">Touch</div>
+        <div>تشريجات وخدمات Touch</div>
+    </a>
+
+    <a href="ushare.html" class="quick-link">
+        <span class="icon">🌐</span>
+        <div class="quick-link-title">Internet</div>
+        <div>باقات Ushare</div>
+    </a>
+
+    <a href="streaming.html" class="quick-link">
+        <span class="icon">🎬</span>
+        <div class="quick-link-title">Streaming</div>
+        <div>Netflix & Shahid</div>
+    </a>
+
+</div>
+
+<!-- SECTION: TELECOM -->
+<div class="section">
+    <div class="section-title">خدمات الاتصالات</div>
+    <div class="section-sub">Alfa & Touch – أقوى عروض الأسبوع</div>
+
+    <!-- Alfa -->
+    <a href="alfa.html">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/maxresdefault%20(1).jpg');">
+            <div class="offer-badge">🔥 عرض اليوم</div>
+            <div class="sec-img-title">Alfa – أقوى تشريجات</div>
+        </div>
+    </a>
+
+    <!-- Touch -->
+    <a href="touch.html">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/G5etdnzXEAAkZf3.jpg');">
+            <div class="offer-badge">🔥 خصم مميز</div>
+            <div class="sec-img-title">Touch – عروض قوية</div>
+        </div>
+    </a>
+</div>
+
+<!-- SECTION: INTERNET -->
+<div class="section">
+    <div class="section-title">إنترنت Ushare</div>
+    <div class="section-sub">سرعات عالية – تنفيذ فوري – أفضل الأسعار</div>
+
+    <a href="ushare.html">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/images%20(4).jpeg');">
+            <div class="offer-badge">⚡ الأسرع</div>
+            <div class="sec-img-title">Ushare Internet</div>
+        </div>
+    </a>
+</div>
+
+<!-- SECTION: STREAMING -->
+<div class="section">
+    <div class="section-title">اشتراكات المشاهدة</div>
+    <div class="section-sub">Netflix · Shahid · Disney+ · OSN+</div>
+
+    <a href="streaming.html">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/streaming.jpeg');">
+            <div class="offer-badge">🎬 جديد!</div>
+            <div class="sec-img-title">Streaming Services</div>
+        </div>
+    </a>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-box">
+    <div class="contact-title">📞 للتواصل والطلب – Contact</div>
+    <div class="contact-text">
+        للاستفسار أو لطلب أي خدمة، راسلني مباشرة على واتساب أو الإيميل.<br>
+        شحن على خطوط Alfa و Touch، بالإضافة إلى شحن الألعاب والمنصات العالمية.<br>
+        يتم التسليم مباشرة عبر الواتساب بما يناسبك.
+    </div>
+
+    <a class="contact-btn" href="https://wa.me/96170363783">تواصل مباشرة عبر واتساب</a>
+
+    <img class="qr" src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png">
 </div>
 
 <footer>
-    © 2025 – Mehsin Services – جميع الحقوق محفوظة
+    © 2025 – Mehsin Services<br>
+    Powered by Mehsin Husseini
 </footer>
 
 </body>
