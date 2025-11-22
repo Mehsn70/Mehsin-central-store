@@ -9,6 +9,7 @@
 /* COLORS */
 :root{
     --gold:#d4af37;
+    --purple:#b78cff;
     --dark:#050505;
 }
 
@@ -18,6 +19,16 @@ body{
     background:#000;
     color:white;
     font-family:"Tahoma",sans-serif;
+}
+
+/* Fade Animation */
+.fade-in{
+    opacity:0;
+    transform:translateY(10px);
+    animation:fadeIn .7s ease forwards;
+}
+@keyframes fadeIn{
+    to{opacity:1;transform:none;}
 }
 
 /* HERO */
@@ -41,6 +52,7 @@ body{
     font-size:28px;
     font-weight:900;
     color:var(--gold);
+    text-shadow:0 3px 10px #000;
 }
 .hero-sub{
     position:relative;
@@ -68,6 +80,11 @@ body{
     font-size:14px;
     position:relative;
     box-shadow:0 6px 16px rgba(0,0,0,0.35);
+    transition:0.2s;
+}
+.quick-link:hover{
+    transform:scale(1.05);
+    border-color:var(--gold);
 }
 .quick-link .icon{
     font-size:28px;
@@ -91,7 +108,7 @@ body{
     margin-bottom:10px;
 }
 
-/* SECTION IMAGE BLOCK */
+/* IMAGE BLOCK */
 .sec-img{
     height:160px;
     border-radius:14px;
@@ -99,28 +116,48 @@ body{
     background-size:cover;
     background-position:center;
     position:relative;
+    overflow:hidden;
+    transition:0.25s;
+}
+.sec-img:hover{
+    transform:scale(1.02);
 }
 .sec-img::after{
     content:"";
     position:absolute;
     inset:0;
     border-radius:14px;
-    background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.85));
+    background:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.85));
 }
 
-/* ★★ النصوص اللي طلبت تكبيرها ★★ */
+/* BADGE */
+.badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background:rgba(255,215,0,0.85);
+    padding:6px 12px;
+    border-radius:30px;
+    color:#000;
+    font-size:13px;
+    font-weight:700;
+    z-index:10;
+    box-shadow:0 3px 10px rgba(0,0,0,0.5);
+}
+
+/* TITLES ON IMAGES */
 .sec-img-title{
     position:absolute;
     bottom:20px;
     right:20px;
-    font-size:28px;
+    font-size:26px;
     font-weight:900;
-    color:#5a8796;
+    color:var(--purple);
     text-shadow:0 4px 12px rgba(0,0,0,0.9);
     z-index:10;
 }
 
-/* CONTACT BLOCK MID */
+/* CONTACT BOX */
 .contact-box{
     background:#0a0a0a;
     padding:25px 20px;
@@ -143,13 +180,12 @@ footer{
     margin:20px auto;
     display:block;
 }
-
 </style>
 </head>
 <body>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero fade-in">
     <div>
         <div class="hero-title">Mehsin Services</div>
         <div class="hero-sub">خدمات رقمية – تشريجات – إنترنت – اشتراكات – AI</div>
@@ -157,7 +193,7 @@ footer{
 </div>
 
 <!-- QUICK LINKS -->
-<div class="grid-quick">
+<div class="grid-quick fade-in" style="animation-delay:.2s;">
 
     <a href="alfa.html" class="quick-link">
         <span class="icon">📱</span>
@@ -185,58 +221,54 @@ footer{
 
 </div>
 
-<!-- SECTION: TELECOM -->
-<div class="section">
+<!-- TELECOM -->
+<div class="section fade-in" style="animation-delay:.35s;">
     <div class="section-title">خدمات الاتصالات</div>
     <div class="section-sub">أقوى عروض الأسبوع – Alfa & Touch</div>
 
     <a href="alfa.html">
-        <div class="sec-img"
-             style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/maxresdefault%20(1).jpg');">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/maxresdefault%20(1).jpg');">
             <div class="badge">🔥 عرض اليوم</div>
             <div class="sec-img-title">Alfa – أقوى تشريجات</div>
         </div>
     </a>
 
     <a href="touch.html">
-        <div class="sec-img"
-             style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/G5etdnzXEAAkZf3.jpg');">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/G5etdnzXEAAkZf3.jpg');">
             <div class="badge">🔥 خصم مميز</div>
             <div class="sec-img-title">Touch – عروض قوية</div>
         </div>
     </a>
 </div>
 
-<!-- SECTION: INTERNET -->
-<div class="section">
+<!-- INTERNET -->
+<div class="section fade-in" style="animation-delay:.45s;">
     <div class="section-title">إنترنت Ushare</div>
     <div class="section-sub">سرعات عالية – تنفيذ فوري – أفضل الأسعار</div>
 
     <a href="ushare.html">
-        <div class="sec-img"
-             style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/images%20(4).jpeg');">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/images%20(4).jpeg');">
             <div class="badge">⚡ الأسرع</div>
             <div class="sec-img-title">Ushare Internet</div>
         </div>
     </a>
 </div>
 
-<!-- SECTION: STREAMING -->
-<div class="section">
+<!-- STREAMING -->
+<div class="section fade-in" style="animation-delay:.55s;">
     <div class="section-title">اشتراكات المشاهدة</div>
     <div class="section-sub">Netflix · Shahid · Disney+ · OSN+</div>
 
     <a href="streaming.html">
-        <div class="sec-img"
-             style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/streaming.jpeg');">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/streaming.jpeg');">
             <div class="badge">🎬 جديد!</div>
             <div class="sec-img-title">Streaming Services</div>
         </div>
     </a>
 </div>
 
-<!-- CONTACT (CENTERED) -->
-<div class="contact-box">
+<!-- CONTACT -->
+<div class="contact-box fade-in" style="animation-delay:.65s;">
 
     <h2 style="margin-top:0; font-size:22px;">📞 للتواصل والطلب – Contact</h2>
 
