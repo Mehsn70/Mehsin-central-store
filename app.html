@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -10,6 +9,7 @@
 /* COLORS */
 :root{
     --gold:#d4af37;
+    --purple:#9B5CFF;   /* البنفسجي الاحترافي */
     --dark:#050505;
 }
 
@@ -23,7 +23,7 @@ body{
 
 /* HERO */
 .hero{
-    height:260px;
+    height:230px;
     background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg') center/cover no-repeat;
     position:relative;
     display:flex;
@@ -34,14 +34,15 @@ body{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.88));
+    background:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(0,0,0,0.85));
 }
 .hero-title{
     position:relative;
     z-index:2;
-    font-size:28px;
+    font-size:26px;
     font-weight:900;
     color:var(--gold);
+    text-shadow:0 2px 8px rgba(0,0,0,0.6);
 }
 .hero-sub{
     position:relative;
@@ -51,7 +52,7 @@ body{
     margin-top:6px;
 }
 
-/* QUICK LINKS */
+/* QUICK CARDS */
 .grid-quick{
     padding:12px;
     display:grid;
@@ -68,12 +69,17 @@ body{
     text-align:center;
     font-size:14px;
     position:relative;
-    box-shadow:0 6px 16px rgba(0,0,0,0.35);
+    overflow:hidden;
+    box-shadow:0 6px 16px rgba(0,0,0,0.45);
 }
 .quick-link .icon{
-    font-size:28px;
+    font-size:30px;
     display:block;
     margin-bottom:6px;
+}
+.quick-link:hover{
+    border-color:var(--gold);
+    transform:scale(1.02);
 }
 
 /* SECTION */
@@ -81,7 +87,7 @@ body{
     margin-top:26px;
 }
 .section-title{
-    font-size:22px;
+    font-size:20px;
     font-weight:900;
     padding:0 14px;
 }
@@ -92,7 +98,7 @@ body{
     margin-bottom:10px;
 }
 
-/* SECTION IMAGE BLOCK */
+/* IMAGE BLOCK */
 .sec-img{
     height:160px;
     border-radius:14px;
@@ -100,51 +106,38 @@ body{
     background-size:cover;
     background-position:center;
     position:relative;
+    overflow:hidden;
 }
 .sec-img::after{
     content:"";
     position:absolute;
     inset:0;
     border-radius:14px;
-    background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.85));
+    background:linear-gradient(180deg,rgba(0,0,0,0.15),rgba(0,0,0,0.85));
 }
-
-/* ★★ النصوص اللي طلبت تكبيرها ★★ */
 .sec-img-title{
     position:absolute;
-    bottom:20px;
-    right:20px;
-    font-size:28px;
-    font-weight:900;
-    color:#ffffff;
-    text-shadow:0 4px 12px rgba(0,0,0,0.9);
-    z-index:10;
-}
-
-/* CONTACT BLOCK MID */
-.contact-box{
-    background:#0a0a0a;
-    padding:25px 20px;
-    border-radius:16px;
-    margin:40px 14px;
-    border:1px solid rgba(255,255,255,0.1);
-    text-align:center;
+    bottom:12px;
+    right:12px;
+    font-size:22px;   /* تكبير الخط */
+    font-weight:800;
+    color:var(--purple); /* البنفسجي الجديد */
+    text-shadow:0 3px 10px rgba(0,0,0,0.9);
 }
 
 /* FOOTER */
 footer{
     text-align:center;
-    margin:25px 0 20px;
+    margin:40px 0 20px;
     font-size:12px;
     color:#aaa;
 }
 .qr{
-    width:150px;
-    height:150px;
-    margin:20px auto;
+    width:130px;
+    height:130px;
+    margin:20px auto 10px;
     display:block;
 }
-
 </style>
 </head>
 <body>
@@ -161,103 +154,76 @@ footer{
 <div class="grid-quick">
 
     <a href="alfa.html" class="quick-link">
-        <span class="icon">🔥</span>
-        <div class="quick-link-title">Alfa</div>
+        <span class="icon">📱</span>
+        <div>Alfa</div>
         <div>تشريجات وخدمات Alfa</div>
     </a>
 
     <a href="touch.html" class="quick-link">
-        <span class="icon">⚡</span>
-        <div class="quick-link-title">Touch</div>
+        <span class="icon">📶</span>
+        <div>Touch</div>
         <div>تشريجات وخدمات Touch</div>
     </a>
 
     <a href="ushare.html" class="quick-link">
         <span class="icon">🌐</span>
-        <div class="quick-link-title">Internet</div>
+        <div>Internet</div>
         <div>باقات Ushare</div>
     </a>
 
     <a href="streaming.html" class="quick-link">
         <span class="icon">🎬</span>
-        <div class="quick-link-title">Streaming</div>
+        <div>Streaming</div>
         <div>Netflix & Shahid</div>
     </a>
 
 </div>
 
-<!-- SECTION: TELECOM -->
+<!-- SECTION TELECOM -->
 <div class="section">
     <div class="section-title">خدمات الاتصالات</div>
     <div class="section-sub">أقوى عروض الأسبوع – Alfa & Touch</div>
 
     <a href="alfa.html">
-        <div class="sec-img"
-             style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/maxresdefault%20(1).jpg');">
-            <div class="badge">🔥 عرض اليوم</div>
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/maxresdefault%20(1).jpg');">
             <div class="sec-img-title">Alfa – أقوى تشريجات</div>
         </div>
     </a>
 
     <a href="touch.html">
-        <div class="sec-img"
-             style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/G5etdnzXEAAkZf3.jpg');">
-            <div class="badge">🔥 خصم مميز</div>
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/G5etdnzXEAAkZf3.jpg');">
             <div class="sec-img-title">Touch – عروض قوية</div>
         </div>
     </a>
 </div>
 
-<!-- SECTION: INTERNET -->
+<!-- USHARE -->
 <div class="section">
-    <div class="section-title">إنترنت Ushare</div>
+    <div class="section-title">Ushare إنترنت</div>
     <div class="section-sub">سرعات عالية – تنفيذ فوري – أفضل الأسعار</div>
-
     <a href="ushare.html">
-        <div class="sec-img"
-             style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/images%20(4).jpeg');">
-            <div class="badge">⚡ الأسرع</div>
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/images%20(4).jpeg');">
             <div class="sec-img-title">Ushare Internet</div>
         </div>
     </a>
 </div>
 
-<!-- SECTION: STREAMING -->
+<!-- STREAMING -->
 <div class="section">
     <div class="section-title">اشتراكات المشاهدة</div>
-    <div class="section-sub">Netflix · Shahid · Disney+ · OSN+</div>
-
+    <div class="section-sub">Netflix · Shahid · Disney+ · OSN</div>
     <a href="streaming.html">
-        <div class="sec-img"
-             style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/streaming.jpeg');">
-            <div class="badge">🎬 جديد!</div>
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/streaming.jpeg');">
             <div class="sec-img-title">Streaming Services</div>
         </div>
     </a>
 </div>
 
-<!-- CONTACT (CENTERED) -->
-<div class="contact-box">
-
-    <h2 style="margin-top:0; font-size:22px;">📞 للتواصل والطلب – Contact</h2>
-
-    <p style="opacity:0.9;">
-        للاستفسار أو لطلب أي خدمة، راسلني مباشرة عبر واتساب.<br>
-        شحن على خطوط Alfa و Touch، بالإضافة إلى شحن الألعاب والمنصات العالمية.
-    </p>
-
-    <a href="https://wa.me/70363783" 
-       style="display:block;background:#30d158;color:#000;font-weight:900;
-       padding:14px;border-radius:14px;text-decoration:none;margin:16px auto;width:80%;max-width:260px;">
-       تواصل مباشرة عبر واتساب
-    </a>
-
-    <img class="qr" src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png">
-
-</div>
+<!-- QR CODE -->
+<img class="qr" src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png">
 
 <footer>
-    Mehsin Services – 2025 ©<br>
+    © 2025 – Mehsin Services<br>
     Powered by Mehsin Husseini
 </footer>
 
