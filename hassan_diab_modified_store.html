@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mehsin Services</title>
+
+<style>
+/* COLORS */
+:root{
+    --gold:#d4af37;
+    --purple:#b78cff;
+    --dark:#050505;
+}
+
+/* GLOBAL */
+body{
+    margin:0;
+    background:#000;
+    color:white;
+    font-family:"Tahoma",sans-serif;
+    overflow:hidden; /* يمنع الحركة قبل انتهاء السبلّاش */
+}
+
+/* SPLASH SCREEN */
+#splash {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:#000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation: fadeOut 0.6s ease forwards;
+    animation-delay:1.5s;
+}
+
+#splash img {
+    width: 70%; 
+    max-width: 450px;
+    height: auto;
+    border-radius:12px;
+    animation: fadeInSplash 1.2s ease forwards;
+}
+
+#splash p{
+    margin-top:14px;
+    font-size:18px;
+    color:#ccc;
+    animation: fadeInSplash 1.2s ease forwards;
+}
+
+@keyframes fadeInSplash{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:none;}
+}
+
+@keyframes fadeOut{
+    to{opacity:0; visibility:hidden;}
+}
+
+/* Fade Animation */
+.fade-in{
+    opacity:0;
+    transform:translateY(10px);
+    animation:fadeIn .7s ease forwards;
+}
+@keyframes fadeIn{
+    to{opacity:1;transform:none;}
+}
+
+/* HERO */
+.hero{
+    height:260px;
+    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/pngtree-the-future-of-smartphones-a-3d-experience-picture-image_3928929.png') center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    padding:20px;
+}
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.88));
+}
+.hero-title{
+    position:relative;
+    z-index:2;
+    font-size:28px;
+    font-weight:900;
+    color:var(--gold);
+    text-shadow:0 3px 10px #000;
+}
+.hero-sub{
+    position:relative;
+    z-index:2;
+    font-size:14px;
+    opacity:0.9;
+    margin-top:6px;
+}
+
+/* QUICK LINKS */
+.grid-quick{
+    padding:12px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:12px;
+}
+.quick-link{
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,0.1);
+    padding:18px 12px;
+    border-radius:14px;
+    text-decoration:none;
+    color:white;
+    text-align:center;
+    font-size:14px;
+    position:relative;
+    box-shadow:0 6px 16px rgba(0,0,0,0.35);
+    transition:0.2s;
+}
+.quick-link:hover{
+    transform:scale(1.05);
+    border-color:var(--gold);
+}
+.quick-link .icon{
+    font-size:28px;
+    display:block;
+    margin-bottom:6px;
+}
+
+/* SECTION */
+.section{
+    margin-top:26px;
+}
+.section-title{
+    font-size:22px;
+    font-weight:900;
+    padding:0 14px;
+}
+.section-sub{
+    font-size:13px;
+    opacity:0.75;
+    padding:0 14px;
+    margin-bottom:10px;
+}
+
+/* IMAGE BLOCK */
+.sec-img{
+    height:160px;
+    border-radius:14px;
+    margin:12px;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    overflow:hidden;
+    transition:0.25s;
+}
+.sec-img:hover{
+    transform:scale(1.02);
+}
+.sec-img::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:14px;
+    background:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.85));
+}
+
+/* BADGE */
+.badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background:rgba(255,215,0,0.85);
+    padding:6px 12px;
+    border-radius:30px;
+    color:#000;
+    font-size:13px;
+    font-weight:700;
+    z-index:10;
+    box-shadow:0 3px 10px rgba(0,0,0,0.5);
+}
+
+/* TITLES ON IMAGES */
+.sec-img-title{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    font-size:26px;
+    font-weight:900;
+    color:var(--purple);
+    text-shadow:0 4px 12px rgba(0,0,0,0.9);
+    z-index:10;
+}
+
+/* CONTACT BOX */
+.contact-box{
+    background:#0a0a0a;
+    padding:25px 20px;
+    border-radius:16px;
+    margin:40px 14px;
+    border:1px solid rgba(255,255,255,0.1);
+    text-align:center;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    margin:25px 0 20px;
+    font-size:12px;
+    color:#aaa;
+}
+.qr{
+    width:150px;
+    height:150px;
+    margin:20px auto;
+    display:block;
+}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+    <img src= https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000fc7072438ca9f69b6963c211.png   <p>Loading...</p>
+</div>
+
+<!-- HERO -->
+<div class="hero fade-in">
+    <div>
+        <div class="hero-title">Hassan Diab Central Store</div>
+        <div class="hero-sub">خدمات رقمية – تشريجات – إنترنت – اشتراكات – AI</div>
+    </div>
+</div>
+
+<!-- QUICK LINKS -->
+<div class="grid-quick fade-in" style="animation-delay:.2s;">
+
+    <a href="alfa.html" class="quick-link">
+        <span class="icon">📱</span>
+        <div class="quick-link-title">Alfa</div>
+        <div>تشريجات وخدمات Alfa</div>
+    </a>
+
+    <a href="touch.html" class="quick-link">
+        <span class="icon">📶</span>
+        <div class="quick-link-title">Touch</div>
+        <div>تشريجات وخدمات Touch</div>
+    </a>
+
+    <a href="ushare.html" class="quick-link">
+        <span class="icon">🌐</span>
+        <div class="quick-link-title">Internet</div>
+        <div>باقات Ushare</div>
+    </a>
+
+    <a href="streaming.html" class="quick-link">
+        <span class="icon">🎬</span>
+        <div class="quick-link-title">Streaming</div>
+        <div>Netflix & Shahid</div>
+    </a>
+</div>
+
+<!-- TELECOM -->
+<div class="section fade-in" style="animation-delay:.35s;">
+    <div class="section-title">خدمات الاتصالات</div>
+    <div class="section-sub">أقوى عروض الأسبوع – Alfa & Touch</div>
+
+    <a href="alfa.html">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/maxresdefault%20(1).jpg');">
+            <div class="badge">🔥 عرض اليوم</div>
+            <div class="sec-img-title">Alfa – أقوى تشريجات</div>
+        </div>
+    </a>
+
+    <a href="touch.html">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/G5etdnzXEAAkZf3.jpg');">
+            <div class="badge">🔥 خصم مميز</div>
+            <div class="sec-img-title">Touch – عروض قوية</div>
+        </div>
+    </a>
+</div>
+
+<!-- INTERNET -->
+<div class="section fade-in" style="animation-delay:.45s;">
+    <div class="section-title">إنترنت Ushare</div>
+    <div class="section-sub">سرعات عالية – تنفيذ فوري – أفضل الأسعار</div>
+
+    <a href="ushare.html">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/images%20(4).jpeg');">
+            <div class="badge">⚡ الأسرع</div>
+            <div class="sec-img-title">Ushare Internet</div>
+        </div>
+    </a>
+</div>
+
+<!-- STREAMING -->
+<div class="section fade-in" style="animation-delay:.55s;">
+    <div class="section-title">اشتراكات المشاهدة</div>
+    <div class="section-sub">Netflix · Shahid · Disney+ · OSN+</div>
+
+    <a href="streaming.html">
+        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/streaming.jpeg');">
+            <div class="badge">🎬 جديد!</div>
+            <div class="sec-img-title">Streaming Services</div>
+        </div>
+    </a>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-box fade-in" style="animation-delay:.65s;">
+
+    <h2 style="margin-top:0; font-size:22px;">📞 للتواصل والطلب – Contact</h2>
+
+    <p style="opacity:0.9;">
+        للاستفسار أو لطلب أي خدمة، راسلني مباشرة عبر واتساب.<br>
+        شحن على خطوط Alfa و Touch، بالإضافة إلى شحن الألعاب والمنصات العالمية.
+    </p>
+
+    <a href="https://wa.me/70363783" 
+       style="display:block;background:#30d158;color:#000;font-weight:900;
+       padding:14px;border-radius:14px;text-decoration:none;margin:16px auto;width:80%;max-width:260px;">
+       تواصل مباشرة عبر واتساب
+    </a>
+
+    <img class="qr" src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000d73c720aad9af96a0805847e.png">
+
+</div>
+
+<footer>
+    Hassan Diab Central Store – 2025 ©<br>
+    Powered by Hassan Diab
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        document.body.style.overflow = "auto";
+    }, 2200);
+});
+</script>
+
+</body>
+</html>
