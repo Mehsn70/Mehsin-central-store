@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سنترال النخبة - Elite Telecom</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- المتغيرات والتأسيس --- */
+        :root {
+            --primary: #cfb53b; /* ذهبي فاخر */
+            --primary-hover: #b89f2b;
+            --dark-bg: #0f1014;
+            --card-bg: rgba(30, 32, 40, 0.7);
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --accent-red: #ff4757;
+            --accent-blue: #2ed573;
+        }
+
+        * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(207, 181, 59, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(46, 213, 115, 0.05) 0%, transparent 20%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- الهيدر الفخم --- */
+        header {
+            background: rgba(15, 16, 20, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo span { color: var(--primary); }
+
+        .status-badge {
+            font-size: 12px;
+            padding: 4px 10px;
+            background: rgba(46, 213, 115, 0.15);
+            color: var(--accent-blue);
+            border-radius: 20px;
+            border: 1px solid rgba(46, 213, 115, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .dot { width: 6px; height: 6px; background: var(--accent-blue); border-radius: 50%; box-shadow: 0 0 5px var(--accent-blue); }
+
+        /* --- قسم الترحيب --- */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+        .hero h1 { margin: 0; font-size: 32px; font-weight: 800; background: linear-gradient(to bottom, #fff, #aaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-muted); margin-top: 10px; font-size: 14px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+        /* --- أزرار التنقل (التبويبات) --- */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(207, 181, 59, 0.25);
+        }
+
+        /* --- شبكة المنتجات --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+            padding: 0 20px 80px; /* Padding bottom for footer */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px; left: 10px;
+            background: var(--primary);
+            color: #000;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 6px;
+            z-index: 2;
+        }
+
+        .img-container {
+            height: 140px;
+            background: #1a1c24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .img-container img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            transition: 0.3s;
+        }
+
+        .product-card:hover img { transform: scale(1.1); }
+
+        .card-details { padding: 15px; }
+        
+        .prod-cat { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .prod-title { font-size: 16px; font-weight: 700; margin: 5px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .price { color: var(--primary); font-weight: 900; font-size: 16px; }
+        .currency { font-size: 11px; color: var(--text-muted); }
+
+        .btn-order {
+            width: 100%;
+            margin-top: 12px;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-order:hover {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+        }
+
+        /* --- الفوتر --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+            background: #000;
+        }
+        .qr-section {
+            margin-bottom: 20px;
+        }
+        .qr-img {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        /* --- تأثيرات الحركة --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Media Queries --- */
+        @media (max-width: 600px) {
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .hero h1 { font-size: 24px; }
+            .tab-btn { padding: 10px 16px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <span style="font-size:24px;">⚡</span> Central<span>Elite</span>
+        </div>
+        <div class="status-badge">
+            <div class="dot"></div> متاح الآن
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>جميع الخدمات بين يديك</h1>
+        <p>تشريجات، هواتف حديثة، وإكسسوارات. اطلب مباشرة عبر الواتساب بأفضل الأسعار.</p>
+    </div>
+
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="filterProducts('all', this)">📌 الكل</button>
+        <button class="tab-btn" onclick="filterProducts('recharge', this)">📱 تشريجات</button>
+        <button class="tab-btn" onclick="filterProducts('phones', this)">🤳 هواتف</button>
+        <button class="tab-btn" onclick="filterProducts('internet', this)">🌐 إنترنت</button>
+    </div>
+
+    <div class="products-grid" id="grid">
+        </div>
+
+    <footer>
+        <div class="qr-section">
+            <p>امسح الكود لزيارة المتجر دائماً</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=EliteServices" class="qr-img" alt="QR Code">
+        </div>
+        <p>تصميم وتطوير: <b>محسن الحسيني</b></p>
+        <p style="opacity: 0.5; font-size: 11px;">Elite Digital Solutions © 2025</p>
+    </footer>
+
+    <script>
+        // --- قاعدة البيانات (يمكنك إضافة وتعديل المنتجات هنا بسهولة) ---
+        const products = [
+            {
+                id: 1,
+                category: 'recharge',
+                title: 'Alfa - $4.5',
+                price: '550,000',
+                currency: 'LBP',
+                tag: 'الأكثر مبيعاً',
+                img: 'https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg'
+            },
+            {
+                id: 2,
+                category: 'recharge',
+                title: 'Touch - $7.5',
+                price: '900,000',
+                currency: 'LBP',
+                tag: 'عرض',
+                img: 'https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg'
+            },
+            {
+                id: 3,
+                category: 'phones',
+                title: 'Samsung S24 Ultra',
+                price: '1,100',
+                currency: 'USD',
+                tag: 'جديد',
+                img: 'https://images.samsung.com/is/image/samsung/p6pim/levant/2401/gallery/levant-galaxy-s24-s928-sm-s928bztqmea-539322849?$650_519_PNG$'
+            },
+            {
+                id: 4,
+                category: 'phones',
+                title: 'iPhone 15 Pro',
+                price: '1,050',
+                currency: 'USD',
+                tag: 'موصى به',
+                img: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1692846363002'
+            },
+            {
+                id: 5,
+                category: 'internet',
+                title: 'Ushare - اشتراك شهري',
+                price: 'Varied',
+                currency: '$$',
+                tag: 'سرعة عالية',
+                img: 'https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/images%20(4).jpeg'
+            },
+            {
+                id: 6,
+                category: 'phones',
+                title: 'Poco X6 Pro',
+                price: '340',
+                currency: 'USD',
+                tag: 'للألعاب',
+                img: 'https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1704940582.02941017!348x348.png'
+            }
+        ];
+
+        const grid = document.getElementById('grid');
+
+        // دالة لعرض المنتجات
+        function renderProducts(filter = 'all') {
+            grid.innerHTML = '';
+            
+            const filtered = filter === 'all' 
+                ? products 
+                : products.filter(p => p.category === filter);
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="card-badge">${p.tag}</div>
+                    <div class="img-container">
+                        <img src="${p.img}" alt="${p.title}">
+                    </div>
+                    <div class="card-details">
+                        <div class="prod-cat">${p.category.toUpperCase()}</div>
+                        <div class="prod-title">${p.title}</div>
+                        <div class="price-row">
+                            <div class="price">${p.price} <span class="currency">${p.currency}</span></div>
+                        </div>
+                        <button class="btn-order" onclick="orderNow('${p.title}')">
+                            <span>🛒</span> اطلب عبر واتساب
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // دالة الفلترة وتفعيل الزر
+        function filterProducts(cat, btn) {
+            // تحديث ستايل الأزرار
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // إعادة رسم المنتجات
+            renderProducts(cat);
+        }
+
+        // دالة الطلب
+        function orderNow(item) {
+            const phone = "96170363783"; // رقمك أو رقم المحل
+            const text = encodeURIComponent(`مرحباً، أريد الاستفسار أو طلب: ${item}`);
+            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+        }
+
+        // التشغيل عند البداية
+        renderProducts();
+
+    </script>
+</body>
+</html>
