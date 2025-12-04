@@ -2,348 +2,431 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Mehsin Services</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السنترال الملكي | Elite Central Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-/* COLORS */
-:root{
-    --gold:#d4af37;
-    --purple:#b78cff;
-    --dark:#050505;
-}
+    <style>
+        :root {
+            --primary-color: #0f172a; /* كحلي غامق جداً */
+            --secondary-color: #1e293b; /* كحلي أفتح قليلاً للخلفيات */
+            --accent-color: #ef4444; /* أحمر الويش موني */
+            --gold-color: #d4af37; /* ذهبي للفخامة */
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --transition: all 0.3s ease;
+        }
 
-/* GLOBAL */
-body{
-    margin:0;
-    background:#000;
-    color:white;
-    font-family:"Tahoma",sans-serif;
-    overflow:hidden; /* يمنع الحركة قبل انتهاء السبلّاش */
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-/* SPLASH SCREEN */
-#splash {
-    position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:#000;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    animation: fadeOut 0.6s ease forwards;
-    animation-delay:1.5s;
-}
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
 
-#splash img {
-    width: 70%; 
-    max-width: 450px;
-    height: auto;
-    border-radius:12px;
-    animation: fadeInSplash 1.2s ease forwards;
-}
+        /* --- Header & Nav --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
-#splash p{
-    margin-top:14px;
-    font-size:18px;
-    color:#ccc;
-    animation: fadeInSplash 1.2s ease forwards;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--gold-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-@keyframes fadeInSplash{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:none;}
-}
+        .logo span { color: white; }
 
-@keyframes fadeOut{
-    to{opacity:0; visibility:hidden;}
-}
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
 
-/* Fade Animation */
-.fade-in{
-    opacity:0;
-    transform:translateY(10px);
-    animation:fadeIn .7s ease forwards;
-}
-@keyframes fadeIn{
-    to{opacity:1;transform:none;}
-}
+        nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 700;
+            transition: var(--transition);
+        }
 
-/* HERO */
-.hero{
-    height:260px;
-    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg') center/cover no-repeat;
-    position:relative;
-    display:flex;
-    align-items:flex-end;
-    padding:20px;
-}
-.hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.88));
-}
-.hero-title{
-    position:relative;
-    z-index:2;
-    font-size:28px;
-    font-weight:900;
-    color:var(--gold);
-    text-shadow:0 3px 10px #000;
-}
-.hero-sub{
-    position:relative;
-    z-index:2;
-    font-size:14px;
-    opacity:0.9;
-    margin-top:6px;
-}
+        nav a:hover { color: var(--gold-color); }
 
-/* QUICK LINKS */
-.grid-quick{
-    padding:12px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-    gap:12px;
-}
-.quick-link{
-    background:#0d0d0d;
-    border:1px solid rgba(255,255,255,0.1);
-    padding:18px 12px;
-    border-radius:14px;
-    text-decoration:none;
-    color:white;
-    text-align:center;
-    font-size:14px;
-    position:relative;
-    box-shadow:0 6px 16px rgba(0,0,0,0.35);
-    transition:0.2s;
-}
-.quick-link:hover{
-    transform:scale(1.05);
-    border-color:var(--gold);
-}
-.quick-link .icon{
-    font-size:28px;
-    display:block;
-    margin-bottom:6px;
-}
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 0 20px;
+        }
 
-/* SECTION */
-.section{
-    margin-top:26px;
-}
-.section-title{
-    font-size:22px;
-    font-weight:900;
-    padding:0 14px;
-}
-.section-sub{
-    font-size:13px;
-    opacity:0.75;
-    padding:0 14px;
-    margin-bottom:10px;
-}
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
 
-/* IMAGE BLOCK */
-.sec-img{
-    height:160px;
-    border-radius:14px;
-    margin:12px;
-    background-size:cover;
-    background-position:center;
-    position:relative;
-    overflow:hidden;
-    transition:0.25s;
-}
-.sec-img:hover{
-    transform:scale(1.02);
-}
-.sec-img::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:14px;
-    background:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.85));
-}
+        .hero-content span { color: var(--gold-color); }
 
-/* BADGE */
-.badge{
-    position:absolute;
-    top:14px;
-    left:14px;
-    background:rgba(255,215,0,0.85);
-    padding:6px 12px;
-    border-radius:30px;
-    color:#000;
-    font-size:13px;
-    font-weight:700;
-    z-index:10;
-    box-shadow:0 3px 10px rgba(0,0,0,0.5);
-}
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1.2s ease;
+        }
 
-/* TITLES ON IMAGES */
-.sec-img-title{
-    position:absolute;
-    bottom:20px;
-    right:20px;
-    font-size:26px;
-    font-weight:900;
-    color:var(--purple);
-    text-shadow:0 4px 12px rgba(0,0,0,0.9);
-    z-index:10;
-}
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: var(--gold-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 50px;
+            transition: var(--transition);
+            border: 2px solid var(--gold-color);
+            animation: fadeInUp 1.4s ease;
+        }
 
-/* CONTACT BOX */
-.contact-box{
-    background:#0a0a0a;
-    padding:25px 20px;
-    border-radius:16px;
-    margin:40px 14px;
-    border:1px solid rgba(255,255,255,0.1);
-    text-align:center;
-}
+        .btn:hover {
+            background: transparent;
+            color: var(--gold-color);
+            transform: translateY(-3px);
+        }
 
-/* FOOTER */
-footer{
-    text-align:center;
-    margin:25px 0 20px;
-    font-size:12px;
-    color:#aaa;
-}
-.qr{
-    width:150px;
-    height:150px;
-    margin:20px auto;
-    display:block;
-}
-</style>
+        /* --- Services Section --- */
+        .section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--gold-color);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--secondary-color);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: var(--gold-color);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p { color: var(--text-gray); }
+
+        /* --- Whish Money Section (Special) --- */
+        .whish-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d0f12 100%);
+            border-radius: 20px;
+            margin: 80px 5%;
+            padding: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .whish-content { flex: 1; min-width: 300px; z-index: 2; }
+        .whish-content h2 { font-size: 3rem; margin-bottom: 20px; color: white; }
+        .whish-content h2 span { color: var(--accent-color); }
+        .whish-content ul { list-style: none; margin-top: 20px; }
+        .whish-content ul li { font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .whish-content ul li i { color: var(--accent-color); }
+
+        .whish-visual {
+            font-size: 10rem;
+            color: rgba(239, 68, 68, 0.1);
+            position: absolute;
+            left: -20px;
+            bottom: -20px;
+            transform: rotate(-15deg);
+        }
+
+        /* --- Products Grid --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .product-card:hover { transform: scale(1.03); }
+
+        .product-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        .product-info {
+            padding: 15px;
+            color: #333;
+            text-align: center;
+        }
+
+        .product-info h4 { font-size: 1.2rem; margin-bottom: 5px; color: var(--primary-color); }
+        .product-price { color: var(--accent-color); font-weight: bold; font-size: 1.1rem; }
+
+        /* --- Contact / Floating Whatsapp --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-decoration: none;
+            z-index: 1000;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            nav { display: none; } /* Simplified for demo, can add hamburger later */
+            .whish-section { padding: 30px; text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- SPLASH -->
-<div id="splash">
-    <img src= https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000fc7072438ca9f69b6963c211.png   <p>Loading...</p>
-</div>
+    <header>
+        <div class="logo">Central<span>Store</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#products">أحدث الأجهزة</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- HERO -->
-<div class="hero fade-in">
-    <div>
-        <div class="hero-title">Mehsin Services</div>
-        <div class="hero-sub">خدمات رقمية – تشريجات – إنترنت – اشتراكات – AI</div>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>عالم من <span id="typing-text">التكنولوجيا</span> بين يديك</h1>
+            <p>الوجهة الأولى للخدمات الرقمية، الهواتف الذكية، وحلول الدفع الإلكتروني. كل ما تحتاجه في مكان واحد.</p>
+            <a href="https://wa.me/96170363783" class="btn">تواصل معنا الآن <i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <h2 class="section-title">خدماتنا المميزة</h2>
+        <div class="cards-container">
+            <div class="card">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h3>تشريجات خليوية</h3>
+                <p>وكيل معتمد لخدمات Alfa و Touch. بطاقات، أيام، وخدمات إنترنت فورية.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-wifi"></i>
+                <h3>إنترنت وباقات</h3>
+                <p>اشتراكات Ushare وإنترنت منزلي بسرعات عالية وتفعيل فوري.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>بطاقات ألعاب</h3>
+                <p>PUBG، PlayStation، Steam وكل منصات الألعاب العالمية.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h3>صيانة فورية</h3>
+                <p>قسم متخصص لصيانة الهواتف واللابتوب بأحدث المعدات.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="whish-section">
+        <div class="whish-visual"><i class="fa-solid fa-money-bill-transfer"></i></div>
+        <div class="whish-content">
+            <h2>خدمات <span>Whish Money</span></h2>
+            <p>نحن نقطة معتمدة لجميع خدمات ويش موني. سهولة، سرعة، وأمان.</p>
+            <ul>
+                <li><i class="fa-solid fa-check-circle"></i> تحويل واستلام أموال داخل وخارج لبنان</li>
+                <li><i class="fa-solid fa-check-circle"></i> دفع رسوم الميكانيك والضرائب</li>
+                <li><i class="fa-solid fa-check-circle"></i> بطاقات Visa للدفع عبر الإنترنت</li>
+                <li><i class="fa-solid fa-check-circle"></i> عروضات حصرية من المركز</li>
+            </ul>
+            <br>
+            <a href="https://wa.me/96170363783?text=استفسار%20عن%20خدمات%20Whish" class="btn" style="background: var(--accent-color); border-color: var(--accent-color); color: white;">استفسر الآن</a>
+        </div>
     </div>
-</div>
 
-<!-- QUICK LINKS -->
-<div class="grid-quick fade-in" style="animation-delay:.2s;">
-
-    <a href="alfa.html" class="quick-link">
-        <span class="icon">📱</span>
-        <div class="quick-link-title">Alfa</div>
-        <div>تشريجات وخدمات Alfa</div>
-    </a>
-
-    <a href="touch.html" class="quick-link">
-        <span class="icon">📶</span>
-        <div class="quick-link-title">Touch</div>
-        <div>تشريجات وخدمات Touch</div>
-    </a>
-
-    <a href="ushare.html" class="quick-link">
-        <span class="icon">🌐</span>
-        <div class="quick-link-title">Internet</div>
-        <div>باقات Ushare</div>
-    </a>
-
-    <a href="streaming.html" class="quick-link">
-        <span class="icon">🎬</span>
-        <div class="quick-link-title">Streaming</div>
-        <div>Netflix & Shahid</div>
-    </a>
-</div>
-
-<!-- TELECOM -->
-<div class="section fade-in" style="animation-delay:.35s;">
-    <div class="section-title">خدمات الاتصالات</div>
-    <div class="section-sub">أقوى عروض الأسبوع – Alfa & Touch</div>
-
-    <a href="alfa.html">
-        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/maxresdefault%20(1).jpg');">
-            <div class="badge">🔥 عرض اليوم</div>
-            <div class="sec-img-title">Alfa – أقوى تشريجات</div>
+    <section class="section" id="products">
+        <h2 class="section-title">وصل حديثاً</h2>
+        <p style="text-align: center; color: var(--text-gray); margin-bottom: 30px;">أحدث الهواتف الذكية والاكسسوارات الأصلية</p>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung S24" class="product-img">
+                <div class="product-info">
+                    <h4>Samsung Galaxy S24 Ultra</h4>
+                    <p class="product-price">عروض خاصة</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone 15" class="product-img">
+                <div class="product-info">
+                    <h4>iPhone 15 Pro Max</h4>
+                    <p class="product-price">متوفر الآن</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smart Watch" class="product-img">
+                <div class="product-info">
+                    <h4>Smart Watches</h4>
+                    <p class="product-price">تشكيلة واسعة</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1572569028738-411a1971d6e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Accessories" class="product-img">
+                <div class="product-info">
+                    <h4>Original Accessories</h4>
+                    <p class="product-price">Anker, JBL, & More</p>
+                </div>
+            </div>
         </div>
-    </a>
+    </section>
 
-    <a href="touch.html">
-        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/G5etdnzXEAAkZf3.jpg');">
-            <div class="badge">🔥 خصم مميز</div>
-            <div class="sec-img-title">Touch – عروض قوية</div>
+    <footer style="background: #000; padding: 40px 5%; text-align: center; border-top: 1px solid #333;">
+        <div class="logo" style="margin-bottom: 20px;">Central<span>Store</span></div>
+        <p style="color: #666; margin-bottom: 20px;">أفضل وجهة للتكنولوجيا والخدمات الرقمية في المنطقة.</p>
+        <div class="socials" style="margin-bottom: 20px;">
+            <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fa-brands fa-tiktok"></i></a>
         </div>
-    </a>
-</div>
+        <p style="color: #444; font-size: 0.9rem;">&copy; 2025 All Rights Reserved | Developed by Mehsin Husseini</p>
+    </footer>
 
-<!-- INTERNET -->
-<div class="section fade-in" style="animation-delay:.45s;">
-    <div class="section-title">إنترنت Ushare</div>
-    <div class="section-sub">سرعات عالية – تنفيذ فوري – أفضل الأسعار</div>
-
-    <a href="ushare.html">
-        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/images%20(4).jpeg');">
-            <div class="badge">⚡ الأسرع</div>
-            <div class="sec-img-title">Ushare Internet</div>
-        </div>
-    </a>
-</div>
-
-<!-- STREAMING -->
-<div class="section fade-in" style="animation-delay:.55s;">
-    <div class="section-title">اشتراكات المشاهدة</div>
-    <div class="section-sub">Netflix · Shahid · Disney+ · OSN+</div>
-
-    <a href="streaming.html">
-        <div class="sec-img" style="background-image:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/streaming.jpeg');">
-            <div class="badge">🎬 جديد!</div>
-            <div class="sec-img-title">Streaming Services</div>
-        </div>
-    </a>
-</div>
-
-<!-- CONTACT -->
-<div class="contact-box fade-in" style="animation-delay:.65s;">
-
-    <h2 style="margin-top:0; font-size:22px;">📞 للتواصل والطلب – Contact</h2>
-
-    <p style="opacity:0.9;">
-        للاستفسار أو لطلب أي خدمة، راسلني مباشرة عبر واتساب.<br>
-        شحن على خطوط Alfa و Touch، بالإضافة إلى شحن الألعاب والمنصات العالمية.
-    </p>
-
-    <a href="https://wa.me/70363783" 
-       style="display:block;background:#30d158;color:#000;font-weight:900;
-       padding:14px;border-radius:14px;text-decoration:none;margin:16px auto;width:80%;max-width:260px;">
-       تواصل مباشرة عبر واتساب
+    <a href="https://wa.me/96170363783" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <img class="qr" src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png">
+    <script>
+        // Typing Effect for Header
+        const textElement = document.getElementById('typing-text');
+        const texts = ["التكنولوجيا", "السرعة", "التميز"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
 
-</div>
-
-<footer>
-    Mehsin Services – 2025 ©<br>
-    Powered by Mehsin Husseini
-</footer>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-        document.body.style.overflow = "auto";
-    }, 2200);
-});
-</script>
-
+        (function type() {
+            if (count === texts.length) { count = 0; }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            
+            textElement.textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); 
+            } else {
+                setTimeout(type, 150);
+            }
+        }());
+    </script>
 </body>
 </html>
