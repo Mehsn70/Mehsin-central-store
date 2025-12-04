@@ -1,432 +1,482 @@
-
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>السنترال الملكي | Elite Central Store</title>
+    <title>Hassan Central Store | VIP Services</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary-color: #0f172a; /* كحلي غامق جداً */
-            --secondary-color: #1e293b; /* كحلي أفتح قليلاً للخلفيات */
-            --accent-color: #ef4444; /* أحمر الويش موني */
-            --gold-color: #d4af37; /* ذهبي للفخامة */
-            --text-light: #f8fafc;
-            --text-gray: #94a3b8;
-            --transition: all 0.3s ease;
+            --bg-dark: #050505;
+            --bg-card: #121212;
+            --gold: #D4AF37;
+            --gold-gradient: linear-gradient(45deg, #D4AF37, #F2D06B, #D4AF37);
+            --text-main: #ffffff;
+            --text-sub: #a0a0a0;
+            --alfa: #e30613;
+            --touch: #008c99;
+            --whish: #ef4444;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--primary-color);
-            color: var(--text-light);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
 
-        /* --- Header & Nav --- */
-        header {
+        /* --- 1. Splash Screen --- */
+        #splash {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 5%;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: black;
+            z-index: 9999;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--gold-color);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .logo span { color: white; }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 700;
-            transition: var(--transition);
-        }
-
-        nav a:hover { color: var(--gold-color); }
-
-        /* --- Hero Section --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            padding: 0 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content span { color: var(--gold-color); }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 1.2s ease;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 35px;
-            background: var(--gold-color);
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 900;
-            border-radius: 50px;
-            transition: var(--transition);
-            border: 2px solid var(--gold-color);
-            animation: fadeInUp 1.4s ease;
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: var(--gold-color);
-            transform: translateY(-3px);
-        }
-
-        /* --- Services Section --- */
-        .section {
-            padding: 80px 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--gold-color);
-            margin: 10px auto;
-            border-radius: 2px;
-        }
-
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--secondary-color);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .card i {
-            font-size: 3rem;
-            color: var(--gold-color);
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .card p { color: var(--text-gray); }
-
-        /* --- Whish Money Section (Special) --- */
-        .whish-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d0f12 100%);
-            border-radius: 20px;
-            margin: 80px 5%;
-            padding: 50px;
-            display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            justify-content: space-between;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--accent-color);
-        }
-        
-        .whish-content { flex: 1; min-width: 300px; z-index: 2; }
-        .whish-content h2 { font-size: 3rem; margin-bottom: 20px; color: white; }
-        .whish-content h2 span { color: var(--accent-color); }
-        .whish-content ul { list-style: none; margin-top: 20px; }
-        .whish-content ul li { font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .whish-content ul li i { color: var(--accent-color); }
-
-        .whish-visual {
-            font-size: 10rem;
-            color: rgba(239, 68, 68, 0.1);
-            position: absolute;
-            left: -20px;
-            bottom: -20px;
-            transform: rotate(-15deg);
+            transition: opacity 1s ease;
         }
 
-        /* --- Products Grid --- */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .product-card:hover { transform: scale(1.03); }
-
-        .product-img {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-            background: #eee;
-        }
-
-        .product-info {
-            padding: 15px;
-            color: #333;
-            text-align: center;
-        }
-
-        .product-info h4 { font-size: 1.2rem; margin-bottom: 5px; color: var(--primary-color); }
-        .product-price { color: var(--accent-color); font-weight: bold; font-size: 1.1rem; }
-
-        /* --- Contact / Floating Whatsapp --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            text-decoration: none;
-            z-index: 1000;
-            transition: var(--transition);
+        .splash-logo i {
+            font-size: 5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
             animation: pulse 2s infinite;
         }
 
-        .whatsapp-float:hover { transform: scale(1.1); }
-
-        /* --- Animations --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .splash-text {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        /* --- Header --- */
+        header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #333;
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
-            nav { display: none; } /* Simplified for demo, can add hamburger later */
-            .whish-section { padding: 30px; text-align: center; }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        .brand i { color: var(--gold); font-size: 1.5rem; }
+        .brand h1 { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
+
+        /* --- Hero --- */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: radial-gradient(circle at center, #222 0%, #000 100%);
+        }
+
+        .hero h2 { font-size: 2.5rem; margin-bottom: 10px; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-sub); font-family: 'Tajawal', sans-serif; font-size: 1.1rem; }
+
+        /* --- Main Grid Navigation --- */
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-card {
+            background: var(--bg-card);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 30px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .nav-card i { font-size: 2.5rem; margin-bottom: 15px; color: white; transition: 0.3s; }
+        .nav-card h3 { font-size: 1rem; font-weight: 600; text-transform: uppercase; }
+        
+        /* Specific Colors */
+        .nav-card.alfa:hover i { color: var(--alfa); text-shadow: 0 0 20px var(--alfa); }
+        .nav-card.touch:hover i { color: var(--touch); text-shadow: 0 0 20px var(--touch); }
+        .nav-card.whish:hover i { color: var(--whish); text-shadow: 0 0 20px var(--whish); }
+        .nav-card.gold:hover i { color: var(--gold); text-shadow: 0 0 20px var(--gold); }
+
+        /* --- Content Sections (Hidden by default) --- */
+        .page-section {
+            display: none; /* Hidden initially */
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid #555;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Tajawal';
+        }
+
+        /* Lists within sections */
+        .item-list { display: flex; flex-direction: column; gap: 15px; }
+        
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 12px;
+            border-right: 4px solid var(--gold);
+        }
+
+        .item-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
+        .item-info span { font-size: 0.8rem; color: #888; font-family: 'Tajawal'; }
+        .price { font-weight: bold; color: var(--gold); font-size: 1.2rem; }
+
+        /* Phone Grid */
+        .phone-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .phone-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .phone-card img { width: 100%; height: 150px; object-fit: cover; }
+        .phone-details { padding: 10px; }
+        .phone-details h4 { font-size: 0.9rem; margin-bottom: 5px; }
+        
+        /* Whish Section Special */
+        .whish-banner {
+            background: linear-gradient(135deg, #b91c1c, #000);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* --- Footer & QR --- */
+        footer {
+            margin-top: 50px;
+            padding: 40px 20px;
+            text-align: center;
+            background: #000;
+            border-top: 1px solid #222;
+        }
+
+        .qr-container {
+            background: white;
+            padding: 15px;
+            display: inline-block;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .qr-container img { width: 150px; height: 150px; }
+        
+        .contact-btn {
+            display: block;
+            width: 100%;
+            background: #25d366;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        @keyframes pulse { 0% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0.8; transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
     </style>
 </head>
 <body>
 
+    <div id="splash">
+        <div class="splash-logo"><i class="fa-solid fa-crown"></i></div>
+        <div class="splash-text">HASSAN<br><span style="color:var(--gold); font-size:1.5rem">CENTRAL STORE</span></div>
+    </div>
+
     <header>
-        <div class="logo">Central<span>Store</span></div>
-        <nav>
-            <ul>
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#services">خدماتنا</a></li>
-                <li><a href="#products">أحدث الأجهزة</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
+        <div class="brand">
+            <i class="fa-solid fa-crown"></i>
+            <div>
+                <h1>Hassan</h1>
+                <span style="font-size: 0.7rem; color: var(--gold); letter-spacing: 3px;">CENTRAL STORE</span>
+            </div>
+        </div>
+        <div style="font-size: 1.2rem;"><i class="fa-solid fa-bars"></i></div>
     </header>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>عالم من <span id="typing-text">التكنولوجيا</span> بين يديك</h1>
-            <p>الوجهة الأولى للخدمات الرقمية، الهواتف الذكية، وحلول الدفع الإلكتروني. كل ما تحتاجه في مكان واحد.</p>
-            <a href="https://wa.me/96170363783" class="btn">تواصل معنا الآن <i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-    </section>
+    <div id="home-view">
+        <section class="hero">
+            <h2>Premium Services</h2>
+            <p>كل ما تحتاجه من تكنولوجيا وخدمات مالية في مكان واحد</p>
+        </section>
 
-    <section class="section" id="services">
-        <h2 class="section-title">خدماتنا المميزة</h2>
-        <div class="cards-container">
-            <div class="card">
-                <i class="fa-solid fa-mobile-screen-button"></i>
-                <h3>تشريجات خليوية</h3>
-                <p>وكيل معتمد لخدمات Alfa و Touch. بطاقات، أيام، وخدمات إنترنت فورية.</p>
+        <div class="main-grid">
+            <div class="nav-card alfa" onclick="openPage('alfa')">
+                <i class="fa-solid fa-tower-cell"></i>
+                <h3>Alfa Services</h3>
+                <span style="font-size:0.8rem; color:#666">تشريجات وخدمات</span>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-wifi"></i>
-                <h3>إنترنت وباقات</h3>
-                <p>اشتراكات Ushare وإنترنت منزلي بسرعات عالية وتفعيل فوري.</p>
+            
+            <div class="nav-card touch" onclick="openPage('touch')">
+                <i class="fa-solid fa-signal"></i>
+                <h3>Touch Services</h3>
+                <span style="font-size:0.8rem; color:#666">باقات وعروض</span>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-gamepad"></i>
-                <h3>بطاقات ألعاب</h3>
-                <p>PUBG، PlayStation، Steam وكل منصات الألعاب العالمية.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-                <h3>صيانة فورية</h3>
-                <p>قسم متخصص لصيانة الهواتف واللابتوب بأحدث المعدات.</p>
-            </div>
-        </div>
-    </section>
 
-    <div class="whish-section">
-        <div class="whish-visual"><i class="fa-solid fa-money-bill-transfer"></i></div>
-        <div class="whish-content">
-            <h2>خدمات <span>Whish Money</span></h2>
-            <p>نحن نقطة معتمدة لجميع خدمات ويش موني. سهولة، سرعة، وأمان.</p>
-            <ul>
-                <li><i class="fa-solid fa-check-circle"></i> تحويل واستلام أموال داخل وخارج لبنان</li>
-                <li><i class="fa-solid fa-check-circle"></i> دفع رسوم الميكانيك والضرائب</li>
-                <li><i class="fa-solid fa-check-circle"></i> بطاقات Visa للدفع عبر الإنترنت</li>
-                <li><i class="fa-solid fa-check-circle"></i> عروضات حصرية من المركز</li>
-            </ul>
-            <br>
-            <a href="https://wa.me/96170363783?text=استفسار%20عن%20خدمات%20Whish" class="btn" style="background: var(--accent-color); border-color: var(--accent-color); color: white;">استفسر الآن</a>
+            <div class="nav-card gold" onclick="openPage('phones')">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h3>Smart Phones</h3>
+                <span style="font-size:0.8rem; color:#666">بيع وشراء</span>
+            </div>
+
+            <div class="nav-card whish" onclick="openPage('whish')">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                <h3>Whish Money</h3>
+                <span style="font-size:0.8rem; color:#666">تحويل ودفع</span>
+            </div>
+
+            <div class="nav-card" onclick="openPage('streaming')">
+                <i class="fa-solid fa-play"></i>
+                <h3>Streaming</h3>
+                <span style="font-size:0.8rem; color:#666">Netflix & Shahid</span>
+            </div>
+
+            <div class="nav-card" onclick="openPage('accessories')">
+                <i class="fa-solid fa-headphones"></i>
+                <h3>Accessories</h3>
+                <span style="font-size:0.8rem; color:#666">Original Gear</span>
+            </div>
         </div>
     </div>
 
-    <section class="section" id="products">
-        <h2 class="section-title">وصل حديثاً</h2>
-        <p style="text-align: center; color: var(--text-gray); margin-bottom: 30px;">أحدث الهواتف الذكية والاكسسوارات الأصلية</p>
-        
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung S24" class="product-img">
-                <div class="product-info">
-                    <h4>Samsung Galaxy S24 Ultra</h4>
-                    <p class="product-price">عروض خاصة</p>
-                </div>
+    <div id="alfa" class="page-section">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-tower-cell" style="color:var(--alfa)"></i> Alfa</h2>
+            <button class="back-btn" onclick="closePage()">رجوع <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="item-list">
+            <div class="item">
+                <div class="item-info"><h4>$4.50 Credit</h4><span>Recharge Card - أيام وتشريج</span></div>
+                <div class="price">$5.00</div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone 15" class="product-img">
-                <div class="product-info">
-                    <h4>iPhone 15 Pro Max</h4>
-                    <p class="product-price">متوفر الآن</p>
-                </div>
+            <div class="item">
+                <div class="item-info"><h4>Alfa 500 MB</h4><span>خدمة انترنت موبايل</span></div>
+                <div class="price">Daily</div>
             </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smart Watch" class="product-img">
-                <div class="product-info">
-                    <h4>Smart Watches</h4>
-                    <p class="product-price">تشكيلة واسعة</p>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1572569028738-411a1971d6e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Accessories" class="product-img">
-                <div class="product-info">
-                    <h4>Original Accessories</h4>
-                    <p class="product-price">Anker, JBL, & More</p>
-                </div>
+             <div class="item">
+                <div class="item-info"><h4>Alfa Service U-Chat</h4><span>باقات تشريج</span></div>
+                <div class="price">$18.00</div>
             </div>
         </div>
-    </section>
+        <a href="https://wa.me/96170363783?text=I%20want%20Alfa%20Service" class="contact-btn" style="background:var(--alfa)">Order Now</a>
+    </div>
 
-    <footer style="background: #000; padding: 40px 5%; text-align: center; border-top: 1px solid #333;">
-        <div class="logo" style="margin-bottom: 20px;">Central<span>Store</span></div>
-        <p style="color: #666; margin-bottom: 20px;">أفضل وجهة للتكنولوجيا والخدمات الرقمية في المنطقة.</p>
-        <div class="socials" style="margin-bottom: 20px;">
-            <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" style="color: white; margin: 0 10px; font-size: 1.5rem;"><i class="fa-brands fa-tiktok"></i></a>
+    <div id="touch" class="page-section">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-signal" style="color:var(--touch)"></i> Touch</h2>
+            <button class="back-btn" onclick="closePage()">رجوع <i class="fa-solid fa-arrow-right"></i></button>
         </div>
-        <p style="color: #444; font-size: 0.9rem;">&copy; 2025 All Rights Reserved | Developed by Mehsin Husseini</p>
+        <div class="item-list">
+            <div class="item">
+                <div class="item-info"><h4>$4.50 Credit</h4><span>Recharge Card</span></div>
+                <div class="price">$5.00</div>
+            </div>
+            <div class="item">
+                <div class="item-info"><h4>Web & Talk</h4><span>Bundle Package</span></div>
+                <div class="price">Monthly</div>
+            </div>
+        </div>
+        <a href="https://wa.me/96170363783?text=I%20want%20Touch%20Service" class="contact-btn" style="background:var(--touch)">Order Now</a>
+    </div>
+
+    <div id="phones" class="page-section">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-mobile" style="color:var(--gold)"></i> Phones</h2>
+            <button class="back-btn" onclick="closePage()">رجوع</button>
+        </div>
+        <div class="phone-grid">
+            <div class="phone-card">
+                <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400" alt="Phone">
+                <div class="phone-details">
+                    <h4>Samsung S24 Ultra</h4>
+                    <span style="color:var(--gold)">Call for Price</span>
+                </div>
+            </div>
+            <div class="phone-card">
+                <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400" alt="Phone">
+                <div class="phone-details">
+                    <h4>iPhone 15 Pro Max</h4>
+                    <span style="color:var(--gold)">Available</span>
+                </div>
+            </div>
+            <div class="phone-card">
+                <img src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400" alt="Phone">
+                <div class="phone-details">
+                    <h4>Redmi Note 13</h4>
+                    <span style="color:var(--gold)">Best Seller</span>
+                </div>
+            </div>
+            <div class="phone-card">
+                <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=400" alt="Phone">
+                <div class="phone-details">
+                    <h4>Used Phones</h4>
+                    <span style="color:var(--gold)">Good Condition</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="whish" class="page-section">
+        <div class="section-header">
+            <h2>Whish Money</h2>
+            <button class="back-btn" onclick="closePage()">رجوع</button>
+        </div>
+        <div class="whish-banner">
+            <i class="fa-solid fa-money-bill-wave" style="font-size:3rem; margin-bottom:10px;"></i>
+            <h3>Official Agent</h3>
+            <p>وكيل معتمد لجميع خدمات ويش</p>
+        </div>
+        <div class="item-list">
+            <div class="item">
+                <div class="item-info"><h4>Money Transfer</h4><span>تحويل واستلام أموال</span></div>
+                <i class="fa-solid fa-check" style="color:var(--whish)"></i>
+            </div>
+            <div class="item">
+                <div class="item-info"><h4>Mecanique</h4><span>دفع ميكانيك وتسجيل</span></div>
+                <i class="fa-solid fa-check" style="color:var(--whish)"></i>
+            </div>
+        </div>
+         <a href="https://wa.me/96170363783?text=Whish%20Money%20Service" class="contact-btn" style="background:var(--whish)">Contact Agent</a>
+    </div>
+
+    <div id="streaming" class="page-section">
+        <div class="section-header">
+            <h2>Streaming</h2>
+            <button class="back-btn" onclick="closePage()">رجوع</button>
+        </div>
+        <div class="item-list">
+            <div class="item" style="border-right-color: #E50914;">
+                <div class="item-info"><h4>Netflix</h4><span>4K Subscription</span></div>
+                <div class="price">Month/Year</div>
+            </div>
+            <div class="item" style="border-right-color: #1f2e46;">
+                <div class="item-info"><h4>Shahid VIP</h4><span>Sports & Movies</span></div>
+                <div class="price">Available</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="accessories" class="page-section">
+        <div class="section-header">
+            <h2>Accessories</h2>
+            <button class="back-btn" onclick="closePage()">رجوع</button>
+        </div>
+        <p style="text-align:center; color:#888;">Chargers, Cables, Airpods & More.</p>
+        <div class="phone-grid" style="margin-top:20px;">
+             <div class="phone-card">
+                <img src="https://images.unsplash.com/photo-1572569028738-411a1971d6e1?w=400" alt="Accessory">
+                <div class="phone-details"><h4>Original Chargers</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3 style="color:var(--gold); margin-bottom:10px;">HASSAN CENTRAL STORE</h3>
+        <p>Scan to Share | امسح الكود لفتح الموقع</p>
+        
+        <div class="qr-container">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mehsn70.github.io/Mehsin-central-store/app.html" alt="Store QR Code">
+        </div>
+        
+        <br><br>
+        <a href="https://wa.me/96170363783" class="btn" style="color: #666; text-decoration: none;">Developed by Mehsin</a>
     </footer>
 
-    <a href="https://wa.me/96170363783" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
     <script>
-        // Typing Effect for Header
-        const textElement = document.getElementById('typing-text');
-        const texts = ["التكنولوجيا", "السرعة", "التميز"];
-        let count = 0;
-        let index = 0;
-        let currentText = "";
-        let letter = "";
+        // 1. Splash Screen Timer
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash');
+                splash.style.opacity = '0';
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 1000);
+            }, 2000); // 2 Seconds delay
+        });
 
-        (function type() {
-            if (count === texts.length) { count = 0; }
-            currentText = texts[count];
-            letter = currentText.slice(0, ++index);
-            
-            textElement.textContent = letter;
-            if (letter.length === currentText.length) {
-                count++;
-                index = 0;
-                setTimeout(type, 2000); 
-            } else {
-                setTimeout(type, 150);
+        // 2. Navigation Logic (Deep Linking)
+        function openPage(pageId) {
+            // Hide Home
+            document.getElementById('home-view').style.display = 'none';
+            // Hide all pages just in case
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(p => p.style.display = 'none');
+            // Show specific page
+            const target = document.getElementById(pageId);
+            if(target) {
+                target.style.display = 'block';
+                window.scrollTo(0,0);
             }
-        }());
+        }
+
+        function closePage() {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(p => p.style.display = 'none');
+            // Show Home
+            document.getElementById('home-view').style.display = 'block';
+             window.scrollTo(0,0);
+        }
     </script>
 </body>
 </html>
+
