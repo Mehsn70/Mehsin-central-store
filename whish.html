@@ -3,83 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whish Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
+    <title>Whish Money | Official Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body { background: #0f0f0f; color: white; font-family: 'Cairo'; }
-        .top-bar { background: linear-gradient(to right, #b91c1c, #7f1d1d); padding: 30px 20px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 10px 30px rgba(185, 28, 28, 0.3); }
-        .top-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-        .top-nav a { color: white; font-size: 1.5rem; }
-        .balance-card { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px); }
+        :root {
+            --whish-red: #E60000;
+            --whish-dark: #8a0000;
+            --bg-black: #0a0a0a;
+            --card-bg: #1c1c1c;
+            --text-gray: #b0b0b0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+
+        body {
+            background-color: var(--bg-black);
+            color: white;
+            padding-bottom: 60px;
+            overflow-x: hidden;
+        }
+
+        /* --- 1. Header & Nav --- */
+        .header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
         
-        .services-list { padding: 20px; margin-top: -20px; }
-        .service-item { background: #1f1f1f; margin-bottom: 15px; padding: 20px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; border-right: 5px solid #ef4444; transition: 0.3s; }
-        .service-item:hover { transform: translateX(-5px); background: #2a2a2a; }
-        .s-icon { width: 50px; height: 50px; background: rgba(239, 68, 68, 0.1); color: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-        .s-text h4 { font-size: 1.1rem; margin-bottom: 5px; }
-        .s-text p { font-size: 0.8rem; color: #888; }
-        .action-btn { background: #ef4444; color: white; padding: 8px 15px; border-radius: 50px; font-size: 0.9rem; text-decoration: none; }
+        .logo-area { font-family: 'Oswald'; font-size: 1.8rem; letter-spacing: 1px; }
+        .logo-area span { color: var(--whish-red); }
+        .back-btn { color: white; font-size: 1.5rem; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 50px; text-decoration: none; }
+
+        /* --- 2. Hero Section (Virtual Card) --- */
+        .hero-section {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* CSS 3D Card */
+        .virtual-card {
+            width: 100%;
+            max-width: 380px;
+            height: 220px;
+            background: linear-gradient(135deg, #ff1a1a, #660000);
+            border-radius: 20px;
+            margin: 0 auto;
+            position: relative;
+            padding: 25px;
+            text-align: left;
+            box-shadow: 0 15px 35px rgba(230, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            transition: transform 0.5s;
+        }
+        
+        .virtual-card:hover { transform: translateY(-5px) scale(1.02); }
+        
+        /* Decorative Circles on Card */
+        .circle-bg { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.05); }
+        .c1 { width: 200px; height: 200px; top: -50px; right: -50px; }
+        .c2 { width: 150px; height: 150px; bottom: -30px; left: -30px; }
+
+        .card-chip { width: 50px; height: 35px; background: linear-gradient(45deg, #d4af37, #f9e38d); border-radius: 8px; margin-bottom: 20px; opacity: 0.9; }
+        .card-number { font-family: 'Oswald'; font-size: 1.4rem; letter-spacing: 3px; text-shadow: 0 2px 2px rgba(0,0,0,0.3); margin-bottom: 25px; }
+        .card-holder { font-size: 0.8rem; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+        .card-name { font-size: 1.1rem; font-weight: bold; text-transform: uppercase; font-family: 'Oswald'; }
+        .card-logo { position: absolute; top: 20px; right: 25px; font-weight: bold; font-style: italic; font-size: 1.5rem; }
+
+        .verified-badge {
+            background: rgba(37, 211, 102, 0.1); color: #25d366; 
+            border: 1px solid #25d366; padding: 5px 15px; 
+            border-radius: 20px; font-size: 0.8rem; 
+            display: inline-block; margin-top: 15px;
+        }
+
+        /* --- 3. Actions Grid (Big Buttons) --- */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .action-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-card:hover { border-color: var(--whish-red); background: #222; }
+
+        .action-card i { font-size: 2.5rem; margin-bottom: 10px; color: var(--whish-red); }
+        .action-card h3 { font-size: 1rem; margin-bottom: 5px; }
+        .action-card p { font-size: 0.7rem; color: var(--text-gray); }
+
+        /* --- 4. Services List (Detailed) --- */
+        .section-title { padding: 0 20px; margin-top: 20px; font-size: 1.3rem; border-right: 4px solid var(--whish-red); margin-right: 20px; }
+
+        .service-row {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #222;
+        }
+        
+        .s-img { 
+            width: 60px; height: 60px; 
+            background: #333; border-radius: 12px; 
+            margin-left: 15px; display: flex; 
+            align-items: center; justify-content: center;
+            font-size: 1.5rem; color: white;
+        }
+        
+        .s-content { flex: 1; }
+        .s-content h4 { font-size: 1rem; margin-bottom: 3px; }
+        .s-content span { font-size: 0.8rem; color: #777; }
+        
+        .s-btn {
+            background: var(--whish-red);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* --- 5. Ticker Tape (Stock Market Style) --- */
+        .ticker-wrap {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--whish-red);
+            color: white;
+            padding: 10px 0;
+            font-family: 'Oswald';
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            z-index: 999;
+        }
+        .ticker-item { display: inline-block; padding-left: 100%; animation: ticker 15s linear infinite; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(100%, 0, 0); } }
+
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <div class="top-nav">
-            <a href="index.html"><i class="fa-solid fa-arrow-right"></i></a>
-            <h3>Whish Money</h3>
-            <i class="fa-solid fa-bell"></i>
-        </div>
-        <div class="balance-card">
-            <h2 style="margin-bottom: 5px;">وكيل معتمد</h2>
-            <p style="opacity: 0.8;">Hassan Central Store</p>
-            <div style="margin-top: 15px; font-size: 2rem;"><i class="fa-brands fa-cc-visa"></i> <i class="fa-solid fa-money-bill-transfer"></i></div>
-        </div>
+
+    <div class="header">
+        <div class="logo-area">WHISH <span>MONEY</span></div>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> رجوع</a>
     </div>
 
-    <div class="services-list">
-        <div class="service-item">
-            <div style="display:flex; gap:15px; align-items:center">
-                <div class="s-icon"><i class="fa-solid fa-earth-americas"></i></div>
-                <div class="s-text">
-                    <h4>تحويل أموال</h4>
-                    <p>داخل وخارج لبنان</p>
+    <div class="hero-section">
+        <div class="virtual-card">
+            <div class="circle-bg c1"></div>
+            <div class="circle-bg c2"></div>
+            
+            <div class="card-logo">whish</div>
+            <div class="card-chip"></div>
+            
+            <div class="card-number">4142 •••• •••• 9018</div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                <div>
+                    <div class="card-holder">Authorized Agent</div>
+                    <div class="card-name">HASSAN CENTRAL</div>
                 </div>
+                <div style="font-size: 2rem;"><i class="fa-brands fa-cc-visa"></i></div>
             </div>
-            <a href="https://wa.me/96170363783?text=WhishTransfer" class="action-btn">تواصل</a>
-        </div>
-
-        <div class="service-item">
-            <div style="display:flex; gap:15px; align-items:center">
-                <div class="s-icon"><i class="fa-solid fa-car"></i></div>
-                <div class="s-text">
-                    <h4>دفع ميكانيك</h4>
-                    <p>تسديد رسوم فورية</p>
-                </div>
-            </div>
-            <a href="https://wa.me/96170363783?text=Mecanique" class="action-btn">استعلم</a>
-        </div>
-
-        <div class="service-item">
-            <div style="display:flex; gap:15px; align-items:center">
-                <div class="s-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                <div class="s-text">
-                    <h4>بطاقات وتشريج</h4>
-                    <p>ألفا، تاتش، انترنت</p>
-                </div>
-            </div>
-            <a href="https://wa.me/96170363783?text=Recharge" class="action-btn">اطلب</a>
         </div>
         
-         <div class="service-item">
-            <div style="display:flex; gap:15px; align-items:center">
-                <div class="s-icon"><i class="fa-brands fa-amazon"></i></div>
-                <div class="s-text">
-                    <h4>بطاقات اونلاين</h4>
-                    <p>Amazon, Apple, Google</p>
-                </div>
-            </div>
-            <a href="https://wa.me/96170363783?text=Cards" class="action-btn">اطلب</a>
+        <div class="verified-badge"><i class="fa-solid fa-circle-check"></i> وكيل رسمي معتمد - Verified Agent</div>
+    </div>
+
+    <div class="section-title">خدمات سريعة</div>
+    <div class="actions-grid">
+        <a href="https://wa.me/96170363783?text=TransferMoney" class="action-card">
+            <i class="fa-solid fa-paper-plane"></i>
+            <h3>تحويل أموال</h3>
+            <p>داخل وخارج لبنان</p>
+        </a>
+        <a href="https://wa.me/96170363783?text=ReceiveMoney" class="action-card">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+            <h3>قبض أموال</h3>
+            <p>سحب فوري للكاش</p>
+        </a>
+        <a href="https://wa.me/96170363783?text=WhishCard" class="action-card">
+            <i class="fa-solid fa-credit-card"></i>
+            <h3>بطاقات Visa</h3>
+            <p>إصدار وتعبئة</p>
+        </a>
+        <a href="https://wa.me/96170363783?text=Mecanique" class="action-card">
+            <i class="fa-solid fa-car-side"></i>
+            <h3>ميكانيك</h3>
+            <p>استعلام ودفع</p>
+        </a>
+    </div>
+
+    <div class="section-title">كل الخدمات</div>
+    
+    <div class="service-row">
+        <div class="s-img" style="background: linear-gradient(135deg, #1e3c72, #2a5298);"><i class="fa-solid fa-globe"></i></div>
+        <div class="s-content">
+            <h4>الانترنت المنزلي</h4>
+            <span>Ogero, IDM, Sodetel</span>
+        </div>
+        <a href="https://wa.me/96170363783?text=InternetPay" class="s-btn">دفع</a>
+    </div>
+
+    <div class="service-row">
+        <div class="s-img" style="background: linear-gradient(135deg, #FF512F, #DD2476);"><i class="fa-brands fa-google-play"></i></div>
+        <div class="s-content">
+            <h4>Google & Apple</h4>
+            <span>بطاقات المتاجر العالمية</span>
+        </div>
+        <a href="https://wa.me/96170363783?text=GiftCards" class="s-btn">شراء</a>
+    </div>
+
+    <div class="service-row">
+        <div class="s-img" style="background: linear-gradient(135deg, #11998e, #38ef7d);"><i class="fa-solid fa-phone"></i></div>
+        <div class="s-content">
+            <h4>Alfa & Touch</h4>
+            <span>تشريج مباشر للخطوط</span>
+        </div>
+        <a href="https://wa.me/96170363783?text=RechargePhone" class="s-btn">تحويل</a>
+    </div>
+    
+    <div class="service-row">
+        <div class="s-img" style="background: linear-gradient(135deg, #8E2DE2, #4A00E0);"><i class="fa-solid fa-gamepad"></i></div>
+        <div class="s-content">
+            <h4>Gaming Top-up</h4>
+            <span>Pubg, FreeFire, Roblox</span>
+        </div>
+        <a href="https://wa.me/96170363783?text=GamingTopup" class="s-btn">شحن</a>
+    </div>
+
+    <div class="ticker-wrap">
+        <div class="ticker-item">
+            HASSAN CENTRAL STORE - OFFICIAL WHISH AGENT &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+            INSTANT TRANSFERS &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+            SECURE PAYMENTS &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+            BEST RATES GUARANTEED &nbsp;&nbsp;&bull;&nbsp;&nbsp; 
+            خدمة سريعة ومضمونة 100%
         </div>
     </div>
+
 </body>
 </html>
+
