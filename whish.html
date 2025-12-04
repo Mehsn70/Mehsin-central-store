@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whish Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #0f0f0f; color: white; font-family: 'Cairo'; }
+        .top-bar { background: linear-gradient(to right, #b91c1c, #7f1d1d); padding: 30px 20px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; box-shadow: 0 10px 30px rgba(185, 28, 28, 0.3); }
+        .top-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .top-nav a { color: white; font-size: 1.5rem; }
+        .balance-card { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(5px); }
+        
+        .services-list { padding: 20px; margin-top: -20px; }
+        .service-item { background: #1f1f1f; margin-bottom: 15px; padding: 20px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; border-right: 5px solid #ef4444; transition: 0.3s; }
+        .service-item:hover { transform: translateX(-5px); background: #2a2a2a; }
+        .s-icon { width: 50px; height: 50px; background: rgba(239, 68, 68, 0.1); color: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .s-text h4 { font-size: 1.1rem; margin-bottom: 5px; }
+        .s-text p { font-size: 0.8rem; color: #888; }
+        .action-btn { background: #ef4444; color: white; padding: 8px 15px; border-radius: 50px; font-size: 0.9rem; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-nav">
+            <a href="index.html"><i class="fa-solid fa-arrow-right"></i></a>
+            <h3>Whish Money</h3>
+            <i class="fa-solid fa-bell"></i>
+        </div>
+        <div class="balance-card">
+            <h2 style="margin-bottom: 5px;">وكيل معتمد</h2>
+            <p style="opacity: 0.8;">Hassan Central Store</p>
+            <div style="margin-top: 15px; font-size: 2rem;"><i class="fa-brands fa-cc-visa"></i> <i class="fa-solid fa-money-bill-transfer"></i></div>
+        </div>
+    </div>
+
+    <div class="services-list">
+        <div class="service-item">
+            <div style="display:flex; gap:15px; align-items:center">
+                <div class="s-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                <div class="s-text">
+                    <h4>تحويل أموال</h4>
+                    <p>داخل وخارج لبنان</p>
+                </div>
+            </div>
+            <a href="https://wa.me/96170363783?text=WhishTransfer" class="action-btn">تواصل</a>
+        </div>
+
+        <div class="service-item">
+            <div style="display:flex; gap:15px; align-items:center">
+                <div class="s-icon"><i class="fa-solid fa-car"></i></div>
+                <div class="s-text">
+                    <h4>دفع ميكانيك</h4>
+                    <p>تسديد رسوم فورية</p>
+                </div>
+            </div>
+            <a href="https://wa.me/96170363783?text=Mecanique" class="action-btn">استعلم</a>
+        </div>
+
+        <div class="service-item">
+            <div style="display:flex; gap:15px; align-items:center">
+                <div class="s-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <div class="s-text">
+                    <h4>بطاقات وتشريج</h4>
+                    <p>ألفا، تاتش، انترنت</p>
+                </div>
+            </div>
+            <a href="https://wa.me/96170363783?text=Recharge" class="action-btn">اطلب</a>
+        </div>
+        
+         <div class="service-item">
+            <div style="display:flex; gap:15px; align-items:center">
+                <div class="s-icon"><i class="fa-brands fa-amazon"></i></div>
+                <div class="s-text">
+                    <h4>بطاقات اونلاين</h4>
+                    <p>Amazon, Apple, Google</p>
+                </div>
+            </div>
+            <a href="https://wa.me/96170363783?text=Cards" class="action-btn">اطلب</a>
+        </div>
+    </div>
+</body>
+</html>
