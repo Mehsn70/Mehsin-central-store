@@ -3,144 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hassan Store | Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Hassan Central Store | الرئيسية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { margin: 0; background: #000; color: white; font-family: 'Cairo'; overflow-x: hidden; }
+        :root { --main: #000; --gold: #D4AF37; --text: #fff; --glass: rgba(255,255,255,0.05); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; text-decoration: none; }
+        body { background: var(--main); color: var(--text); overflow-x: hidden; }
         
-        /* Background Animation */
-        .bg-glow { position: fixed; width: 300px; height: 300px; background: #D4AF37; filter: blur(150px); opacity: 0.2; border-radius: 50%; top: -100px; left: -100px; z-index: -1; animation: move 10s infinite alternate; }
-        @keyframes move { from { transform: translate(0,0); } to { transform: translate(50px, 50px); } }
-
+        /* Intro Animation */
+        .intro { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: 1s; }
+        .intro i { font-size: 5rem; color: var(--gold); animation: pulse 2s infinite; }
+        .intro h1 { font-family: 'Oswald'; font-size: 3rem; margin-top: 20px; letter-spacing: 5px; text-transform: uppercase; }
+        
         /* Header */
-        header { padding: 25px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .user-profile { display: flex; align-items: center; gap: 10px; }
-        .avatar { width: 50px; height: 50px; background: #222; border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid #333; }
-        .avatar i { color: #D4AF37; font-size: 1.5rem; }
-        .greeting h3 { margin: 0; font-size: 1.2rem; }
-        .greeting p { margin: 0; font-size: 0.8rem; color: #888; }
+        header { padding: 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #333; }
+        .logo { font-weight: 900; font-size: 1.5rem; color: var(--gold); display: flex; align-items: center; gap: 10px; }
         
-        /* Hero Banner */
-        .promo-banner {
-            margin: 20px;
-            background: linear-gradient(135deg, #111, #222);
-            border-radius: 25px;
-            padding: 25px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .promo-banner h1 { font-size: 1.8rem; margin-bottom: 5px; background: linear-gradient(to right, #D4AF37, #F2D06B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .promo-banner p { color: #aaa; max-width: 70%; font-size: 0.9rem; }
-        .promo-banner i { position: absolute; bottom: -20px; left: -20px; font-size: 8rem; color: rgba(255,255,255,0.03); transform: rotate(20deg); }
-
-        /* App Grid */
-        .grid-title { padding: 0 25px; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .grid-title::before { content:''; width: 5px; height: 20px; background: #D4AF37; border-radius: 5px; }
-
-        .app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 20px 100px 20px; }
+        /* Hero */
+        .hero { height: 60vh; background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920') center/cover; position: relative; display: flex; align-items: center; padding: 20px; }
+        .hero::after { content:''; position: absolute; inset: 0; background: linear-gradient(to top, #000, transparent); }
+        .hero-content { position: relative; z-index: 2; max-width: 600px; }
+        .hero h2 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; }
+        .hero span { color: var(--gold); }
         
-        .app-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            height: 160px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .app-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); }
+        /* Grid System */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; padding: 20px; margin-top: -50px; position: relative; z-index: 5; }
+        .card { background: #1a1a1a; padding: 30px 20px; border-radius: 20px; text-align: center; border: 1px solid #333; transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 180px; }
+        .card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2); }
+        .card i { font-size: 3rem; margin-bottom: 15px; color: #fff; transition: 0.3s; }
+        .card h3 { font-size: 1.2rem; font-weight: 700; }
         
-        .icon-box { width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        /* Specific Colors */
+        .c-alfa:hover i { color: #e30613; } .c-touch:hover i { color: #008c99; }
+        .c-whish { background: linear-gradient(135deg, #1a0000, #3d0000); border-color: #ef4444; grid-column: span 2; }
+        .c-whish:hover { border-color: red; } .c-whish i { color: #ef4444; }
         
-        /* Custom Colors */
-        .c-alfa .icon-box { background: linear-gradient(135deg, #e30613, #ff4d4d); }
-        .c-touch .icon-box { background: linear-gradient(135deg, #008c99, #00d2e5); }
-        .c-whish .icon-box { background: linear-gradient(135deg, #E60000, #990000); }
-        .c-phones .icon-box { background: linear-gradient(135deg, #D4AF37, #F2D06B); color: black; }
-        .c-game .icon-box { background: linear-gradient(135deg, #6a11cb, #2575fc); }
-        .c-stream .icon-box { background: linear-gradient(135deg, #000000, #434343); border: 1px solid #333; }
-
-        .app-card h3 { font-size: 1rem; margin: 0; }
-        .app-card span { font-size: 0.7rem; color: #888; margin-top: 5px; }
-
-        /* Floating Nav */
-        .btm-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(20,20,20,0.9); padding: 15px 30px; border-radius: 50px; display: flex; gap: 30px; backdrop-filter: blur(10px); border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 99; }
-        .btm-nav a { color: #888; font-size: 1.5rem; transition: 0.3s; }
-        .btm-nav a.active { color: #D4AF37; transform: scale(1.2); }
-
+        /* Footer & QR */
+        footer { background: #111; padding: 40px 20px; text-align: center; border-top: 1px solid #333; margin-top: 50px; }
+        .qr-box { background: white; padding: 15px; border-radius: 15px; display: inline-block; margin: 20px 0; }
+        
+        @keyframes pulse { 0% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0.5; transform: scale(0.9); } }
     </style>
 </head>
 <body>
-    <div class="bg-glow"></div>
+    <div class="intro" id="intro">
+        <i class="fa-solid fa-crown"></i>
+        <h1>Hassan<br><span style="font-size:1.5rem; color:#fff">Central Store</span></h1>
+    </div>
 
     <header>
-        <div class="user-profile">
-            <div class="avatar"><i class="fa-solid fa-crown"></i></div>
-            <div class="greeting">
-                <p>Welcome to</p>
-                <h3>Hassan Store</h3>
-            </div>
-        </div>
-        <a href="https://wa.me/96170363783" style="color:white; font-size:1.5rem"><i class="fa-regular fa-bell"></i></a>
+        <div class="logo"><i class="fa-solid fa-store"></i> Hassan Store</div>
+        <a href="https://wa.me/96170363783" style="color:#25d366; font-size:1.8rem"><i class="fa-brands fa-whatsapp"></i></a>
     </header>
 
-    <div class="promo-banner">
-        <i class="fa-solid fa-rocket"></i>
-        <h1>خدمات VIP</h1>
-        <p>استمتع بتجربة رقمية متكاملة. تشريج، هواتف، وتحويل أموال بضغطة زر.</p>
+    <div class="hero">
+        <div class="hero-content">
+            <h2>عالم من<br><span>التكنولوجيا</span> والفخامة</h2>
+            <p style="color:#aaa; font-size:1.2rem">الوجهة الأولى للخدمات الرقمية والهواتف الذكية في المنطقة.</p>
+        </div>
     </div>
 
-    <div class="grid-title">التطبيقات</div>
-    <div class="app-grid">
-        <a href="alfa.html" class="app-card c-alfa">
-            <div class="icon-box"><i class="fa-solid fa-tower-cell"></i></div>
-            <h3>ALFA</h3>
-            <span>تشريج & انترنت</span>
+    <div class="grid-container">
+        <a href="alfa.html" class="card c-alfa">
+            <i class="fa-solid fa-tower-cell"></i>
+            <h3>خدمات Alfa</h3>
         </a>
-        <a href="touch.html" class="app-card c-touch">
-            <div class="icon-box"><i class="fa-solid fa-signal"></i></div>
-            <h3>TOUCH</h3>
-            <span>باقات & رصيد</span>
+        <a href="touch.html" class="card c-touch">
+            <i class="fa-solid fa-signal"></i>
+            <h3>خدمات Touch</h3>
         </a>
-        <a href="whish.html" class="app-card c-whish">
-            <div class="icon-box"><i class="fa-solid fa-money-bill-transfer"></i></div>
-            <h3>WHISH</h3>
-            <span>تحويل أموال</span>
+        <a href="whish.html" class="card c-whish">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <h3>Whish Money <span style="font-size:0.8rem; display:block; color:#aaa">وكيل معتمد ورسمي</span></h3>
         </a>
-        <a href="phones.html" class="app-card c-phones">
-            <div class="icon-box"><i class="fa-solid fa-mobile-screen"></i></div>
-            <h3>PHONES</h3>
-            <span>صالة العرض</span>
+        <a href="phones.html" class="card" style="border-color:var(--gold)">
+            <i class="fa-solid fa-mobile-screen-button" style="color:var(--gold)"></i>
+            <h3>صالة الهواتف</h3>
         </a>
-        <a href="gaming.html" class="app-card c-game">
-            <div class="icon-box"><i class="fa-solid fa-gamepad"></i></div>
-            <h3>GAMING</h3>
-            <span>PUBG & Store</span>
-        </a>
-        <a href="streaming.html" class="app-card c-stream">
-            <div class="icon-box"><i class="fa-solid fa-play"></i></div>
-            <h3>STREAM</h3>
-            <span>Netflix & TV</span>
+        <a href="gaming.html" class="card">
+            <i class="fa-solid fa-gamepad"></i>
+            <h3>Gaming Zone</h3>
         </a>
     </div>
 
-    <div class="btm-nav">
-        <a href="#" class="active"><i class="fa-solid fa-house"></i></a>
-        <a href="https://wa.me/96170363783"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="#"><i class="fa-solid fa-qrcode"></i></a>
-    </div>
+    <footer>
+        <h3 style="color:var(--gold)">امسح الكود لزيارة الموقع</h3>
+        <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mehsn70.github.io/Mehsin-central-store/app.html" width="150" alt="QR">
+        </div>
+        <p style="color:#555">Developed by Mehsin Husseini © 2025</p>
+    </footer>
+
+    <script>
+        setTimeout(() => { document.getElementById('intro').style.opacity = '0'; setTimeout(()=>{document.getElementById('intro').style.display='none'},1000) }, 2500);
+    </script>
 </body>
 </html>
-
