@@ -1,102 +1,298 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfa Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { background: #111; color: white; font-family: 'Cairo'; margin: 0; padding-bottom: 50px; }
-        
-        .header { padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .back-btn { background: #222; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Alfa Offers – Mehsin Services</title>
 
-        /* 3D SIM Card */
-        .sim-container { padding: 20px; perspective: 1000px; display: flex; justify-content: center; }
-        .sim-card {
-            width: 320px; height: 190px;
-            background: linear-gradient(135deg, #e30613, #8a040b);
-            border-radius: 20px;
-            position: relative;
-            padding: 25px;
-            box-shadow: 0 20px 50px rgba(227, 6, 19, 0.3);
-            transform: rotateX(5deg);
-            border: 1px solid rgba(255,255,255,0.1);
-            overflow: hidden;
-        }
-        .sim-chip { width: 50px; height: 40px; background: linear-gradient(45deg, #ffd700, #b8860b); border-radius: 8px; margin-bottom: 20px; position: relative; }
-        .sim-chip::after { content:''; position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background: rgba(0,0,0,0.2); }
-        .sim-logo { position: absolute; top: 20px; right: 25px; font-weight: 900; font-size: 1.8rem; letter-spacing: 2px; font-style: italic; }
-        .sim-number { font-size: 1.2rem; letter-spacing: 3px; font-family: monospace; margin-top: 10px; text-shadow: 0 2px 2px rgba(0,0,0,0.3); }
-        .sim-label { font-size: 0.8rem; opacity: 0.8; margin-top: 20px; }
-        
-        .section-title { padding: 0 25px; margin-top: 10px; font-size: 1.2rem; color: #e30613; font-weight: bold; border-right: 4px solid #e30613; margin-right: 20px; }
+<style>
+:root{
+    --red1:#ff4a4a;
+    --red2:#7b0000;
+    --dark:#050712;
+    --gold:#f6c453;
+    --card:#0d0f1a;
+}
 
-        .list-container { padding: 20px; display: grid; gap: 15px; }
-        .offer-card {
-            background: #1a1a1a;
-            border-radius: 15px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
-        .offer-card:hover { border-color: #e30613; background: #222; }
-        .o-icon { width: 50px; height: 50px; background: rgba(227, 6, 19, 0.1); border-radius: 12px; color: #e30613; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
-        .o-info { flex: 1; margin-right: 15px; }
-        .o-info h4 { margin: 0; font-size: 1rem; }
-        .o-info span { font-size: 0.8rem; color: #888; }
-        .btn-add { background: #e30613; color: white; border: none; padding: 8px 15px; border-radius: 50px; font-size: 0.9rem; cursor: pointer; text-decoration: none; }
+body{
+    margin:0;
+    background:#000;
+    font-family:"Tahoma",sans-serif;
+    color:white;
+}
 
-    </style>
+/* HEADER */
+.header{
+    position:relative;
+    height:180px;
+    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/alfa%20touch%20recharge.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:flex-end;
+    padding:14px;
+}
+
+.header::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.4),rgba(0,0,0,0.9));
+}
+
+.header-title{
+    position:relative;
+    z-index:2;
+    font-size:24px;
+    font-weight:900;
+    color:var(--red1);
+}
+
+/* SECTION TITLE */
+.section-title{
+    font-size:18px;
+    font-weight:700;
+    margin:18px 12px 4px;
+}
+
+/* SERVICE CARDS */
+.card{
+    background:linear-gradient(135deg,#1a1a1a,#000);
+    border-radius:14px;
+    padding:12px;
+    margin:12px;
+    display:flex;
+    gap:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.4);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.card img{
+    width:60px;
+    height:60px;
+    border-radius:12px;
+    object-fit:cover;
+    border:2px solid rgba(255,255,255,0.2);
+}
+
+.card-body{
+    flex:1;
+}
+
+.card-title{
+    font-size:16px;
+    font-weight:700;
+}
+
+.card-desc{
+    font-size:12px;
+    opacity:0.8;
+    margin:4px 0;
+}
+
+.price-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-top:4px;
+}
+
+.old-price{
+    text-decoration:line-through;
+    opacity:0.6;
+    font-size:13px;
+}
+
+.new-price{
+    font-size:15px;
+    font-weight:700;
+    color:#ff9c9c;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:8px;
+    padding:8px 14px;
+    background:var(--red1);
+    color:black;
+    font-weight:700;
+    border-radius:40px;
+    font-size:13px;
+    cursor:pointer;
+    border:none;
+}
+
+/* INFO SECTION */
+.info-section{
+    background:url('https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/2309.jpg') center/cover no-repeat;
+    padding:20px 14px;
+    margin-top:20px;
+    position:relative;
+}
+
+.info-section::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+
+.info-text{
+    position:relative;
+    z-index:2;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* QR + FOOTER */
+.qr{
+    width:120px;
+    height:120px;
+    margin:20px auto 10px;
+    display:block;
+}
+
+footer{
+    text-align:center;
+    color:#ccc;
+    font-size:12px;
+    margin:20px 0;
+}
+</style>
+
 </head>
 <body>
-    <div class="header">
-        <h2 style="margin:0">Alfa Services</h2>
-        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
-    </div>
 
-    <div class="sim-container">
-        <div class="sim-card">
-            <div class="sim-logo">alfa</div>
-            <div class="sim-chip"></div>
-            <div class="sim-number">RECHARGE CENTER</div>
-            <div class="sim-label">Managed by Hassan Store</div>
-        </div>
-    </div>
+<!-- HEADER -->
+<div class="header">
+    <div class="header-title">عروض Alfa</div>
+</div>
 
-    <div class="section-title">التشريج الفوري</div>
-    <div class="list-container">
-        <div class="offer-card">
-            <div class="o-icon"><i class="fa-solid fa-dollar-sign"></i></div>
-            <div class="o-info">
-                <h4>رصيد $22.73</h4>
-                <span>صلاحية 30 يوم</span>
-            </div>
-            <a href="https://wa.me/96170363783?text=Alfa22" class="btn-add">اطلب</a>
-        </div>
-        
-        <div class="offer-card">
-            <div class="o-icon"><i class="fa-solid fa-wifi"></i></div>
-            <div class="o-info">
-                <h4>انترنت 500 MB</h4>
-                <span>باقة توفير</span>
-            </div>
-            <a href="https://wa.me/96170363783?text=Alfa500" class="btn-add">تفعيل</a>
-        </div>
 
-        <div class="offer-card">
-            <div class="o-icon"><i class="fa-solid fa-globe"></i></div>
-            <div class="o-info">
-                <h4>انترنت 5 GB</h4>
-                <span>باقة شهرية</span>
-            </div>
-            <a href="https://wa.me/96170363783?text=Alfa5GB" class="btn-add">تفعيل</a>
+<!-- SERVICES -->
+<div class="section-title">خدمات Alfa الشهرية والسنوية</div>
+
+<!-- Alfa 1 Month -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Alfa – 1 Month</div>
+        <div class="card-desc">تجديد خط Alfa لمدة 30 يوم كاملة.</div>
+        <div class="price-row">
+            <span class="old-price">200,000</span>
+            <span class="new-price">150,000 ل.ل</span>
         </div>
+        <button class="btn" onclick="order('Alfa – 1 Month')">اطلب الآن</button>
     </div>
+</div>
+
+<!-- Alfa 3 Months -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Alfa – 3 Months</div>
+        <div class="card-desc">تجديد 90 يوم بسعر مخفّض.</div>
+        <div class="price-row">
+            <span class="old-price">480,000</span>
+            <span class="new-price">430,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Alfa – 3 Months')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- Alfa 6 Months -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Alfa – 6 Months</div>
+        <div class="card-desc">6 أشهر راحة بدون تجديد.</div>
+        <div class="price-row">
+            <span class="old-price">950,000</span>
+            <span class="new-price">900,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Alfa – 6 Months')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- Alfa 1 Year -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Alfa – 1 Year</div>
+        <div class="card-desc">خط سنة كاملة – استقبال 365 يوم.</div>
+        <div class="price-row">
+            <span class="old-price">950,000</span>
+            <span class="new-price">900,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Alfa – 1 Year')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- Alfa Dollar Cards -->
+<div class="section-title">بطاقات Alfa بالدولار</div>
+
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Alfa – 4.5$</div>
+        <div class="card-desc">30 يوم – استقبال ومكالمات.</div>
+        <div class="price-row">
+            <span class="old-price">600,000</span>
+            <span class="new-price">550,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Alfa – 4.5$')">اطلب الآن</button>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Alfa – 7.5$</div>
+        <div class="card-desc">30 يوم – استقبال.</div>
+        <div class="price-row">
+            <span class="old-price">940,000</span>
+            <span class="new-price">890,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Alfa – 7.5$')">اطلب الآن</button>
+    </div>
+</div>
+
+<!-- Alfa Year Days -->
+<div class="card">
+    <img src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/9-17-800x549.jpg">
+    <div class="card-body">
+        <div class="card-title">Alfa – Year Days</div>
+        <div class="card-desc">سنة استقبال كاملة + رصيد 0.5$.</div>
+        <div class="price-row">
+            <span class="old-price">1,750,000</span>
+            <span class="new-price">1,700,000 ل.ل</span>
+        </div>
+        <button class="btn" onclick="order('Alfa – Year Days')">اطلب الآن</button>
+    </div>
+</div>
+
+
+<!-- INFO SECTION -->
+<div class="info-section">
+    <div class="info-text">
+        <b>Mehsin Services</b><br>
+        خدمات رقمية – تشريجات – إنترنت – اشتراكات مشاهدة – بطاقات – AI.<br><br>
+        نحن نقدّم أفضل الأسعار بسرعة وسهولة، مع خدمة زبائن مباشرة عبر واتساب.
+    </div>
+</div>
+
+<!-- QR CODE -->
+<img class="qr" src="https://raw.githubusercontent.com/Mehsn70/Mehsin-central-store/refs/heads/main/file_00000000086071f5bc64d2c0002ac7e6.png">
+
+<footer>
+    © 2025 – Mehsin Services  
+    <br>Powered by Mehsin Husseini
+</footer>
+
+<script>
+function order(service){
+    const msg = encodeURIComponent("مرحبا، أريد طلب خدمة:\n" + service + "\nرقم الخط: \nملاحظات:");
+    window.location.href="https://wa.me/96170363783?text=" + msg;
+}
+</script>
+
 </body>
 </html>
-
